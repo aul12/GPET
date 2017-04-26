@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.5)  23 APR 2017 17:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.5)  25 APR 2017 19:18
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1226,7 +1226,15 @@ mappings.tex))) (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 \f@ncyO@erf=\skip69
 \f@ncyO@olf=\skip70
 \f@ncyO@orf=\skip71
-) (/home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.aux
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count187
+\float@exts=\toks43
+\float@box=\box67
+\@float@everytoks=\toks44
+\@floatcapt=\box68
+)
+(/home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.aux
 
 LaTeX Warning: Label `tablec' multiply defined.
 
@@ -1251,17 +1259,17 @@ LaTeX Font Info:    ... okay on input line 33.
  ABD: EveryShipout initializing macros
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count187
+\scratchcounter=\count188
 \scratchdimen=\dimen291
-\scratchbox=\box67
-\nofMPsegments=\count188
-\nofMParguments=\count189
-\everyMPshowfont=\toks43
-\MPscratchCnt=\count190
+\scratchbox=\box69
+\nofMPsegments=\count189
+\nofMParguments=\count190
+\everyMPshowfont=\toks45
+\MPscratchCnt=\count191
 \MPscratchDim=\dimen292
-\MPnumerator=\count191
-\makeMPintoPDFobject=\count192
-\everyMPtoPDFconversion=\toks44
+\MPnumerator=\count192
+\makeMPintoPDFobject=\count193
+\everyMPtoPDFconversion=\toks46
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -1397,7 +1405,7 @@ Dictionary: translator-basic-dictionary, Language: English
 (/usr/share/texlive/texmf-dist/tex/latex/siunitx/siunitx-abbreviations.cfg
 File: siunitx-abbreviations.cfg 2016/03/01 v2.6q siunitx: Abbreviated units
 )
-\c__siunitx_mathsf_int=\count193
+\c__siunitx_mathsf_int=\count194
 LaTeX Font Info:    Try loading font information for U+msa on input line 33.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
@@ -1408,7 +1416,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 33.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-\c__siunitx_mathtt_int=\count194
+\c__siunitx_mathtt_int=\count195
  [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -1417,98 +1425,91 @@ Overfull \hbox (22.71796pt too wide) in paragraph at lines 36--36
  []
 
 PGFPlots: reading {quelleWiderstand.csv}
-PGFPlots: reading {quelleWiderstand.csv}
+<BatterieKurve.jpg, id=11, 684.5575pt x 429.605pt>
+File: BatterieKurve.jpg Graphic file (type jpg)
+ <use BatterieKurve.jpg>
+Package pdftex.def Info: BatterieKurve.jpg used on input line 83.
+(pdftex.def)             Requested size: 345.0pt x 216.51288pt.
 
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 83.
-
- [warning /pgfplots/warning/approx empty range enlarged]
-
-Package pgfplots Warning: Axis range for axis y is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 83.
-
- [warning /pgfplots/warning/approx empty range enlarged]
-[1]
+[1] [2 <./BatterieKurve.jpg>]
 PGFPlots: reading {einfachesNetzwerk.csv}
 
+<ErsatzspannungsQuelle.jpg, id=24, 684.5575pt x 429.605pt>
+File: ErsatzspannungsQuelle.jpg Graphic file (type jpg)
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-PGFPlots: reading {einfachesNetzwerk.csv}
-
-Package pgfplots Warning: Axis range for axis x is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 141.
-
- [warning /pgfplots/warning/approx empty range enlarged]
-
-Package pgfplots Warning: Axis range for axis y is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 141.
-
- [warning /pgfplots/warning/approx empty range enlarged]
-[2]
+<use ErsatzspannungsQuelle.jpg>
+Package pdftex.def Info: ErsatzspannungsQuelle.jpg used on input line 166.
+(pdftex.def)             Requested size: 345.0pt x 216.51288pt.
+ [3]
 PGFPlots: reading {quelleWiderstand2.csv}
 
-Overfull \hbox (91.96346pt too wide) in paragraph at lines 200--201
+Overfull \hbox (110.32362pt too wide) in paragraph at lines 230--231
  [] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3]
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
- [4]
+[4 <./ErsatzspannungsQuelle.jpg>]
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
  [5]
-Overfull \hbox (5.32797pt too wide) in paragraph at lines 251--251
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+ [6]
+Overfull \hbox (5.32797pt too wide) in paragraph at lines 288--288
 []\OT1/cmr/bx/n/14.4 Untersuchung ei-nes kom-pli-zier-ten Netz-werks 
  []
 
 PGFPlots: reading {kompliziertesNetzwerk.csv}
-PGFPlots: reading {kompliziertesNetzwerk.csv}
-PGFPlots: reading {kompliziertesNetzwerk.csv}
-PGFPlots: reading {kompliziertesNetzwerk.csv}
-PGFPlots: reading {kompliziertesNetzwerk.csv}
+[7] <KPVmess.jpg, id=44, 684.5575pt x 429.605pt>
+File: KPVmess.jpg Graphic file (type jpg)
+ <use KPVmess.jpg>
+Package pdftex.def Info: KPVmess.jpg used on input line 336.
+(pdftex.def)             Requested size: 345.0pt x 216.51288pt.
+ [8 <./KPVmess.jpg>] <KPV.jpg, id=48, 1371.1225pt x 690.58pt>
+File: KPV.jpg Graphic file (type jpg)
+ <use KPV.jpg>
+Package pdftex.def Info: KPV.jpg used on input line 383.
+(pdftex.def)             Requested size: 345.0pt x 173.76154pt.
 
-Package pgfplots Warning: Axis range for axis y is approximately empty; enlargi
-ng it (it is [0.0:0.0]) on input line 302.
+Overfull \hbox (3.32658pt too wide) in paragraph at lines 388--391
+\OT1/cmr/m/n/10 Alle vier Po-ten-tia-le Ver-hal-ten sich Li-ne-ar. Die Stei-gun
+g der Ge-ra-den re-pr[]asentiert
+ []
 
- [warning /pgfplots/warning/approx empty range enlarged]
-[6] [7] (/home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.aux)
+[9 <./KPV.jpg>] [10] [11]
+(/home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34014 strings out of 494901
- 834562 string characters out of 6178618
- 932828 words of memory out of 5000000
- 36812 multiletter control sequences out of 15000+600000
+ 34079 strings out of 494901
+ 835492 string characters out of 6178618
+ 937137 words of memory out of 5000000
+ 36868 multiletter control sequences out of 15000+600000
  14324 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 62i,17n,77p,10376b,1807s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,18n,77p,10376b,1804s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
-7.pfb>
-Output written on /home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.pdf (8 pag
-es, 133923 bytes).
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+
+Output written on /home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.pdf (12 pa
+ges, 347774 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 98 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 33 words of extra memory for PDF output out of 10000 (max. 10000000)
 

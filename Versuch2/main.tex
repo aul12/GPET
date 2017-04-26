@@ -39,12 +39,18 @@
         vor der Batterie an, damit Sie die Batterie nicht über einen längeren
         Zeitraum kurzschließen.
 
+        \subsection{Vorgehensweise}
+        Es werden verschiedene Lastwiderständer $R_L$ eingebaut und die Arbeitsgerade
+        des Netzwerks aufgenommen. Der Laststrom $I_L$ berechnet sich aus
         \begin{equation*}
-            U_{innen} = U_{Batterie} - U_{mess}
+            I_L = \frac{U_{mess}}{R_L}
         \end{equation*}
 
-        % TODO Messwerte quelleWiderstand.csv
-        \begin{table}[h!]
+
+        \vspace{0.5cm}
+
+        Der $0$-Wert bei $R_L$ repräsentiert einen Widerstand von $\infty \si{\ohm}$.
+        \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 1}
                 \label{tablec}
@@ -58,15 +64,12 @@
                 column name=$U_{mess}$,
                 column type={S},string type},
                 display columns/2/.style={
-                column name=$U_{innen}$,
-                column type={S},string type},
-                display columns/3/.style={
                 column name=$I_L$,
                 column type={S},string type},
                 every head row/.style={
                 before row={\toprule}, % have a rule at top
                 after row={
-                \si{\ohm} & \si{\volt} & \si{\volt} & m\si{\ampere}\\
+                \si{\ohm} & \si{\volt} & m\si{\ampere}\\
                 \midrule} % rule under units
                 },
                 every last row/.style={after row=\bottomrule},
@@ -74,14 +77,12 @@
             \end{center}
         \end{table}
 
-        \subsection{U-I-Diagram}
+        \subsection{I-U-Kennlinie der Batterie}
         \begin{center}
-            \begin{tikzpicture}
-        		\begin{axis}[ymin=0, xmin=0, xlabel = {$U_{innen}$[V]}, ylabel = {$I_L$[mA]}]
-        			\addplot[color=blue] table[x index = {2},
-                            y index = {3}] {quelleWiderstand.csv};
-        		\end{axis}
-        	\end{tikzpicture}
+            \begin{figure}[H]
+              \includegraphics[width=\textwidth]{BatterieKurve.jpg}
+              \caption{Arbeitsgerade}
+            \end{figure}
         \end{center}
 
         \subsection{Charakterisierung der Ersatzspannungsquelle}
@@ -89,22 +90,49 @@
 
         \vspace{0.5cm}
 
-        %TODO Erklärung
-        Die Steigung des Graphens ist der Innenwiderstand $R_{innen}$. Es gilt
+        Die Steigung des Graphens ist der negative Innenwiderstand $R_{innen}$.
+        Dieser beträgt:
         \begin{equation*}
-            R_{innen} = \frac{(U_{Batterie} - U_{mess})(R+R_L)}{U_{mess}}
+            R_{innen} = 16.737 \si{\ohm}
         \end{equation*}
 
+        Der x-Wert ($I$) des Schnittpunkts mit der x-Achse ist der Kurzschlussstrom.
+        Dieser beträgt:
+        \begin{equation*}
+            I_{kurzschluss} = 0.062 \si{\ampere}
+        \end{equation*}
+
+        Der y-Wert ($U$) des Schnittpunkts mit der y-Achse ist die Leerlaufspannung.
+        Diese beträgt:
+        \begin{equation*}
+            U_{leerlauf} = 8.75 \si{\volt}
+        \end{equation*}
+
+        \subsection{Messungenauigkeiten}
+        Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
+        und durch die Ungenauigekeit des Potentiometers selbst zustande. Der linearer Verlauf der Kurve ist aber trotzdem gut zu erkennen.
+
+
         \section{Untersuchung eines einfachen Netzwerks}
-        Bauen Sie die Schaltung aus Abbildung 6 nach. Die Widerstandswerte sind $R1 = R2 =
-        1 \si{\ohm}$ und $R3 = R4 = 100\si{\ohm}$.
+        \textbf{Aufgabe: }Bauen Sie die Schaltung aus Abbildung 6 nach. Die Widerstandswerte sind $R1 = R2 =
+        1 \si{k\ohm}$ und $R3 = R4 = 100\si{\ohm}$.
 
         Bestimmen Sie die äquivalente Ersatzspannungsquelle zwischen den Knoten 0 und 1 durch
         Messung ($U_{in} = 3\si{\volt}$). Verwenden Sie hierzu wieder das Potentiometer mit $1\si{k\ohm}$ und tragen
         Sie die Ergebnisse in Messtabelle 2 ein.
 
-        %TODO Messwerte einfachesNetzwerk.csv
-        \begin{table}[h!]
+        \subsection{Vorgehensweise}
+        Es werden verschiedene Lastwiderständer $R_L$ eingebaut und die Arbeitsgerade
+        des Netzwerks aufgenommen. Der Laststrom $I_L$ berechnet sich aus
+        \begin{equation*}
+            I_L = \frac{U_{mess}}{R_L}
+        \end{equation*}
+
+
+        \vspace{0.5cm}
+
+        Der $0$-Wert bei $R_L$ repräsentiert einen Widerstand von $\infty \si{\ohm}$.
+        \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 2}
                 \label{tableb}
@@ -132,31 +160,33 @@
         \end{table}
 
         \subsection{Ersatzspannungsquelle}
-        \subsubsection{Arbeitsgerade}
+        \subsubsection{I-U-Kennlinie des Netzwerks}
         \begin{center}
-            \begin{tikzpicture}
-        		\begin{axis}[ymin=0, xmin=0, xlabel = {V}, ylabel = {mA}]
-        			\addplot[color=blue] table[x index = {1},
-                            y index = {2}] {einfachesNetzwerk.csv};
-        		\end{axis}
-        	\end{tikzpicture}
+            \begin{figure}[H]
+              \includegraphics[width=\textwidth]{ErsatzspannungsQuelle.jpg}
+              \caption{Arbeitsgerade}
+            \end{figure}
         \end{center}
 
-        %TODO Ersatzspannungsquelle bestimmen
-        Berechnung des Kurzschlussstroms durch lineare Regression:
+        Durch identisches Vorgehen zu Aufgabe 3.1 ergibt sich folgende
+        Charakterisierung:
         \begin{eqnarray*}
-            U_{Quelle} &=& \si{\volt}\\
-            I_{Kurzschluss} &=& \si{\ampere}\\
-            R_{Innen} &=& \si{\ohm}
+            U_{Quelle} &=& 0.2156\si{\volt}\\
+            I_{Kurzschluss} &=& 2.1\si{m\ampere}\\
+            R_{Innen} &=& 85.477\si{\ohm}
         \end{eqnarray*}
 
 
-        \subsection{Widerstand}
+        \subsubsection{Messungenauigkeit}
+        Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
+        und durch die Ungenauigekeit des Potentiometers selbst zustande. Der linearer Verlauf der Kurve ist aber trotzdem gut zu erkennen.
+
+
+        \subsection{Spannungen an den Widerständen}
         \textbf{Aufgabe:} Messen Sie die Spannungen an den Widerständen in Abhängigkeit von $U_{in}$. Tragen Sie
         die Messwerten in Messtabelle 3 ein und vergleichen diese mit den berechneten Werten in
         einem Diagramm.
-        %TODO Messwerte quelleWiderstand2.csv
-        \begin{table}[h!]
+        \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 2}
                 \label{tablec}
@@ -209,7 +239,7 @@
         		\begin{axis}[ymin=0, xmin=0, xlabel = {$U_{in}$[V]}, ylabel = {$U_{R_1}$[V]}]
         			\addplot[color=red] table[x index = {0},
                             y index = {1}] {quelleWiderstand2.csv};
-                    \addplot[color=blue] table[x index = {0},
+                    \addplot[color=blue, only marks] table[x index = {0},
                             y index = {5}] {quelleWiderstand2.csv};
         		\end{axis}
         	\end{tikzpicture}
@@ -220,7 +250,7 @@
                 \begin{axis}[ymin=0, xmin=0, xlabel = {$U_{in}$[V]}, ylabel = {$U_{R_2}$[V]}]
         			\addplot[color=red] table[x index = {0},
                             y index = {2}] {quelleWiderstand2.csv};
-                    \addplot[color=blue] table[x index = {0},
+                    \addplot[color=blue, only marks] table[x index = {0},
                             y index = {6}] {quelleWiderstand2.csv};
         		\end{axis}
         	\end{tikzpicture}
@@ -231,7 +261,7 @@
                 \begin{axis}[ymin=0, xmin=0, xlabel = {$U_{in}$[V]}, ylabel = {$U_{R_3}$[V]}]
         			\addplot[color=red] table[x index = {0},
                             y index = {3}] {quelleWiderstand2.csv};
-                    \addplot[color=blue] table[x index = {0},
+                    \addplot[color=blue, only marks] table[x index = {0},
                             y index = {7}] {quelleWiderstand2.csv};
         		\end{axis}
         	\end{tikzpicture}
@@ -242,19 +272,25 @@
                 \begin{axis}[ymin=0, xmin=0, xlabel = {$U_{in}$[V]}, ylabel = {$U_{R_4}$[V]}]
         			\addplot[color=red] table[x index = {0},
                             y index = {4}] {quelleWiderstand2.csv};
-                    \addplot[color=blue] table[x index = {0},
+                    \addplot[color=blue, only marks] table[x index = {0},
                             y index = {8}] {quelleWiderstand2.csv};
         		\end{axis}
         	\end{tikzpicture}
         \end{center}
+
+
+        \subsubsection{Messungenauigkeiten}
+        Wie in den Diagrammem zu erkennen ist, weichen die Messwerte nur sehr
+        gering von den berechneten Werten ab.
+
+        Es ergibt es sich für jeden Widerstand eine charakteristische Gerade.
 
         \section{Untersuchung eines komplizierten Netzwerks}
         \textbf{Aufgabe:} Messen Sie die Spannungen an allen
         Knoten in Abhängigkeit von $U_{in,1} = 0 \ldots 3 \si{\volt}$ und tragen Sie die Ergebnisse in Messtabelle
         4 ein. Erstellen Sie ein Diagramm für die Spannungen an allen Knoten in Abhängigkeit
         der Spannung $U_{in,1} = 0 \ldots 3 \si{\volt}$.
-        %TODO Messwerte kompliziertesNetzwerk.csv
-        \begin{table}[h!]
+        \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 3}
                 \label{tablec}
@@ -288,20 +324,29 @@
         \end{table}
 
         \subsection{Diagramm der Knotenspannungen}
+        $U_1$ in \textcolor{black}{schwarz}.
+
+        $U_2$ in \textcolor{green}{grün}.
+
+        $U_3$ in \textcolor{blue}{blau}.
+
+        $U_4$ in \textcolor{red}{rot}.
         \begin{center}
-            \begin{tikzpicture}
-        		\begin{axis}[ymin=0, xmin=0, xlabel = {V}, ylabel = {mA}]
-        			\addplot[color=red] table[x index = {0},
-                            y index = {1}] {kompliziertesNetzwerk.csv};
-                    \addplot[color=blue] table[x index = {0},
-                            y index = {2}] {kompliziertesNetzwerk.csv};
-                    \addplot[color=green] table[x index = {0},
-                            y index = {3}] {kompliziertesNetzwerk.csv};
-                    \addplot[color=black] table[x index = {0},
-                            y index = {4}] {kompliziertesNetzwerk.csv};
-        		\end{axis}
-        	\end{tikzpicture}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{KPVmess.jpg}
+              \caption{Messwerte}
+            \end{figure}
         \end{center}
+
+        \subsubsection{Messungenauigkeiten}
+        Wie im Diagramm zu erkennen, verhalten sich die Kurven zwar generell linear,
+        besitzen aber markante Abweichungen. Während des Versuchs ist aufgefallen,
+        dass durch Wackeln an den Kabeln der Messgeräte sich die Messwerte
+        signifikant beeinflussen ließen. Die Sprünge im Diagramm lassen sich
+        also auf den mangelhaften Zustand der Kabel zurückführen. Wir haben einige,
+        jedoch nicht alle Messungen wiederholen können. Zum Teil gab es stark
+        unterschiedliche Ergebnisse bei ein und der selben Messung.
+
 
         \subsection{Knotenpotenzialanalyse mit Matlab}
         \textbf{Aufgabe:} Nun soll für dieses Netzwerk das in Abschnitt 2.2 aufgestellte KPV mit Hilfe von Matlab
@@ -309,19 +354,122 @@
 
         \vspace{0.5cm}
 
-        %TODO Matlab, Screenshot?
-        %\begin{figure}[H]
-        %  \includegraphics[width=\textwidth]{scope_5.png}
-        %  \caption{DC}
-        %\end{figure}
+        \subsubsection{Matrix}
+        \begin{equation*}
+            \begin{bmatrix}
+                -5G & G & 2G & G\\
+                G & -3G & 0 & 0\\
+                2G & 0 & -3G & G\\
+                G & 0 & G & -3G
+            \end{bmatrix}
+            \begin{bmatrix}
+                \varphi_1 \\
+                \varphi_2 \\
+                \varphi_3 \\
+                \varphi_4
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                I_3\\
+                -I_2\\
+                -I_3\\
+                -I_1
+            \end{bmatrix}
+        \end{equation*}
+
+        \subsubsection{Lösung}
+
+        \begin{figure}[H]
+            \includegraphics[width=\textwidth]{KPV.jpg}
+          \caption{KPV\_plot mit MatLab}
+        \end{figure}
+
+        \subsubsection{Auswertung}
+        Alle vier Potentiale Verhalten sich Linear. Die Steigung der Geraden
+        repräsentiert das Spannungsteilerverhältniss zwischen $U_{in}$ und des
+        jeweiligen Potentials $U_x$.
+
+        Beim Schnittpunkt zwischen $U_3$ und $U_4$ (bei ca.$1.6$V) befinden sich
+        beide Knoten auf dem selben Potential, d.h.\ es fließt kein Strom zwischen
+        ihnen.
+
+        Das Offset der jeweiligen Kurven bei $U_{in} = 0$V kommt durch die zweite
+        Spannungsquelle im Netzwerk, die eine konstanten Spannung von $1$V liefert,
+        zustande.
+
+        \vspace{0.5cm}
+
+        Obwohl im Diagramm für die Messwerte deutliche Sprünge zu erkennen sind,
+        verhalten sich die Kurven in beiden Diagrammen ähnlich: Auch bei den
+        Messwerten lässt sich grob ein linearer Verlauf erkennen, sowohl der
+        Schnittpunkt zwischen $U_3$ und $U_4$, als auch das Offset der jeweiligen
+        Spannungen bei $U_{in} = 0$V werden dargestellt.
+
 
         \section{Aufbau einer Messbrücke nach Wheatstone}
         \textbf{Aufgabe:} Kann mit diesem Messaufbau jeder Widerstand gemessen werden? Falls dies nicht der
         Fall ist, wie muss der Messaufbau verändert werden, damit die restlichen Widerstände
         gemessen werden können?
 
+        \subsection{Vorgehensweise}
+        Der Widerstand des Potentiometers wird so lange verändert, bis die Spannung
+        zwischen beiden Spannungsteilern genau null Volt beträgt. Der gesuchte
+        Widerstand $R_x$ lässt sich dann wie folgt berechnen:
+
+        \begin{equation*}
+            R_x = \frac{R_1 R_3}{R_{poti}}
+        \end{equation*}
+
         \vspace{0.5cm}
 
-        %TODO Text
+        Verwendet wurden folgende Widerstände:
+        \begin{eqnarray*}
+            R_1 &=& 100\si{\ohm}\\
+            R_3 &=& 1\si{k\ohm}
+        \end{eqnarray*}
+
+        \subsection{Widerstand 1}
+        \begin{eqnarray*}
+            R_{poti} &=& 146.5 \si{\ohm} \\
+            \Rightarrow R_{x} &=& 682.6 \si{\ohm}\\
+            R_{mitMultimeter} &=& 678\si{\ohm}
+        \end{eqnarray*}
+
+        \subsection{Widerstand 2}
+        \begin{eqnarray*}
+            R_{poti} &=& 452.6 \si{\ohm} \\
+            \Rightarrow R_{x} &=& 220.9\si{\ohm}\\
+            R_{mitMultimeter} &=& 219.7\si{\ohm}
+        \end{eqnarray*}
+
+        \subsection{Widerstand 3}
+        \begin{eqnarray*}
+            R_{poti} &=& 211.8 \si{\ohm} \\
+            \Rightarrow R_{x} &=& 472.1\si{\ohm}\\
+            R_{mitMultimeter} &=& 469.0\si{\ohm}
+        \end{eqnarray*}
+
+        \subsection{Einschränkungen}
+        $R_1$, $R_2$ und $R_3$ müssen so gewählt werden, dass $I_L$ auch tatsächlich
+        auf $0$A gebracht werden kann.
+
+        \vspace{0.5cm}
+
+        Ist $R_x$ beispielsweise zu groß für die gewählten Widerstände $R_1$ und $R_3$, muss
+        man mit dem Potentiometer sehr kleine Widerstandswerte einstellen was zu
+        Messungenauigkeiten führen kann.
+
+        Es sollte gelten:
+        \begin{equation*}
+            \frac{R_1 \cdot R_3}{R_x} >> 1
+        \end{equation*}
+        damit mit dem Potentiometer keine kleinen Widerstände eingestellt werden
+        müssen.
+
+        Außerdem sollte $R_1$ in der Größenordnung von $R_x$ sein, damit auf der
+        rechten Seite ein Spannungsteiler aus zwei großen Widerständen ist und auf
+        der linken Seite vergleichsweise dazu zwei kleine Widerstände. Dadurch
+        muss das Potentiometer auf einen großen Wert eingestellt werden und
+        Messungenauigkeiten fallen nicht so sehr ins Gewicht.
 
 \end{document}
