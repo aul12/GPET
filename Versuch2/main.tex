@@ -387,7 +387,9 @@
         \subsubsection{Auswertung}
         Alle vier Potentiale Verhalten sich Linear. Die Steigung der Geraden
         repräsentiert das Spannungsteilerverhältniss zwischen $U_{in}$ und des
-        jeweiligen Potentials $U_x$.
+        jeweiligen Potentials $U_x$. Da die Spannungsteilerverhältnisse jeweils
+		unterschiedlich sind, besitzen die Geraden auch jeweils unterschiedliche
+		Steigungen.
 
         Beim Schnittpunkt zwischen $U_3$ und $U_4$ (bei ca.$1.6$V) befinden sich
         beide Knoten auf dem selben Potential, d.h.\ es fließt kein Strom zwischen
@@ -395,15 +397,20 @@
 
         Das Offset der jeweiligen Kurven bei $U_{in} = 0$V kommt durch die zweite
         Spannungsquelle im Netzwerk, die eine konstanten Spannung von $1$V liefert,
-        zustande.
+        zustande. Da die Knoten 1 und 2 am –Pol von $U_{in2}$ angeschlossen sind, misst 
+		man mit $U_{in1} = 0$V hier ein negatives Potential, während $U_3$ und $U_4$ auf
+		einem positiven Potential liegen.
 
         \vspace{0.5cm}
 
-        Obwohl im Diagramm für die Messwerte deutliche Sprünge zu erkennen sind,
-        verhalten sich die Kurven in beiden Diagrammen ähnlich: Auch bei den
-        Messwerten lässt sich grob ein linearer Verlauf erkennen, sowohl der
-        Schnittpunkt zwischen $U_3$ und $U_4$, als auch das Offset der jeweiligen
-        Spannungen bei $U_{in} = 0$V werden dargestellt.
+        Das Diagramm für die Messwerte verhält sich leider auf den ersten Blick nicht so,
+		wie das berechnete. Durch die bereits oben geschilderten Messfehler und Probleme,
+		sind zum Teil deutliche Sprünge und Abweichungen vom linearen Verlauf zu erkennen.
+		In Diagramm NR? wurden die Messwerte durch Geraden angenähert. Hier ist nun, wie
+		im berechneten Bild, der Schnittpunkt zwischen $U_3$ und $U_4$ gut zu erkennen, wenn auch
+		etwas nach rechts verschoben (bei ca. $1,8$V). Ein weiterer  Schnittpunkt zwischen $U_1$
+		uns $U_2$, der im berechneten Diagramm nicht zu sehen ist, ist ebenfalls den Messfehlern
+		geschuldet.
 
 
         \section{Aufbau einer Messbrücke nach Wheatstone}
