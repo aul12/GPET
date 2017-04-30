@@ -38,11 +38,13 @@
         1 und tragen Sie die Messwerte in ein Diagramm ein. Schließen Sie das Spannungsmessgerät
         vor der Batterie an, damit Sie die Batterie nicht über einen längeren
         Zeitraum kurzschließen.
-		
-		\begin{figure}[H]
-            \includegraphics[width=\textwidth]{BatterieSchaltung.jpg}
-          \caption{Schaltplan}
-        \end{figure}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{BatterieSchaltung.JPG}
+              \caption{Schaltplan}
+            \end{figure}
+        \end{center}
 
         \subsection{Vorgehensweise}
         Es werden verschiedene Lastwiderständer $R_L$ eingebaut und die Arbeitsgerade
@@ -117,7 +119,7 @@
         Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
         und durch die Ungenauigekeit des Potentiometers selbst zustande. Weiterhin besitzt
 		das Spannungsmessgerät eine Messungenauigkeit von ca. $1\%$ und man sollte von einem
-		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber 
+		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber
 		trotzdem gut zu erkennen.
 
 
@@ -128,11 +130,14 @@
         Bestimmen Sie die äquivalente Ersatzspannungsquelle zwischen den Knoten 0 und 1 durch
         Messung ($U_{in} = 3\si{\volt}$). Verwenden Sie hierzu wieder das Potentiometer mit $1\si{k\ohm}$ und tragen
         Sie die Ergebnisse in Messtabelle 2 ein.
-		
-		\begin{figure}[H]
-            \includegraphics[width=\textwidth]{EinfachesNetzwerk.jpg}
-          \caption{Schaltplan}
-        \end{figure}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{EinfachesNetzwerk.JPG}
+              \caption{Schaltplan}
+            \end{figure}
+        \end{center}
+
 
         \subsection{Vorgehensweise}
         Es werden verschiedene Lastwiderständer $R_L$ eingebaut und die Arbeitsgerade
@@ -188,9 +193,9 @@
             I_{Kurzschluss} &=& 2.1\si{m\ampere}\\
             R_{Innen} &=& 85.477\si{\ohm}
         \end{eqnarray*}
-		
+
 		\vspace{0.5cm}
-		
+
 		Die gemessenen Werte stimmen mit den berechneten überein.
 
 
@@ -198,7 +203,7 @@
         Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
         und durch die Ungenauigekeit des Potentiometers selbst zustande. Weiterhin besitzt
 		das Spannungsmessgerät eine Messungenauigkeit von ca. $1\%$ und man sollte von einem
-		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber 
+		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber
 		trotzdem gut zu erkennen.
 
 
@@ -312,12 +317,15 @@
         Knoten in Abhängigkeit von $U_{in,1} = 0 \ldots 3 \si{\volt}$ und tragen Sie die Ergebnisse in Messtabelle
         4 ein. Erstellen Sie ein Diagramm für die Spannungen an allen Knoten in Abhängigkeit
         der Spannung $U_{in,1} = 0 \ldots 3 \si{\volt}$.
-		
-		\begin{figure}[H]
-            \includegraphics[width=\textwidth]{KomplexesNetzwerk.jpg}
-          \caption{Schaltplan}
-        \end{figure}
-		
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{KomplexesNetzwerk.JPG}
+              \caption{Schaltplan}
+            \end{figure}
+        \end{center}
+
+
         \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 3}
@@ -359,15 +367,38 @@
         $U_3$ in \textcolor{blue}{blau}.
 
         $U_4$ in \textcolor{red}{rot}.
+        %\begin{center}
+        %    \begin{figure}[H]
+        %        \includegraphics[width=\textwidth]{KPVmess.jpg}
+        %      \caption{Messwerte}
+        %    \end{figure}
+        %\end{center}
+
         \begin{center}
-            \begin{figure}[H]
-                \includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{Messwerte}
-            \end{figure}
+            \begin{tikzpicture}
+        		\begin{axis}[ymin=0, xmin=0, xlabel = {$U_{in}$[V]}, ylabel = {$U_x$[V]}]
+        			\addplot[color=black] table[x index = {0},
+                            y index = {5}] {kompliziertesNetzwerk1.csv};
+                    \addplot[color=green] table[x index = {0},
+                            y index = {5}] {kompliziertesNetzwerk2.csv};
+                    \addplot[color=blue] table[x index = {0},
+                            y index = {5}] {kompliziertesNetzwerk3.csv};
+                    \addplot[color=red] table[x index = {0},
+                            y index = {5}] {kompliziertesNetzwerk4.csv};
+
+                    \addplot[color=black, only marks, mark size=1pt] table[x index = {0},
+                            y index = {1}] {kompliziertesNetzwerk4.csv};
+                    \addplot[color=green, only marks, mark size=1pt] table[x index = {0},
+                            y index = {2}] {kompliziertesNetzwerk4.csv};
+                    \addplot[color=blue, only marks, mark size=1pt] table[x index = {0},
+                            y index = {3}] {kompliziertesNetzwerk4.csv};
+                    \addplot[color=red, only marks, mark size=1pt] table[x index = {0},
+                            y index = {4}] {kompliziertesNetzwerk4.csv};
+        		\end{axis}
+                \label{fig:kompzNetz}
+        	\end{tikzpicture}
         \end{center}
 
-		//@TODO Diagramm mit linReg einfügen
-		
         \subsubsection{Messungenauigkeiten}
         Wie im Diagramm zu erkennen, verhalten sich die Kurven zwar generell linear,
         besitzen aber markante Abweichungen. Während des Versuchs ist aufgefallen,
@@ -409,10 +440,13 @@
 
         \subsubsection{Lösung}
 
-        \begin{figure}[H]
-            \includegraphics[width=\textwidth]{KPV.jpg}
-          \caption{KPV\_plot mit MatLab}
-        \end{figure}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{KPV.jpg}
+              \caption{KPV\_plot mit MatLab}
+            \end{figure}
+        \end{center}
+
 
         \subsubsection{Auswertung}
         Alle vier Potentiale Verhalten sich Linear. Die Steigung der Geraden
@@ -427,16 +461,15 @@
 
         Das Offset der jeweiligen Kurven bei $U_{in} = 0$V kommt durch die zweite
         Spannungsquelle im Netzwerk, die eine konstanten Spannung von $1$V liefert,
-        zustande. Da die Knoten 1 und 2 am –Pol von $U_{in2}$ angeschlossen sind, misst 
+        zustande. Da die Knoten 1 und 2 am –Pol von $U_{in2}$ angeschlossen sind, misst
 		man mit $U_{in1} = 0$V hier ein negatives Potential, während $U_3$ und $U_4$ auf
 		einem positiven Potential liegen.
 
         \vspace{0.5cm}
-		%@TODO Diagrammnummer einfügen
         Das Diagramm für die Messwerte verhält sich leider auf den ersten Blick nicht so,
 		wie das berechnete. Durch die bereits oben geschilderten Messfehler und Probleme,
 		sind zum Teil deutliche Sprünge und Abweichungen vom linearen Verlauf zu erkennen.
-		In Diagramm NR? wurden die Messwerte durch Geraden angenähert. Hier ist nun, wie
+		In Diagramm \ref{fig:kompzNetz} wurden die Messwerte durch Geraden angenähert. Hier ist nun, wie
 		im berechneten Bild, der Schnittpunkt zwischen $U_3$ und $U_4$ gut zu erkennen, wenn auch
 		etwas nach rechts verschoben (bei ca. $1.8$V). Ein weiterer  Schnittpunkt zwischen $U_1$
 		uns $U_2$, der im berechneten Diagramm nicht zu sehen ist, ist ebenfalls den Messfehlern
@@ -448,11 +481,14 @@
         Fall ist, wie muss der Messaufbau verändert werden, damit die restlichen Widerstände
         gemessen werden können?
 
-		\begin{figure}[H]
-            \includegraphics[width=\textwidth]{Wheatstone.jpg}
-          \caption{Messbrücke nach Wheatstone}
-        \end{figure}
-		
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Wheatstone.JPG}
+              \caption{Messbrücke nach Wheatstone}
+            \end{figure}
+        \end{center}
+
+
         \subsection{Vorgehensweise}
         Der Widerstand des Potentiometers wird so lange verändert, bis die Spannung
         zwischen beiden Spannungsteilern genau null Volt beträgt. Der gesuchte
@@ -475,7 +511,7 @@
             R_{poti} &=& 146.5 \si{\ohm} \\
             \Rightarrow R_{x} &=& 682.6 \si{\ohm}\\
             R_{mitMultimeter} &=& 678\si{\ohm} \\
-			R_{tatsächlich} &=& 680\si{\ohm}\\
+			R_{tatsaechlich} &=& 680\si{\ohm}\\
 			\rho_{Wheatstone} &=& 0.30\%
         \end{eqnarray*}
 
@@ -484,7 +520,7 @@
             R_{poti} &=& 452.6 \si{\ohm} \\
             \Rightarrow R_{x} &=& 220.9\si{\ohm}\\
             R_{mitMultimeter} &=& 219.7\si{\ohm}\\
-			R_{tatsächlich} &=& 220\si{\ohm}\\
+			R_{tatsaechlich} &=& 220\si{\ohm}\\
 			\rho_{Wheatstone} &=& 0.41\%
         \end{eqnarray*}
 
@@ -493,7 +529,7 @@
             R_{poti} &=& 211.8 \si{\ohm} \\
             \Rightarrow R_{x} &=& 472.1\si{\ohm}\\
             R_{mitMultimeter} &=& 469.0\si{\ohm}\\
-			R_{tatsächlich} &=& 470\si{\ohm}\\
+			R_{tatsaechlich} &=& 470\si{\ohm}\\
 			\rho_{Wheatstone} &=& 0.45\%
         \end{eqnarray*}
 
@@ -501,7 +537,7 @@
         Der relative Fehler der Messung nach Wheatstone zum offiziellen Widerstandswert
 		ist verschwindend gering. Der Fehler kommt durch die Ungenauigekeit des Spannungsmessgeräts,
 		des Potetiometers und durch die Abweichung des Widerstands an sich zustande.
-		
+
         \subsection{Einschränkungen}
         $R_1$, $R_2$ und $R_3$ müssen so gewählt werden, dass $I_L$ auch tatsächlich
         auf $0$A gebracht werden kann.

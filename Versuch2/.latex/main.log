@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.5)  25 APR 2017 19:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.2.5)  30 APR 2017 16:00
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -1424,72 +1424,103 @@ Overfull \hbox (22.71796pt too wide) in paragraph at lines 36--36
 []\OT1/cmr/bx/n/14.4 Bestimmung des In-nen-wi-der-stan-des ei-ner Quel-
  []
 
+<BatterieSchaltung.JPG, id=11, 655.69969pt x 431.36156pt>
+File: BatterieSchaltung.JPG Graphic file (type jpg)
+
+<use BatterieSchaltung.JPG>
+Package pdftex.def Info: BatterieSchaltung.JPG used on input line 44.
+(pdftex.def)             Requested size: 345.0pt x 226.96185pt.
 PGFPlots: reading {quelleWiderstand.csv}
-<BatterieKurve.jpg, id=11, 684.5575pt x 429.605pt>
+ [1 <./BatterieSchaltung.JPG>]
+<BatterieKurve.jpg, id=21, 684.5575pt x 429.605pt>
 File: BatterieKurve.jpg Graphic file (type jpg)
  <use BatterieKurve.jpg>
-Package pdftex.def Info: BatterieKurve.jpg used on input line 83.
+Package pdftex.def Info: BatterieKurve.jpg used on input line 90.
 (pdftex.def)             Requested size: 345.0pt x 216.51288pt.
 
-[1] [2 <./BatterieKurve.jpg>]
+[2 <./BatterieKurve.jpg>]
+<EinfachesNetzwerk.JPG, id=25, 750.55406pt x 368.1253pt>
+File: EinfachesNetzwerk.JPG Graphic file (type jpg)
+
+<use EinfachesNetzwerk.JPG>
+Package pdftex.def Info: EinfachesNetzwerk.JPG used on input line 136.
+(pdftex.def)             Requested size: 345.0pt x 169.21611pt.
+ [3 <./EinfachesNetzwerk.JPG>]
 PGFPlots: reading {einfachesNetzwerk.csv}
 
-<ErsatzspannungsQuelle.jpg, id=24, 684.5575pt x 429.605pt>
+<ErsatzspannungsQuelle.jpg, id=29, 684.5575pt x 429.605pt>
 File: ErsatzspannungsQuelle.jpg Graphic file (type jpg)
 
 <use ErsatzspannungsQuelle.jpg>
-Package pdftex.def Info: ErsatzspannungsQuelle.jpg used on input line 166.
+Package pdftex.def Info: ErsatzspannungsQuelle.jpg used on input line 184.
 (pdftex.def)             Requested size: 345.0pt x 216.51288pt.
- [3]
+ [4]
 PGFPlots: reading {quelleWiderstand2.csv}
 
-Overfull \hbox (110.32362pt too wide) in paragraph at lines 230--231
+Overfull \hbox (110.32362pt too wide) in paragraph at lines 255--256
  [] 
  []
 
-[4 <./ErsatzspannungsQuelle.jpg>]
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
-PGFPlots: reading {quelleWiderstand2.csv}
- [5]
+[5 <./ErsatzspannungsQuelle.jpg>]
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
 PGFPlots: reading {quelleWiderstand2.csv}
  [6]
-Overfull \hbox (5.32797pt too wide) in paragraph at lines 288--288
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+PGFPlots: reading {quelleWiderstand2.csv}
+ [7]
+Overfull \hbox (5.32797pt too wide) in paragraph at lines 315--315
 []\OT1/cmr/bx/n/14.4 Untersuchung ei-nes kom-pli-zier-ten Netz-werks 
  []
 
+<KomplexesNetzwerk.JPG, id=46, 784.43062pt x 484.05844pt>
+File: KomplexesNetzwerk.JPG Graphic file (type jpg)
+
+<use KomplexesNetzwerk.JPG>
+Package pdftex.def Info: KomplexesNetzwerk.JPG used on input line 323.
+(pdftex.def)             Requested size: 345.0pt x 212.89774pt.
+ [8]
 PGFPlots: reading {kompliziertesNetzwerk.csv}
-[7] <KPVmess.jpg, id=44, 684.5575pt x 429.605pt>
-File: KPVmess.jpg Graphic file (type jpg)
- <use KPVmess.jpg>
-Package pdftex.def Info: KPVmess.jpg used on input line 336.
-(pdftex.def)             Requested size: 345.0pt x 216.51288pt.
- [8 <./KPVmess.jpg>] <KPV.jpg, id=48, 1371.1225pt x 690.58pt>
+PGFPlots: reading {kompliziertesNetzwerk1.csv}
+PGFPlots: reading {kompliziertesNetzwerk2.csv}
+PGFPlots: reading {kompliziertesNetzwerk3.csv}
+PGFPlots: reading {kompliziertesNetzwerk4.csv}
+PGFPlots: reading {kompliziertesNetzwerk4.csv}
+PGFPlots: reading {kompliziertesNetzwerk4.csv}
+PGFPlots: reading {kompliziertesNetzwerk4.csv}
+PGFPlots: reading {kompliziertesNetzwerk4.csv}
+ [9 <./KomplexesNetzwerk.JPG>]
+<KPV.jpg, id=53, 1371.1225pt x 690.58pt>
 File: KPV.jpg Graphic file (type jpg)
  <use KPV.jpg>
-Package pdftex.def Info: KPV.jpg used on input line 383.
+Package pdftex.def Info: KPV.jpg used on input line 445.
 (pdftex.def)             Requested size: 345.0pt x 173.76154pt.
-
-Overfull \hbox (3.32658pt too wide) in paragraph at lines 388--391
+ [10]
+Overfull \hbox (3.32658pt too wide) in paragraph at lines 452--457
 \OT1/cmr/m/n/10 Alle vier Po-ten-tia-le Ver-hal-ten sich Li-ne-ar. Die Stei-gun
 g der Ge-ra-den re-pr[]asentiert
  []
 
-[9 <./KPV.jpg>] [10] [11]
+[11 <./KPV.jpg>] <Wheatstone.JPG, id=61, 496.10344pt x 443.40656pt>
+File: Wheatstone.JPG Graphic file (type jpg)
+
+<use Wheatstone.JPG>
+Package pdftex.def Info: Wheatstone.JPG used on input line 486.
+(pdftex.def)             Requested size: 345.0pt x 308.35272pt.
+ [12 <./Wheatstone.JPG>] [13] [14]
 (/home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34079 strings out of 494901
- 835492 string characters out of 6178618
- 937137 words of memory out of 5000000
- 36868 multiletter control sequences out of 15000+600000
+ 34114 strings out of 494901
+ 836350 string characters out of 6178618
+ 944685 words of memory out of 5000000
+ 36891 multiletter control sequences out of 15000+600000
  14324 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  62i,18n,77p,10376b,1804s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1505,11 +1536,11 @@ amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
 /cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
 
-Output written on /home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.pdf (12 pa
-ges, 347774 bytes).
+Output written on /home/paul/Dokumente/Uni/GPET/Versuch2/.latex/main.pdf (15 pa
+ges, 505957 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 111 PDF objects out of 1000 (max. 8388607)
+ 74 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 48 words of extra memory for PDF output out of 10000 (max. 10000000)
 
