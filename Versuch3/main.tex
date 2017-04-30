@@ -278,6 +278,12 @@
         \paragraph{Protokoll}
 
         \section{Mehrfrequenzwahlverfahren}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{dtmf_pad.jpg}
+                \caption{DTMF Tasten}
+            \end{figure}
+        \end{center}
         \subsection{DTMF-App}
         \paragraph{Aufgabe}
         Für diesen Versuchsteil benötigen Sie nun die zuvor auf Ihr Mobiltelefon geladene \glqq{}DTMF\grqq{} App.
@@ -339,7 +345,7 @@
         \end{itemize}
 
         \subsection{Sourcecode}
-        \paragraph{Einführung}
+        \paragraph{Aufgabe}
         In der Datei \texttt{generate\_tones.m} fehlen einige Zeilen. Vervollständigen Sie den Code. Die
         Korrektheit des Codes kann durch Aufruf der Funktion \texttt{dial\_tones.m} überprüft werden.
         (Eingabe von \texttt{dial\_tones();} im Commandwindow und in der Eingabeaufforderung dann
@@ -366,6 +372,19 @@
               \caption{\texttt{dial\_tones} mit Eingabe \texttt{1}}
             \end{figure}
         \end{center}
+        Auftretende Frequenzen:
+        \begin{eqnarray*}
+            f_{1_{fft}} &=& 696.38 \si{\hertz}\\
+            f_{1_{soll}} &=& 697\si{\hertz}\\
+            f_{2_{fft}} &=& 1209.12\si{\hertz}\\
+            f_{2_{soll}} &=& 1209\si{\hertz}
+        \end{eqnarray*}
+        Die im Diagramm abgelesenen Frequenzen weichen nur sehr gering von den
+        eingestellten Frequenzen ab. Die Frequenzen lassen sich immer noch eindeutig
+        einer Ziffer zuordnen.
+
+        Die geringe Abweichung ist der Umrechnung
+        vom Frequenzbereich zum Bildbereich und wieder zurück geschuldet.
 
         \subsubsection{Tastentöne}
         \paragraph{Aufgabe}
@@ -373,6 +392,35 @@
         Frequenzbereich. Verwenden Sie dazu erneut die Funktion \texttt{dial\_tones} und wählen
         Sie jeweils nur eine Ziffer auf einmal.
         \paragraph{Protokoll}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43421}
+                \caption{\texttt{dial\_tones} mit Eingabe \texttt{5}}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43421detail}
+                \caption{\texttt{dial\_tones} mit Eingabe \texttt{5}, Zoom bei 770Hz}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43421detail2}
+                \caption{\texttt{dial\_tones} mit Eingabe \texttt{5}, Zoom bei 1330Hz}
+            \end{figure}
+        \end{center}
+        Im Frequenzbereich sind die beiden Peaks vergleichsweise breit. Das heißt die
+        Frequenzbestimmung ist ungenauer. Trotzdem ist die gedrückte Taste immer
+        noch einwandfrei bestimmbar, da der Peak immer noch sehr nah an der
+        gewünschten Frequenz liegt und die verschiedenen Frequenzen sehr große
+        Abstände haben.
+
+        \vspace{2cm}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43422}
+                \caption{\texttt{dial\_tones} mit Eingabe \texttt{9}}
+            \end{figure}
+        \end{center}
 
         \subsection{Identifikation einer unbekannten Nummer}
         \paragraph{Einführung}
@@ -386,8 +434,6 @@
         \texttt{soundsc} an. Zusätzlich zur Variablen \glqq{}number\grqq{} muss für \texttt{soundsc} die Abtastrate
         von 32 768 Hz übergeben werden.
 
-        \paragraph{Protokoll}
-
         \subsubsection{Code vervollständigen}
         \paragraph{Aufgabe}
         Die Funktion \texttt{fft\_dtmf.m} enthält einige Fragmente die vervollständigt werden sollen
@@ -396,11 +442,22 @@
         implementiert, es müssen lediglich die entsprechenden Zeilen kopiert werden.
         \paragraph{Protokoll}
 
+        \lstinputlisting[language=Matlab]{fft_dtmf_Student.m}
+
         \subsubsection{Identifikation der Nummer mittels FFT}
         \paragraph{Aufgabe}
         Ist es möglich mittels der Fourier Transformation über das gesamte Signal die
         gewählte Nummer zu identifizieren? Falls nein, wie muss statt dessen vorgegangen werden?
 
+        \paragraph{Protokoll}
+        Da im Frequenzbereich nicht sichtbar ist welche Frequenzen zu welcher Zeit
+        im Signal vorhanden war lassen sich die Nummern nicht aus dem gesamten
+        Signal rekonstruieren.
+
+        Das Signal muss zwischen den Tönen getrennt werden und die Segmente müssen
+        einzeln untersucht werden. Dann sind pro Segment nur zwei Peaks im
+        Frequenzbereich aus denen sich dann die gedrückte Taste rekonstruieren
+        lässt.
 
         \subsubsection{Plot}
         \paragraph{Aufgabe}
@@ -409,9 +466,78 @@
         Ziffern im Frequenzbereich in das Protokoll ein und geben Sie die Frequenzen sowie
         die gewählten Ziffern an.
 
+        \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43541}
+                \caption{Erster Ton mit \texttt{receive\_dial}}
+            \end{figure}
+        \end{center}
+        \begin{eqnarray*}
+            f_1 &=& 941 \si{\hertz}\\
+            f_2 &=& 1336 \si{\hertz}\\
+            &\Rightarrow& \text{Taste: }0
+        \end{eqnarray*}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43542}
+                \caption{Zweiter Ton mit \texttt{receive\_dial}}
+            \end{figure}
+        \end{center}
+        \begin{eqnarray*}
+            f_1 &=& 852 \si{\hertz}\\
+            f_2 &=& 1336 \si{\hertz}\\
+            &\Rightarrow& \text{Taste: }8
+        \end{eqnarray*}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{img43543}
+                \caption{Dritter Ton mit \texttt{receive\_dial}}
+            \end{figure}
+        \end{center}
+        \begin{eqnarray*}
+            f_1 &=& 852 \si{\hertz}\\
+            f_2 &=& 1477 \si{\hertz}\\
+            &\Rightarrow& \text{Taste: }9
+        \end{eqnarray*}
+
+
         \subsubsection{Telefonnummer}
         \paragraph{Aufgabe}
         Wie lautet die gewählte Telefonnummer?
+
+        \paragraph{Protokoll}
+        Die Frequenzen wurden jeweils dem Diagramm im Frequenzbereich entnommen
+        und daraus die nächste mögliche Frequenz bestimmt.
+
+        Aus den beiden Frequenzen lässt sich die Taste bestimmen.
+        \begin{center}
+            \begin{tabular}{ccc}
+                \toprule
+                $f_1$ & $f_2$ & Taste \\
+                \midrule
+                941 & 1336 & 0\\
+                852 & 1336 & 8\\
+                852 & 1477 & 9\\
+                770 & 1209 & 4\\
+                770 & 1336 & 5\\
+                697 & 1336 & 2\\
+                697 & 1477 & 3\\
+                770 & 1336 & 5\\
+                770 & 1477 & 6\\
+                852 & 1209 & 7\\
+                941 & 1336 & 0\\
+                941 & 1336 & 0\\
+                \bottomrule
+            \end{tabular}
+        \end{center}
+        Die Nummer lautet:
+        \begin{equation*}
+            089452356700
+        \end{equation*}
+
 
 
         \subsubsection{Code}
@@ -419,9 +545,21 @@
         In der Funktion \texttt{receive\_dial} wird das Ergebnis der Fourier Transformierten der
         einzelnen Zeitabschnitte berechnet. In welcher Code Zeile geschieht dies?
 
+        \paragraph{Protokoll}
+        Die Fourier-Transformation wird jeweils in Zeile 16 berechnet:
+        \lstinputlisting[language=Matlab, firstline=16, lastline=16]{receive_dial.m}
+
+
         \subsubsection{Code}
         \paragraph{Aufgabe}
         Wie wird anschließend entschieden um welche Nummer es sich handelt?
 
+        \paragraph{Protokoll}
+        Zuerst wird im Frequenzbereich versucht die Peaks zu identifizieren,
+        dann wird für jeden Peak versucht der Wert einer Taste
+        zuzuordnen, dafür muss die Abweichung von gemessener Frequenz zu
+        \glqq{}Tastenfrequenz\grqq{} kleiner $2\%$ sein. Aus der Frequenz der Spalte
+        und Reihe kann dann die Taste bestimmt werden.
+        \lstinputlisting[language=Matlab, firstline=25, lastline=50]{receive_dial.m}
 
 \end{document}

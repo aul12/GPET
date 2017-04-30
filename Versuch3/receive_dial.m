@@ -43,7 +43,7 @@ for ii=1:num
                     column=3;
            
         end
-       
+      
    end
 
  %Zuordnung der Nummer zu Keypad Koordinaten
