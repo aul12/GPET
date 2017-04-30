@@ -48,7 +48,7 @@
         Es werden verschiedene Lastwiderständer $R_L$ eingebaut und die Arbeitsgerade
         des Netzwerks aufgenommen. Der Laststrom $I_L$ berechnet sich aus
         \begin{equation*}
-            I_L = \frac{U_{mess}}{R_L}
+            I_L = \frac{U_{mess}}{R_L + 50\si{\ohm}}
         \end{equation*}
 
 
@@ -104,7 +104,7 @@
         Der x-Wert ($I$) des Schnittpunkts mit der x-Achse ist der Kurzschlussstrom.
         Dieser beträgt:
         \begin{equation*}
-            I_{kurzschluss} = 0.062 \si{\ampere}
+            I_{kurzschluss} = 0.523 \si{\ampere}
         \end{equation*}
 
         Der y-Wert ($U$) des Schnittpunkts mit der y-Achse ist die Leerlaufspannung.
@@ -115,7 +115,10 @@
 
         \subsection{Messungenauigkeiten}
         Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
-        und durch die Ungenauigekeit des Potentiometers selbst zustande. Der linearer Verlauf der Kurve ist aber trotzdem gut zu erkennen.
+        und durch die Ungenauigekeit des Potentiometers selbst zustande. Weiterhin besitzt
+		das Spannungsmessgerät eine Messungenauigkeit von ca. $1\%$ und man sollte von einem
+		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber 
+		trotzdem gut zu erkennen.
 
 
         \section{Untersuchung eines einfachen Netzwerks}
@@ -185,11 +188,18 @@
             I_{Kurzschluss} &=& 2.1\si{m\ampere}\\
             R_{Innen} &=& 85.477\si{\ohm}
         \end{eqnarray*}
+		
+		\vspace{0.5cm}
+		
+		Die gemessenen Werte stimmen mit den berechneten überein.
 
 
         \subsubsection{Messungenauigkeit}
         Die Messungenauigkeit kommt durch das ungenaue Einstellen des Potetiometers
-        und durch die Ungenauigekeit des Potentiometers selbst zustande. Der linearer Verlauf der Kurve ist aber trotzdem gut zu erkennen.
+        und durch die Ungenauigekeit des Potentiometers selbst zustande. Weiterhin besitzt
+		das Spannungsmessgerät eine Messungenauigkeit von ca. $1\%$ und man sollte von einem
+		systematischen Fehler von $5\%$ ausgehen. Der linearer Verlauf der Kurve ist aber 
+		trotzdem gut zu erkennen.
 
 
         \subsection{Spannungen an den Widerständen}
@@ -294,6 +304,8 @@
         gering von den berechneten Werten ab.
 
         Es ergibt es sich für jeden Widerstand eine charakteristische Gerade.
+		Die kleinen Fehler rühren von einer gewissen Ungenauigkeit des Spannungsmessgeräts,
+		sowie einem systematischen Fehler her.
 
         \section{Untersuchung eines komplizierten Netzwerks}
         \textbf{Aufgabe:} Messen Sie die Spannungen an allen
@@ -354,6 +366,8 @@
             \end{figure}
         \end{center}
 
+		//@TODO Diagramm mit linReg einfügen
+		
         \subsubsection{Messungenauigkeiten}
         Wie im Diagramm zu erkennen, verhalten sich die Kurven zwar generell linear,
         besitzen aber markante Abweichungen. Während des Versuchs ist aufgefallen,
@@ -424,7 +438,7 @@
 		sind zum Teil deutliche Sprünge und Abweichungen vom linearen Verlauf zu erkennen.
 		In Diagramm NR? wurden die Messwerte durch Geraden angenähert. Hier ist nun, wie
 		im berechneten Bild, der Schnittpunkt zwischen $U_3$ und $U_4$ gut zu erkennen, wenn auch
-		etwas nach rechts verschoben (bei ca. $1,8$V). Ein weiterer  Schnittpunkt zwischen $U_1$
+		etwas nach rechts verschoben (bei ca. $1.8$V). Ein weiterer  Schnittpunkt zwischen $U_1$
 		uns $U_2$, der im berechneten Diagramm nicht zu sehen ist, ist ebenfalls den Messfehlern
 		geschuldet.
 
@@ -460,23 +474,34 @@
         \begin{eqnarray*}
             R_{poti} &=& 146.5 \si{\ohm} \\
             \Rightarrow R_{x} &=& 682.6 \si{\ohm}\\
-            R_{mitMultimeter} &=& 678\si{\ohm}
+            R_{mitMultimeter} &=& 678\si{\ohm} \\
+			R_{tatsächlich} &=& 680\si{\ohm}\\
+			\rho_{Wheatstone} &=& 0.30\%
         \end{eqnarray*}
 
         \subsection{Widerstand 2}
         \begin{eqnarray*}
             R_{poti} &=& 452.6 \si{\ohm} \\
             \Rightarrow R_{x} &=& 220.9\si{\ohm}\\
-            R_{mitMultimeter} &=& 219.7\si{\ohm}
+            R_{mitMultimeter} &=& 219.7\si{\ohm}\\
+			R_{tatsächlich} &=& 220\si{\ohm}\\
+			\rho_{Wheatstone} &=& 0.41\%
         \end{eqnarray*}
 
         \subsection{Widerstand 3}
         \begin{eqnarray*}
             R_{poti} &=& 211.8 \si{\ohm} \\
             \Rightarrow R_{x} &=& 472.1\si{\ohm}\\
-            R_{mitMultimeter} &=& 469.0\si{\ohm}
+            R_{mitMultimeter} &=& 469.0\si{\ohm}\\
+			R_{tatsächlich} &=& 470\si{\ohm}\\
+			\rho_{Wheatstone} &=& 0.45\%
         \end{eqnarray*}
 
+		\subsubsection{Messungenauigkeiten}
+        Der relative Fehler der Messung nach Wheatstone zum offiziellen Widerstandswert
+		ist verschwindend gering. Der Fehler kommt durch die Ungenauigekeit des Spannungsmessgeräts,
+		des Potetiometers und durch die Abweichung des Widerstands an sich zustande.
+		
         \subsection{Einschränkungen}
         $R_1$, $R_2$ und $R_3$ müssen so gewählt werden, dass $I_L$ auch tatsächlich
         auf $0$A gebracht werden kann.
