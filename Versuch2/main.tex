@@ -509,8 +509,9 @@
         \vspace{0.5cm}
 
         Ist $R_x$ beispielsweise zu groß für die gewählten Widerstände $R_1$ und $R_3$, muss
-        man mit dem Potentiometer sehr kleine Widerstandswerte einstellen was zu
-        Messungenauigkeiten führen kann.
+        man mit dem Potentiometer sehr kleine Widerstandswerte (da das Potentiometer einen
+		Bereich von $0\si{\ohm}$ bis $1\si{\ohm}$ darstellen kann, eignet es sich nicht für
+		Widerstände unter $1\si{\ohm}$) einstellen was zu Messungenauigkeiten führen kann.
 
         Es sollte gelten:
         \begin{equation*}
@@ -524,5 +525,9 @@
         der linken Seite vergleichsweise dazu zwei kleine Widerstände. Dadurch
         muss das Potentiometer auf einen großen Wert eingestellt werden und
         Messungenauigkeiten fallen nicht so sehr ins Gewicht.
+		Um sehr große Widerstände zu messen, sollte man $R_1$ und $R_3$ nach oben genannter
+		Abschätzung wählen, sodass $R_1 \cdot R_3 >> R_x$ gilt. Für kleine Widerstände $R_x$
+		sollten $R_1$ und $R_3$ kleiner gewählt werden, sodass das Potentiometer nicht auf einen
+		Wert ausßerhalb seiner Reichweite eingestellt werden muss.
 
 \end{document}
