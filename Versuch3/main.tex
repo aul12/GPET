@@ -81,6 +81,8 @@
               \caption{GUI Screenshot}
             \end{figure}
         \end{center}
+        Das eingestellte Signal wird wie erwartet korrekt dargestellt. Die Amplitude
+        beträgt $1\si{\volt}$ und die Frequenz $697\si{\hertz}$.
         \subsubsection{Measure-Funktion}
         \paragraph{Aufgabe}
         Geben Sie die Peak-to-Peak Spannung, den Effektivwert, den Offset und die Frequenz
@@ -90,9 +92,31 @@
         \begin{center}
             \begin{figure}[H]
                 %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+              \caption{Messung mit Cursor}
             \end{figure}
         \end{center}
+        \begin{center}
+            \begin{figure}[H]
+                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+              \caption{Messung mit Measure}
+            \end{figure}
+        \end{center}
+        \begin{tabular}{lccccccc}
+            \toprule
+             & Sollwert & Cursorwert & Measurewert & $\Delta_{\text{cursor}}$ & $\Delta_{\text{measure}}$ & $\rho_{\text{cursor}}$ & $\rho_{\text{measure}}$\\
+            \midrule
+            Peak-to-Peak & $2\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
+            Effektivwert & $\frac{1}{\sqrt{2}}\si{\volt} \approx 0.71\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
+            Offset & $0\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
+            Frequenz & $697\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ &  & \\
+            \bottomrule
+        \end{tabular}
+
+        \vspace{0.5cm}
+
+        Wie zu erwarten ist die Messung von Hand mit Cursor ungenauer, als die
+        automatische Measurefunktion.
+         %TODO Text
 
         \subsubsection{Plot}
         \paragraph{Aufgabe}
@@ -106,6 +130,9 @@
               \caption{GUI Screenshot}
             \end{figure}
         \end{center}
+        \begin{equation*}
+            \hat{U} = \si{\volt}
+        \end{equation*}
 
         \subsection{Fourier-Transformation}
         \paragraph{Einführung}
@@ -133,11 +160,11 @@
         \subsubsection{FFT mit dem Oszilloskop}
         \paragraph{Aufgabe}
         Wenden Sie die im Oszilloskop integrierte FFT-Funktion auf das Zeitsignal aus
-        Teil 1 an um das Spektrum zu bestimmen, plotten sie dieses und geben Sie die
+        Teil 1 an, um das Spektrum zu bestimmen, plotten sie dieses und geben Sie die
         gemessene Frequenz an. Sie können die Einstellungen zur FFT entweder direkt
         am Oszilloskop oder über die GUI vornehmen. Beachten Sie dabei, dass sie den
         dargestellten Frequenzbereich dem Signal entsprechend sinnvoll wählen. Erfassen
-        Sie das Spektrum uber die GUI und fügen Sie es in das Protokoll ein.
+        Sie das Spektrum über die GUI und fügen Sie es in das Protokoll ein.
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
@@ -145,6 +172,16 @@
               \caption{GUI Screenshot}
             \end{figure}
         \end{center}
+
+        \begin{eqnarray*}
+            f_{\text{soll}} &=& 697\si{\hertz}\\
+            f_{\text{mess}} &=& \si{\hertz}\\
+            \Delta f &=& \si{\hertz}\\
+            \rho &=&
+        \end{eqnarray*}
+
+        %TODO messungenauigkeit
+
         \subsubsection{Akustische Ausgabe}
         \paragraph{Aufgabe}
         Das Signal lässt sich am PC akustisch ausgeben. Dazu muss das Zeitsignal mit
@@ -162,18 +199,13 @@
             \end{figure}
         \end{center}
 
+        %TODO Höreindruck
+
         \subsection{FFT vs. Gehör}
         \paragraph{Aufgabe}
         Stellen Sie am Funktionsgenerator des Oszilloskops unter Verwendung der GUI ein Sinussignal
         der Frequenz $1477\si{\hertz}$ und der Amplitude $1\si{\volt}$ und einem Offset von $100\si{m\volt}$
         ein.
-        \paragraph{Protokoll}
-        \begin{center}
-            \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
-            \end{figure}
-        \end{center}
 
         \subsubsection{Plot}
         \paragraph{Aufgabe}
@@ -185,8 +217,21 @@
         \begin{center}
             \begin{figure}[H]
                 %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+              \caption{Screenshot Frequenzbereich}
             \end{figure}
+            \begin{figure}[H]
+                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+              \caption{Screenshot  Signalbereich}
+            \end{figure}
+            \begin{tabular}{lcccc}
+                \toprule
+                & Sollwert & Messwert & $\Delta$ & $\rho$\\
+                \midrule
+                Amplitude & $1\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & \\
+                Offset & $1\si{m\volt}$ & $\si{m\volt}$ & $\si{m\volt}$ & \\
+                Frequenz & $1477\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & \\
+                \bottomrule
+            \end{tabular}
         \end{center}
 
         \subsubsection{Höreindruck}
