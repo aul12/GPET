@@ -73,16 +73,12 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+                \includegraphics[width=\textwidth]{scope_14.png}
               \caption{Oszilloskop Screenshot}
             \end{figure}
-            \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
-            \end{figure}
         \end{center}
-        Das eingestellte Signal wird wie erwartet korrekt dargestellt. Die Amplitude
-        beträgt $1\si{\volt}$ und die Frequenz $697\si{\hertz}$.
+        Das eingestellte Sinus-Signal wird wie erwartet korrekt dargestellt. Die Amplitude
+        beträgt ca. $1\si{\volt}$ und die Frequenz ca. $697\si{\hertz}$.
         \subsubsection{Measure-Funktion}
         \paragraph{Aufgabe}
         Geben Sie die Peak-to-Peak Spannung, den Effektivwert, den Offset und die Frequenz
@@ -91,32 +87,30 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4112_cursor.png}
               \caption{Messung mit Cursor}
             \end{figure}
-        \end{center}
-        \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4112_Werte.png}
               \caption{Messung mit Measure}
             \end{figure}
+            \begin{tabular}{lccccc}
+                \toprule
+                 & Sollwert & Cursorwert & Measurewert\\
+                \midrule
+                Peak-to-Peak & $2\si{\volt}$ & $2.025\si{\volt}$ & $2.05\si{\volt}$\\
+                Effektivwert & $\frac{1}{\sqrt{2}}\si{\volt} \approx 0.71\si{\volt}$ &  & $707.9\si{m\volt}$\\
+                Offset & $0\si{\volt}$ &  & $-2.2\si{m\volt}$\\
+                Frequenz & $697\si{\hertz}$ & $699.3\si{\hertz}$ & $696.91\si{\hertz}$ \\
+                \bottomrule
+            \end{tabular}
         \end{center}
-        \begin{tabular}{lccccccc}
-            \toprule
-             & Sollwert & Cursorwert & Measurewert & $\Delta_{\text{cursor}}$ & $\Delta_{\text{measure}}$ & $\rho_{\text{cursor}}$ & $\rho_{\text{measure}}$\\
-            \midrule
-            Peak-to-Peak & $2\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
-            Effektivwert & $\frac{1}{\sqrt{2}}\si{\volt} \approx 0.71\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
-            Offset & $0\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ &  & \\
-            Frequenz & $697\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ &  & \\
-            \bottomrule
-        \end{tabular}
+
 
         \vspace{0.5cm}
 
-        Wie zu erwarten ist die Messung von Hand mit Cursor ungenauer, als die
-        automatische Measurefunktion.
-         %TODO Text
+         Der Effektivwert und das Offset können mit Cursor nicht ohne weiteres
+         durch eine Differenz gemessen werden.
 
         \subsubsection{Plot}
         \paragraph{Aufgabe}
@@ -126,12 +120,13 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+                \includegraphics[width=\textwidth]{Screenshot_4113.png}
+              \caption{Messung der Amplitude}
             \end{figure}
         \end{center}
+        Die Amplitude des Signals beträgt:
         \begin{equation*}
-            \hat{U} = \si{\volt}
+            \hat{U} = 1.03\si{\volt}
         \end{equation*}
 
         \subsection{Fourier-Transformation}
@@ -155,7 +150,7 @@
         viel kleiner als die Signalleistung. Deshalb ist in der linearen Auftragung mit dem bloßen
         Auge kein Rauschen sichtbar. Aufgrund dessen wählt man für Spektren in der Regel auch
         die logarithmische Darstellung, welche im Folgenden auch immer gewählt werden sollte.
-        Die vertikale Einstellung lässt sich nicht uber die GUI ändern, diese muss immer händisch
+        Die vertikale Einstellung lässt sich nicht über die GUI ändern, diese muss immer händisch
         am Oszilloskop eingestellt werden.
         \subsubsection{FFT mit dem Oszilloskop}
         \paragraph{Aufgabe}
@@ -168,19 +163,15 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4121_chan1_fft.jpg}
+              \caption{GUI Screenshot des Frequenzbereichs}
             \end{figure}
         \end{center}
 
-        \begin{eqnarray*}
-            f_{\text{soll}} &=& 697\si{\hertz}\\
-            f_{\text{mess}} &=& \si{\hertz}\\
-            \Delta f &=& \si{\hertz}\\
-            \rho &=&
-        \end{eqnarray*}
+        Die mit durch die FFT bestimmte Frequenz $f_\text{mess} \approx 700\si{\hertz}$
+        weicht nur leicht von der erwarteten Frequenz $f_\text{soll} = 697 \si{\hertz}$
+        ab.
 
-        %TODO messungenauigkeit
 
         \subsubsection{Akustische Ausgabe}
         \paragraph{Aufgabe}
@@ -194,12 +185,12 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4112_Wave_chan1_wave.jpg}
+              \caption{Aufgezeichnetes Signal}
             \end{figure}
         \end{center}
 
-        %TODO Höreindruck
+        Es ist ein monotoner Sinuston mittlerer Höhe zu hören.
 
         \subsection{FFT vs. Gehör}
         \paragraph{Aufgabe}
@@ -216,23 +207,26 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{Screenshot Frequenzbereich}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4131_FFT_chan1_fft.jpg}
+              \caption{GUI Screenshot Frequenzbereich}
             \end{figure}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4131_Zeit_werte.png}
               \caption{Screenshot  Signalbereich}
             \end{figure}
-            \begin{tabular}{lcccc}
+            \begin{tabular}{lcc}
                 \toprule
-                & Sollwert & Messwert & $\Delta$ & $\rho$\\
+                & Sollwert & Messwert\\
                 \midrule
-                Amplitude & $1\si{\volt}$ & $\si{\volt}$ & $\si{\volt}$ & \\
-                Offset & $1\si{m\volt}$ & $\si{m\volt}$ & $\si{m\volt}$ & \\
-                Frequenz & $1477\si{\hertz}$ & $\si{\hertz}$ & $\si{\hertz}$ & \\
+                Amplitude & $1\si{\volt}$ & $1.03\si{\volt}$\\
+                Offset & $100\si{m\volt}$ & $99.8\si{m\volt}$\\
+                Frequenz & $1477\si{\hertz}$ & $1476.9\si{\hertz}$\\
                 \bottomrule
             \end{tabular}
         \end{center}
+
+        Das Frequenzbild zeigt nur die Amplituden der Teilfrequenzen, ein Offset
+        ändert diese nicht.
 
         \subsubsection{Höreindruck}
         \paragraph{Aufgabe}
@@ -241,10 +235,13 @@
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4132_chan1_wave.jpg}
+              \caption{Aufgezeichnetes Signal}
             \end{figure}
         \end{center}
+
+        Das Ton ist, wie zu erwarten, deutlich höher als der erste Ton, weißt aber
+        die gleichen monotonen Charakteristiken auf.
 
         \subsubsection{Höreindruck bei kleinen Frequenz-Differenzen}
         \paragraph{Aufgabe}
@@ -253,12 +250,10 @@
         Signale mit Frequenzen von $1477\si{\hertz}$ und $1480\si{\hertz}$ akustisch voneinander unterschieden
         werden? Wenn nicht, weshalb ist dies nicht möglich?
         \paragraph{Protokoll}
-        \begin{center}
-            \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
-            \end{figure}
-        \end{center}
+
+        Die unterschiedlichen Signale können nicht unterschieden werden, da die
+        Frequenzauflösung der FFT nicht fein genug ist. Dadurch werden die Signale nicht genau
+        genug aufgenommen und klingen beim Abspielen gleich.
 
         \subsubsection{Auflösung}
         \paragraph{Auflösung}
@@ -266,13 +261,16 @@
         mittels FFT unterschieden werden können? Wie vielen Perioden des Signals mit
         $1480\si{\hertz}$ entspricht dies?
         \paragraph{Protokoll}
-        \begin{center}
-            \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{KPVmess.jpg}
-              \caption{GUI Screenshot}
-            \end{figure}
-        \end{center}
 
+        \begin{eqnarray*}
+            f_{Aufloesung} &=& \frac{1}{N \cdot T}\\
+            T &=& \frac{1}{f}\\
+            f_{Aufloesung} &=& 3 \si{\hertz}\\
+            \Rightarrow N &=& \frac{1}{f_{Aufloesung} \cdot T} = \frac{1}{3 \si{\hertz} \cdot \frac{1}{1480\si{\hertz}}} \approx 494
+        \end{eqnarray*}
+
+        Um eine Frequenzauflösung von $3\si{\hertz}$ zu erreichen, müssen mindestens
+        494 Perioden aufgezeichnet werden.
 
         \section{Messung periodischer Signale}
         \paragraph{Einführung}
@@ -297,36 +295,84 @@
         Wieso erhält man keine stehende Welle auf dem Schirm des Oszilloskops? Weshalb
         spielt das bei der Berechnung der FFT keine Rolle?
         \paragraph{Protokoll}
+        Die Messung wird durch den externen Trigger getriggert, da das zweite Signal
+        eine andere Frequenz als das Trigger-Signal hat, ist die Phase zum ersten Signal
+        bei jeder Messung anders und es wird kein stehendes Bild auf dem Oszilloskop
+        abgebildet.
 
+        Die FFT zerlegt lediglich das Summensignal in die einzelnen Frequenzteile,
+        dabei wird in immer gleichen Zeitabständen gemessen. Ein Summensignal aus
+        mehreren Frequenzen ist deshalb unproblematisch.
 
         \subsubsection{Plot}
         \paragraph{Aufgabe}
         Plotten Sie einen geeigneten Ausschnitt des Summensignals im Zeitbereich. Geben
         Sie den Minimal- und Maximalwert des Signals an.
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4202.png}
+              \caption{Summensignal im Zeitbereich}
+            \end{figure}
+        \end{center}
+
+        \begin{eqnarray*}
+            U_{\min{}} &=& -1.00\si{\volt}\\
+            U_{\max{}} &=& 990\si{m\volt}
+        \end{eqnarray*}
 
         \subsubsection{Höreindruck}
         \paragraph{Aufgabe}
         Hören Sie sich einen geeigneten Zeitausschnitt des Summensignals mit Hilfe der
         \glqq{}Sound\grqq{}-Funktion an und beschreiben Sie den Höreindruck.
         \paragraph{Protokoll}
+        Die überlagerung der beiden Frequenzen klingt dissonant. Es fällt auf, dass
+        der Wahlton für die Taste 2 identisch klingt. Dies lässt sich durch
+        Betrachten der Grafik \ref{fig:DTFM_PAD} erklären.
+
 
         \subsubsection{Frequenzbereich}
         \paragraph{Aufgabe}
         Transformieren Sie das Signal in den Frequenzbereich und plotten Sie es. Geben Sie
         die auftretenden Frequenzen an.
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Screenshot_GUI_4204_beser}
+              \caption{Summensignal im Frequenzbereich}
+            \end{figure}
+        \end{center}
+        \begin{eqnarray*}
+            f_1 &\approx& 700\si{\hertz}\\
+            f_2 &\approx& 1400\si{\hertz}
+        \end{eqnarray*}
+
+        Im Frequenzbereich lassen sich zwei Peaks erkennen: bei ca. $700\si{\hertz}$
+        und bei ca. $1400\si{\hertz}$. Diese entsprechen den eingestellten
+        Frequenzen.
 
         \subsubsection{Bandbreite}
         \paragraph{Aufgabe}
         Geben Sie die Bandbreite sowie die obere und untere Grenzfrequenz des Signals an.
         \paragraph{Protokoll}
+        Die angebenen Frequenzen sind die beiden Grenzfrequenzen, alle anderen
+        Peaks sind weit unterhalb der $3$dB Grenzfrequenz, und damit für die
+        Bandbreitenbestimmung irrelevant.
+
+        Die Bandbreite ergibt sich aus der Differenz der beiden Grenzfrequenzen
+        und beträgt ca. $700\si{\hertz}$.
+        \begin{eqnarray*}
+            f_1 &\approx& 700\si{\hertz}\\
+            f_2 &\approx& 1400\si{\hertz}\\
+            B &=& f_2 - f_1 = 700\si{\hertz}
+        \end{eqnarray*}
 
         \section{Mehrfrequenzwahlverfahren}
         \begin{center}
             \begin{figure}[H]
                 \includegraphics[width=\textwidth]{dtmf_pad.jpg}
                 \caption{DTMF Tasten}
+                \label{fig:DTFM_PAD}
             \end{figure}
         \end{center}
         \subsection{DTMF-App}
@@ -339,6 +385,32 @@
         Oszilloskop an. Beschreiben Sie Ihren Höreindruck sowie Ihre Beobachtungen auf dem
         Oszilloskop bei einer waagrechten, senkrechten und diagonalen Tastenfolge.
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Screenshot_GUI_431_T2_chan1_fft.jpg}
+                \caption{Frequenzbild für Taste 2}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Screenshot_GUI_431_T3_chan1_fft.jpg}
+                \caption{Frequenzbild für Taste 3}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{Screenshot_GUI_431_T8_chan1_fft.jpg}
+                \caption{Frequenzbild für Taste 8}
+            \end{figure}
+        \end{center}
+        Bei jeder Taste ist ein dissonanter Ton zu hören. Bei unterschiedlichen Tasten
+        in gleicher Reihe oder Spalte ändert sich jeweils einer der beiden überlagerten
+        Töne.
+
+        Aus den Diagrammen lässt sich folgern, dass durch eine Bewegung in der x-Achse
+        (zum Beispiel von Taste 2 auf Taste 3) die obere Grenzfrequenz verschoben wird. Eine Ziffer weiter
+        rechts bewirkt eine höhere obere Grenzfrequenz.
+        Bewegt man sich in der y-Achse (zum Beispiel von Taste 2 auf Taste 8)
+        verschiebt sich die untere Grenzfrequenz. Hier bedeutet eine Bewegung
+        nach unten eine höhere untere Grenzfrequenz.
+        Bei einer Diagonalen Bewegung (zum Beispiel von Taste 3 auf Taste 8) ändern
+        sich folglich beide Grenzfrequenzen.
 
         \subsection{Matlab}
         \paragraph{Einführung}
@@ -396,6 +468,7 @@
         (Eingabe von \texttt{dial\_tones();} im Commandwindow und in der Eingabeaufforderung dann
         beispielsweise ’2’, achten sie auf die Hochkommata).
         \paragraph{Protokoll}
+        Vervollständigter Code:
         \lstinputlisting[language=Matlab, firstline=10, lastline=19]{generate_tones_Student.m}
 
         \vspace{2cm}
@@ -424,11 +497,9 @@
             f_{2_{fft}} &=& 1209.12\si{\hertz}\\
             f_{2_{soll}} &=& 1209\si{\hertz}
         \end{eqnarray*}
-        Die im Diagramm abgelesenen Frequenzen weichen nur sehr gering von den
-        eingestellten Frequenzen ab. Die Frequenzen lassen sich immer noch eindeutig
-        einer Ziffer zuordnen.
+        Die zwei zu erkennenden Peaks lassen sich eindeutig einer Ziffer zuordnen.
 
-        Die geringe Abweichung ist der Umrechnung
+        Die geringe Abweichung zur jeweils eingestellten Frequenz ist der Umrechnung
         vom Frequenzbereich zum Bildbereich und wieder zurück geschuldet.
 
         \subsubsection{Tastentöne}
@@ -452,11 +523,11 @@
                 \caption{\texttt{dial\_tones} mit Eingabe \texttt{5}, Zoom bei 1330Hz}
             \end{figure}
         \end{center}
-        Im Frequenzbereich sind die beiden Peaks vergleichsweise breit. Das heißt die
-        Frequenzbestimmung ist ungenauer. Trotzdem ist die gedrückte Taste immer
-        noch einwandfrei bestimmbar, da der Peak immer noch sehr nah an der
-        gewünschten Frequenz liegt und die verschiedenen Frequenzen sehr große
-        Abstände haben.
+        Im Frequenzbereich sind die beiden Peaks vergleichsweise breit. Das heißt, die
+        Frequenzbestimmung ist ungenauer (eventuell durch Rundungsfehler verursacht).
+        Trotzdem ist die gedrückte Taste einwandfrei bestimmbar, da der Peak immer noch
+        sehr nah an der gewünschten Frequenz liegt und die verschiedenen Frequenzen
+        außreichend große Abstände haben.
 
         \vspace{2cm}
 
@@ -466,6 +537,9 @@
                 \caption{\texttt{dial\_tones} mit Eingabe \texttt{9}}
             \end{figure}
         \end{center}
+
+        Da sich die Taste 9 weder in der gleich Zeile, noch in der gleichen Spalte wie
+        Taste 5 befindet, sind beide Frequenzen, wie zu erwarten, unterschiedlich.
 
         \subsection{Identifikation einer unbekannten Nummer}
         \paragraph{Einführung}
@@ -487,6 +561,8 @@
         implementiert, es müssen lediglich die entsprechenden Zeilen kopiert werden.
         \paragraph{Protokoll}
 
+        Vervollständigter Code:
+
         \lstinputlisting[language=Matlab]{fft_dtmf_Student.m}
 
         \subsubsection{Identifikation der Nummer mittels FFT}
@@ -496,12 +572,12 @@
 
         \paragraph{Protokoll}
         Da im Frequenzbereich nicht sichtbar ist welche Frequenzen zu welcher Zeit
-        im Signal vorhanden war lassen sich die Nummern nicht aus dem gesamten
+        im Signal vorhanden war, lassen sich die Nummern nicht aus dem gesamten
         Signal rekonstruieren.
 
-        Das Signal muss zwischen den Tönen getrennt werden und die Segmente müssen
-        einzeln untersucht werden. Dann sind pro Segment nur zwei Peaks im
-        Frequenzbereich aus denen sich dann die gedrückte Taste rekonstruieren
+        Das Signal muss nach jedem Ton getrennt werden, damit die einzelnen Segmente
+        separat untersucht werden können. Dann sind pro Segment nur zwei Peaks im
+        Frequenzbereich sichtbar, aus denen sich dann die gedrückte Taste rekonstruieren
         lässt.
 
         \subsubsection{Plot}
@@ -555,7 +631,7 @@
 
         \paragraph{Protokoll}
         Die Frequenzen wurden jeweils dem Diagramm im Frequenzbereich entnommen
-        und daraus die nächste mögliche Frequenz bestimmt.
+        und daraus die nächst mögliche Tastenfrequenz bestimmt.
 
         Aus den beiden Frequenzen lässt sich die Taste bestimmen.
         \begin{center}
@@ -600,11 +676,11 @@
         Wie wird anschließend entschieden um welche Nummer es sich handelt?
 
         \paragraph{Protokoll}
-        Zuerst wird im Frequenzbereich versucht die Peaks zu identifizieren,
-        dann wird für jeden Peak versucht der Wert einer Taste
-        zuzuordnen, dafür muss die Abweichung von gemessener Frequenz zu
-        \glqq{}Tastenfrequenz\grqq{} kleiner $2\%$ sein. Aus der Frequenz der Spalte
-        und Reihe kann dann die Taste bestimmt werden.
+        Zuerst wird im Frequenzbereich versucht, die Peaks zu identifizieren,
+        dann wird für jeden Peak versucht, den Wert einer Taste
+        zuzuordnen. Dafür muss die Abweichung von der gemessenen Frequenz zur
+        \glqq{}Tastenfrequenz\grqq{} kleiner $2\%$ sein. Aus der Reihen- und
+        Spaltenfrequenz kann dann die Taste bestimmt werden.
         \lstinputlisting[language=Matlab, firstline=25, lastline=50]{receive_dial.m}
 
 \end{document}
