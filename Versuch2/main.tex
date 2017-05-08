@@ -56,7 +56,6 @@
 
         \vspace{0.5cm}
 
-        Der $10^6$-Wert bei $R_L$ repräsentiert einen Widerstand von $\infty \si{\ohm}$.
         \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 1}
@@ -64,9 +63,12 @@
                 \pgfplotstabletypeset[
                 multicolumn names, % allows to have multicolumn names
                 col sep=space, % the seperator in our .csv file
+                string replace*={inf}{$\infty$},
+                string type,
+                header=false,
                 display columns/0/.style={
                 column name=$R_L$, % name of first column
-                column type={S},string type},  % use siunitx for formatting
+                string type},  % use siunitx for formatting
                 display columns/1/.style={
                 column name=$U_{mess}$,
                 column type={S},string type},
@@ -149,7 +151,6 @@
 
         \vspace{0.5cm}
 
-        Der $10^6$-Wert bei $R_L$ repräsentiert einen Widerstand von $\infty \si{\ohm}$.
         \begin{table}[H]
             \begin{center}
                 \caption{Messtabelle für Versuch 2}
@@ -157,9 +158,12 @@
                 \pgfplotstabletypeset[
                 multicolumn names, % allows to have multicolumn names
                 col sep=space, % the seperator in our .csv file
+                string replace*={inf}{$\infty$},
+                string type,
+                header=false,
                 display columns/0/.style={
                 column name=$R_L$, % name of first column
-                column type={S},string type},  % use siunitx for formatting
+                string type},  % use siunitx for formatting
                 display columns/1/.style={
                 column name=$U_{mess}$,
                 column type={S},string type},
@@ -196,7 +200,10 @@
 
 		\vspace{0.5cm}
 
-		Die gemessenen Werte stimmen mit den berechneten überein.
+		Die gemessenen Werte zeigen nur eine sehr geringe Abweichung von den gemessenen
+        Werten.
+
+        %TODO Check
 
 
         \subsubsection{Messungenauigkeit}
@@ -415,30 +422,28 @@
 
         \vspace{0.5cm}
 
-        \subsubsection{Matrix}
-        \begin{equation*}
-            \begin{bmatrix}
-                -5G & G & 2G & G\\
-                G & -3G & 0 & 0\\
-                2G & 0 & -3G & G\\
-                G & 0 & G & -3G
-            \end{bmatrix}
-            \begin{bmatrix}
-                \varphi_1 \\
-                \varphi_2 \\
-                \varphi_3 \\
-                \varphi_4
-            \end{bmatrix}
-            =
-            \begin{bmatrix}
-                I_3\\
-                -I_2\\
-                -I_3\\
-                -I_1
-            \end{bmatrix}
-        \end{equation*}
-
-        \subsubsection{Lösung}
+        %\subsubsection{Matrix}
+        %\begin{equation*}
+        %    \begin{bmatrix}
+        %        -5G & G & 2G & G\\
+        %        G & -3G & 0 & 0\\
+        %        2G & 0 & -3G & G\\
+        %        G & 0 & G & -3G
+        %    \end{bmatrix}
+        %    \begin{bmatrix}
+        %        \varphi_1 \\
+        %        \varphi_2 \\
+        %        \varphi_3 \\
+        %        \varphi_4
+        %    \end{bmatrix}
+        %    =
+        %    \begin{bmatrix}
+        %        I_3\\
+        %        -I_2\\
+        %        -I_3\\
+        %        -I_1
+        %    \end{bmatrix}
+        %\end{equation*}
 
         \begin{center}
             \begin{figure}[H]
@@ -539,6 +544,7 @@
 		des Potetiometers und durch die Abweichung des Widerstands an sich zustande.
 
         \subsection{Einschränkungen}
+        \subsubsection{Allgemeine Einschränkungen}
         $R_1$, $R_2$ und $R_3$ müssen so gewählt werden, dass $I_L$ auch tatsächlich
         auf $0$A gebracht werden kann.
 
@@ -564,6 +570,17 @@
 		Um sehr große Widerstände zu messen, sollte man $R_1$ und $R_3$ nach oben genannter
 		Abschätzung wählen, sodass $R_1 \cdot R_3 >> R_x$ gilt. Für kleine Widerstände $R_x$
 		sollten $R_1$ und $R_3$ kleiner gewählt werden, sodass das Potentiometer nicht auf einen
-		Wert ausßerhalb seiner Reichweite eingestellt werden muss.
+		Wert außerhalb seiner Reichweite eingestellt werden muss.
+
+
+        \subsubsection{Einschränkung mit unserem Messaufbau}
+        Kleinster möglicher Widerstand: %TODO Check
+        \begin{equation*}
+            R_x = \frac{R_1 R_3}{R_{poti}} = \frac{100\si{\ohm} \cdot 1\si{k\ohm}}{1\si{k\ohm}} = 100\si{\ohm}
+        \end{equation*}
+
+        Theoretisch sind alle Widerstände größer $100\si{\ohm}$ Messbar, umso größer
+        der Widerstand jedoch ist umso ungenauer ist die Messung jedoch, da das
+        Potentiometer immer genauer eingestellt werden muss.
 
 \end{document}

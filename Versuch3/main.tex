@@ -1,4 +1,4 @@
-\documentclass[10pt]{report}
+\documentclass[10pt]{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -51,8 +51,9 @@
 \rhead{Tim Luchterhand, Paul Nykiel}
 \cfoot{\thepage}
 
-\author{Tim Luchterhand, Paul Nykiel}
-\title{GPET Versuch 3}
+\author{Tim Luchterhand, Paul Nykiel \protect\\ tim.luchterhand@uni-ulm.de, paul.nykiel@uni-ulm.de}
+\title{GPET Versuch 3 --- Transformieren und Telefonieren mit Fourier}
+\subtitle{Gruppe: Dienstag14}
 
 \begin{document}
         \maketitle
@@ -130,28 +131,28 @@
         \end{equation*}
 
         \subsection{Fourier-Transformation}
-        \paragraph{Einführung}
-        Das Oszilloskop verfügt intern über die Möglichkeit die Fourier Transformierte des dargestellten
-        Zeitsignals zu berechnen. Diese soll im Folgenden verwendet werden.
-        Die Auswahl der FFT-Funktion am Oszilloskop erfolgt über
-        \glqq{}Math\grqq{} $\rightarrow$ \glqq{}Operator\grqq{} $\rightarrow$ \glqq{}FFT\grqq{}.
-        Anschließend mussen Spanne und Mittenfrequenz entsprechend des darzustellenden Frequenzbereichs gewählt werden.
-        Unter \glqq{} Mehr FFT\grqq{} lassen sich weitere Einstellungen
-        zur FFT vornehmen: die Fensterfunktion und die vertikale Einheit.
-        Mit Hilfe einer Fensterfunktion lässt sich der sogenannte \glqq{}Leakage effect\grqq{} vermindern.
-        Dieser tritt in der in der digitalen Signalverarbeitung auf, wenn Blocklängen des zu verarbeitenden
-        Signals endlich sind. Hier soll das \glqq{}Hanning-Fenster\grqq{} als Voreinstellung beibehalten
-        werden.
-        Für die vertikale Skalierung gibt es die beiden Möglichkeiten \glqq{}Decibel\grqq{} und
-        \glqq{}$\text{V}_{\text{RMS}}$\grqq{}.
-        In der Einstellung \glqq{}
-        Decibel\grqq{} wird die vertikale Achse logarithmisch aufgetragen, in der
-        Einstellung \glqq{}$\text{V}_{\text{RMS}}$\grqq{} linear. Die Rauschleistung ist in diesem Versuch im Allgemeinen sehr
-        viel kleiner als die Signalleistung. Deshalb ist in der linearen Auftragung mit dem bloßen
-        Auge kein Rauschen sichtbar. Aufgrund dessen wählt man für Spektren in der Regel auch
-        die logarithmische Darstellung, welche im Folgenden auch immer gewählt werden sollte.
-        Die vertikale Einstellung lässt sich nicht über die GUI ändern, diese muss immer händisch
-        am Oszilloskop eingestellt werden.
+        %\paragraph{Einführung}
+        %Das Oszilloskop verfügt intern über die Möglichkeit die Fourier Transformierte des dargestellten
+        %Zeitsignals zu berechnen. Diese soll im Folgenden verwendet werden.
+        %Die Auswahl der FFT-Funktion am Oszilloskop erfolgt über
+        %\glqq{}Math\grqq{} $\rightarrow$ \glqq{}Operator\grqq{} $\rightarrow$ \glqq{}FFT\grqq{}.
+        %Anschließend mussen Spanne und Mittenfrequenz entsprechend des darzustellenden Frequenzbereichs gewählt werden.
+        %Unter \glqq{} Mehr FFT\grqq{} lassen sich weitere Einstellungen
+        %zur FFT vornehmen: die Fensterfunktion und die vertikale Einheit.
+        %Mit Hilfe einer Fensterfunktion lässt sich der sogenannte \glqq{}Leakage effect\grqq{} vermindern.
+        %Dieser tritt in der in der digitalen Signalverarbeitung auf, wenn Blocklängen des zu verarbeitenden
+        %Signals endlich sind. Hier soll das \glqq{}Hanning-Fenster\grqq{} als Voreinstellung beibehalten
+        %werden.
+        %Für die vertikale Skalierung gibt es die beiden Möglichkeiten \glqq{}Decibel\grqq{} und
+        %\glqq{}$\text{V}_{\text{RMS}}$\grqq{}.
+        %In der Einstellung \glqq{}
+        %Decibel\grqq{} wird die vertikale Achse logarithmisch aufgetragen, in der
+        %Einstellung \glqq{}$\text{V}_{\text{RMS}}$\grqq{} linear. Die Rauschleistung ist in diesem Versuch im Allgemeinen sehr
+        %viel kleiner als die Signalleistung. Deshalb ist in der linearen Auftragung mit dem bloßen
+        %Auge kein Rauschen sichtbar. Aufgrund dessen wählt man für Spektren in der Regel auch
+        %die logarithmische Darstellung, welche im Folgenden auch immer gewählt werden sollte.
+        %Die vertikale Einstellung lässt sich nicht über die GUI ändern, diese muss immer händisch
+        %am Oszilloskop eingestellt werden.
         \subsubsection{FFT mit dem Oszilloskop}
         \paragraph{Aufgabe}
         Wenden Sie die im Oszilloskop integrierte FFT-Funktion auf das Zeitsignal aus
@@ -224,7 +225,7 @@
                 \bottomrule
             \end{tabular}
         \end{center}
-
+        %TODO Warum?
         Das Frequenzbild zeigt nur die Amplituden der Teilfrequenzen, ein Offset
         ändert diese nicht.
 
@@ -240,7 +241,7 @@
             \end{figure}
         \end{center}
 
-        Das Ton ist, wie zu erwarten, deutlich höher als der erste Ton, weißt aber
+        Das Ton ist, wie zu erwarten, deutlich höher als der erste Ton, weist aber
         die gleichen monotonen Charakteristiken auf.
 
         \subsubsection{Höreindruck bei kleinen Frequenz-Differenzen}
