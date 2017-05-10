@@ -196,7 +196,7 @@
         beträgt? Wie groß ist die resultierende Frequenzauflösung?
 
         \paragraph{Lösung}
-        Um die Frequenzauflösung zu vervierfachen müssen 8 Perioden dargestellt werden.
+        Um die Frequenzauflösung zu vervierfachen, müssen 8 Perioden dargestellt werden.
 
         \begin{eqnarray*}
             N &=& 8\\
@@ -244,10 +244,10 @@
         schließen Sie daraus?
 
         \paragraph{Lösung}
-        Sprachsignale liegen ungefähr zwischen $300\si{\hertz}$ und $4\si{k\hertz}$,
-        das heißt Sprachsignale können die selben Frequenzen wie DTMF-Töne enthalten.
-        Um Fehlerkennungen zu vermeiden sind die DTMF-Frequenzen absichtlich so
-        gewählt das die Töne dissonant klingen.
+        Sprachsignale liegen ungefähr zwischen $300\si{\hertz}$ und $4\si{k\hertz}$.
+        Das heißt, Sprachsignale können die selben Frequenzen wie DTMF-Töne enthalten.
+        Um Fehlerkennungen zu vermeiden, sind die DTMF-Frequenzen absichtlich so
+        gewählt, dass die Töne dissonant klingen.
 
 
         \chapter{Versuchsdurchführung}
@@ -418,9 +418,11 @@
                 \bottomrule
             \end{tabular}
         \end{center}
-        %TODO Warum?
         Das Frequenzbild zeigt nur die Amplituden der Teilfrequenzen, ein Offset
-        ändert diese nicht.
+        ändert diese nicht, da das Offset eine Frequenz von $0\si{\hertz}$ hat.
+        Theoretisch müsste man bei $0 \si{\hertz}$ erkennen. Da das Offset jedoch
+        nur $100 \si{m\volt}$ beträgt und somit unter der 3dB Grenzfrequenz liegt
+        und weiterhin im Rauschen untergeht, lässt sich der Peak nicht erkennen.
 
         \subsubsection{Höreindruck}
         \paragraph{Aufgabe}
@@ -445,11 +447,8 @@
         werden? Wenn nicht, weshalb ist dies nicht möglich?
         \paragraph{Protokoll}
 
-        Die unterschiedlichen Signale können nicht unterschieden werden, da die
-        Frequenzauflösung der FFT nicht fein genug ist. Dadurch werden die Signale nicht genau
-        genug aufgenommen und klingen beim Abspielen gleich.
-
-        %TODO FFT passt? Menschl. Ohr?
+        Das menschliche Gehör verfügt nicht über die Möglichkeit, Frequenzunterschiede
+        von $3 \si{\hertz}$ aufzulösen.
 
         \subsubsection{Auflösung}
         \paragraph{Auflösung}
@@ -468,7 +467,6 @@
 
         Um eine Frequenzauflösung von $3\si{\hertz}$ zu erreichen, müssen mindestens
         494 Perioden aufgezeichnet werden. Das entspricht ungefähr $\frac{1}{3} \si{\second}$.
-        %TODO Check
 
         \section{Messung periodischer Signale}
         %\paragraph{Einführung}

@@ -1,4 +1,4 @@
-\documentclass[10pt]{report}
+\documentclass[10pt]{scrreprt}
 \usepackage[utf8]{inputenc}
 \usepackage{amsfonts}
 \usepackage{amsmath}
@@ -52,8 +52,9 @@
 \rhead{Tim Luchterhand, Paul Nykiel}
 \cfoot{\thepage}
 
-\author{Tim Luchterhand, Paul Nykiel}
-\title{GPET Versuch 4}
+\author{Tim Luchterhand, Paul Nykiel \protect\\ tim.luchterhand@uni-ulm.de, paul.nykiel@uni-ulm.de}
+\title{GPET Versuch 4 --- Henry meets Faraday}
+\subtitle{Gruppe: Dienstag14}
 
 \begin{document}
         \maketitle
@@ -71,7 +72,7 @@
                 \includegraphics[width=\textwidth]{Abbildung13.png}
                 \caption{Messaufbau um Strom- und Spannungsverlauf beim Schalten der Spannung
 an einer Spule zu bestimmen}
-                \label{fig  :abb13}
+                \label{fig:abb13}
             \end{figure}
         \end{center}
 
@@ -82,23 +83,54 @@ an einer Spule zu bestimmen}
         Erstellen Sie einen Screenshot der Spannungs- und Stromverläufe.
 
         \paragraph{Protokoll}
+        $U_1$ in \textcolor{green}{grün}, $U_2$ in \textcolor{yellow}{gelb}
+        $U_1 - U_2 = I \cdot R_1$ in \textcolor{violet}{violett}.
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{Abbildung13.png}
+                \includegraphics[width=\textwidth]{scope_2.png}
                 \caption{Spannung an der Spule}
-            \end{figure}
-            \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{Abbildung13.png}
-                \caption{Strom an der Spule}
+                \label{fig:spannspul}
             \end{figure}
         \end{center}
 
-        \subsubsection{Erläuterung}
-        \paragraph{Aufgabe}
-        Erläutern Sie die Verläufe von Spannung und Strom.
+        Die Eingangsspannung $U_1$ steigt zu beginn eines Duty-cyles auf den
+        eingestellten Maximalwert an, fällt dann aber exponentiell auf einen tieferen
+        Wert ab und verläuft schließlich konstant. Dies lässt sich wie folgt erklären:
+        Bei der ansteigenden Flanke der Rechteckspannung verhält sich die Induktivität
+        wie ein Leerlauf. Die Spannung steigt also auf das eingestellte Maximum. Der Strom,
+        der durch die Induktivität fließt, steigt im weiteren Verlauf wie folgt an:
+        \begin{equation}
+            I_L(t) = \frac{U_{eingang}}{R}\left(\exp{\left(-\frac{Rt}{L}\right)} - 1\right)
+            \label{eq:ISpule}
+        \end{equation}
 
-        \paragraph{Protokoll}
-        %TODO Text
+        Dadurch fällt $U_1$ exponentiell ab. Der konstante Verlauf von $U_1$ stellt sich
+        dann ein, wenn der Sättigungsstrom der Spule erreicht ist. Die gemessene Spannung
+        berträgt dann die Spannung am Widerstand R.
+
+        $U_2$ verhält sich identisch zu $U_1$. Der einzige Unterschied ist, dass die Spannung
+        auf $0\si{\volt}$ abfällt, da über der gesättigten Spule keine Spannung mehr abfällt.
+
+        Der Ausschaltvorgang verhält sich analog.
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_3.png}
+                \caption{Strom (in violett) an der Spule}
+            \end{figure}
+        \end{center}
+
+        Der Strom, der durch die Spule fließt, lässt sich wie folgt bestimmen:
+        \begin{equation}
+            I_L = \frac{U_1 - U_2}{R}
+        \end{equation}
+
+        Im Diagramm ist lediglich die Spannungsdifferenz in violett dargestellt. Diese
+        ist jedoch proportional zum Kehrwert des Widerstandes R. Der Strom verhält sich
+        wie durch Gleichung~\ref{eq:ISpule} beschrieben und steigt exponentiell auf einen Sättigungsstrom
+        an.
+
+        Der Ausschaltvorgan verhält sich analog.
+
 
         \section{Freie Schwingungen}
         \paragraph{Einführung}
@@ -120,7 +152,7 @@ an einer Spule zu bestimmen}
         Die beobachtete Schwingung kommt durch die sogenannte Eigenresonanz der verwendeten
         Spule zu Stande. Die Spule weist neben ihrer Induktivität und ihrem
         Widerstand auch eine parasitäre Kapazität gemäß Abbildung 15 auf. Diese führt
-        dazu, dass die Spule fur höhere Frequenzen nicht mehr als reine Induktivität wirkt
+        dazu, dass die Spule für höhere Frequenzen nicht mehr als reine Induktivität wirkt
         sondern sich wie ein gedämpfter parallel-LC-Schwingkreis verhält.
 
         \begin{center}
@@ -138,12 +170,12 @@ an einer Spule zu bestimmen}
 
         \subsubsection{Screenshot}
         \paragraph{Aufgabe}
-        Erstellen Sie fur Ihre Versuchsauswertung einen Screenshot der Messung.
+        Erstellen Sie für Ihre Versuchsauswertung einen Screenshot der Messung.
 
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{Abbildung13.png}
+                \includegraphics[width=\textwidth]{scope_8.png}
                 \caption{Spannung an der Spule}
             \end{figure}
         \end{center}
@@ -154,8 +186,26 @@ an einer Spule zu bestimmen}
         verwendeten Spule ab.
 
         \paragraph{Protokoll}
-        %TODO Formel überlegen
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_11.png}
+                \caption{Spannung an der Spule}
+            \end{figure}
+        \end{center}
 
+        \paragraph{Vorgehensweise}
+        Mit Cursor wird die Frequenz des LC-Schwingkreises bestimmt. Um eine höhere
+        Genauigkeit zu erzielen, wurden 5 Perioden gemessen und der Durchschnitt
+        berechnet. Durch folgende Formeln lässt sich dann die parasitäre Kapazität
+        abschätzen.
+
+        \begin{eqnarray}
+            \Delta x &=& 1.275\si{m\second}\\
+            f_0 &=& \frac{5}{\Delta x} = 3922\si{\hertz}\\
+            f_0 &=& \frac{1}{2 \pi \sqrt{L C}}\\
+            \Leftrightarrow C &=& \frac{1}{{(2 \pi f_0)}^2 L} \approx 92\si{n\farad}
+        \end{eqnarray}
+        %@TODO rgebnis, kleine Kap usw.
 
         \subsection{Schwingung am Kondensator}
         Bauen Sie als nächstes die in Abbildung~\ref{fig:abb16} dargestellte Schaltung auf. Verwenden
@@ -182,10 +232,38 @@ an einer Spule zu bestimmen}
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{Abbildung13.png}
-                \caption{Verlauf der Spannung am Kondensator}
+                \includegraphics[width=\textwidth]{scope_12.png}
+                \caption{Bestimmung der Frequenz}
             \end{figure}
         \end{center}
+
+            Aus Genauigkeitsgründen wurden fünf Perioden gemessen. Der Messcursor
+            wurde auf das jeweilige Maximum gesetzt, da die Nulldurchgänge ohne eine
+            klare Nullreferenz schwer zu bestimmen sind.
+
+            Die Frequenz lässt sich dann wie folgt wie berechnen:
+        \begin{center}
+            \begin{eqnarray}
+                \Delta x &=& 1.275 \si{m \second}\\
+                f_0 &=& \frac{5}{\Delta x} \approx 3922\si{\hertz}\\
+            \end{eqnarray}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_13.png}
+                \caption{Abnahme der Amplitude der Schwingung des LC-Schwingkreises}
+                \label{fig:SpanAbn}
+            \end{figure}
+        \end{center}
+
+        Aus~\ref{fig:SpanAbn} lassen sich die ersten beiden Amplituden der Schwingung
+        bestimmen. Folgendermaßen lässt sich dann eine Exponentialfunition aufstellen,
+        die den Verlauf der Amplitude beschreibt.
+
+        \begin{eqnarray}
+            \hat{U}_1 &=& 735\si{m\volt}\\
+            \hat{U}_2 &=& \hat{U_1} - 303.75\si{m\volt} = 431.25\si{m\volt}\\
+            \alpha &=& \frac{\hat{U_2}}{\hat{U_1}} = 0.587\\
+            \hat{U}(t) &=& \alpha^{\dfrac{t}{\Delta x}} = \exp{(\log{(\alpha)} \cdot \frac{t}{\Delta x})}
+        \end{eqnarray}
 
         \subsection{Veränderung der Schwingung}
         \paragraph{Aufbau}
@@ -209,10 +287,39 @@ an einer Spule zu bestimmen}
         der Schwingung.
 
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_14.png}
+                \caption{Potentiometer mit $R = 0\si{\ohm}$}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_15.png}
+                \caption{Potentiometer mit $R = 100\si{\ohm}$}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_16.png}
+                \caption{Potentiometer mit $R = 300\si{\ohm}$}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_17.png}
+                \caption{Potentiometer mit $R = 500\si{\ohm}$}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_18.png}
+                \caption{Potentiometer mit $R = 800\si{\ohm}$}
+            \end{figure}
+        \end{center}
+
+        Durch Erhöhen des Widerstandes des Potentiometers wird die Amplitude
+        der Schwingung verringert. Der Widerstand fungiert also als Dämpfung
+        und verändert nur die Amplitude und hat keinen Einfluss auf die Frequenz
+        oder Phase der Schwingung. Bei einem Widerstand von $800 \si{\ohm}$ ist
+        die Dämpfung so groß, dass die Schwingung kaum noch zu erkennen ist.
+
 
         \subsubsection{Screenshot}
         \paragraph{Aufgabe}
-        Nehmen Sie nun fur einen Wert von $R_1 \approx 15\si{\ohm}$ den Verlauf der Spannung $U_1$
+        Nehmen Sie nun für einen Wert von $R_1 \approx 15\si{\ohm}$ den Verlauf der Spannung $U_1$
         mit dem Oszilloskop auf und verwenden Sie die Cursorfunktion des Oszilloskops,
         um die Frequenz der Schwingung sowie die Abnahme der Amplitude
         der Schwingung zu messen. Erstellen Sie für Ihre Versuchsauswertung einen
@@ -221,10 +328,29 @@ an einer Spule zu bestimmen}
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                %\includegraphics[width=\textwidth]{Abbildung13.png}
-                \caption{Verlauf der Spannung am Kondensator}
+                \includegraphics[width=\textwidth]{scope_19.png}
+                \caption{Bestimmung der Frequenz}
             \end{figure}
         \end{center}
+
+        Aus Genauigkeitsgründen wurden fünf Perioden gemessen. Der Messcursor
+        wurde auf das jeweilige Maximum gesetzt, da die Nulldurchgänge ohne eine
+        klare Nullreferenz schwer zu bestimmen sind.
+
+        Die Frequenz lässt sich dann wie folgt wie berechnen:
+        \begin{eqnarray}
+            \Delta x &=& 1.02 \si{m \second}\\
+            f_0 &=& \frac{5}{\Delta x} \approx 4902\si{\hertz}\\
+        \end{eqnarray}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_20.png}
+                \caption{Abnahme der Amplitude}
+                \label{fig:SpanAbn2}
+            \end{figure}
+        \end{center}
+
+        In der ersten Periode nimmt die Amplitude um $352.75 \si{m \volt}$ ab.
 
         \section{Spannungsüberhöhung}
         \paragraph{Aufgabe}
@@ -248,7 +374,11 @@ an einer Spule zu bestimmen}
         Ihre Antwort.
 
         \paragraph{Protokoll}
-        %TODO Text
+        Die maximale Amplitude wird bei der Resonanzfrequenz $f_0$ erreicht. Diese lässt
+        sich wie folgt berechnen:
+        \begin{eqnarray}
+            f_0 &=& \frac{1}{\sqrt{LC}} = 3.751\si{k\hertz}\\
+        \end{eqnarray}
 
         \subsection{Frequenzsweep}
         \paragraph{Aufgabe}
@@ -259,14 +389,21 @@ an einer Spule zu bestimmen}
         Erzeugen Sie eine Grafik des durchgeführten Sweeps.
 
         \paragraph{Protokoll}
-
-
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{F_Sweep_1_frequencysweep_ylogxlin.jpg}
+                \caption{Frequenzsweep}
+                \label{fig:fsweep1}
+            \end{figure}
+        \end{center}
         \subsection{Übereinstimmung mit den theoretischen Werten}
         \paragraph{Aufgabe}
         Stimmt die Messung mit dem theoretischen Wert überein?
 
         \paragraph{Protokoll}
-        %TODO Text
+        Wie in Diagramm~\ref{fig:fsweep1} zu erkennen, erhält man die größte Amplitude bei
+        ca. $3.8 \si{k\hertz}$. Dieses Ergebnis weicht um weniger als $2\%$ vom berechneten
+        Wert ab.
 
 
         \section{Induktionsschleife einer Ampelschaltung}
@@ -300,6 +437,12 @@ an einer Spule zu bestimmen}
         Sie einen Screenshot auf.
 
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_24.png}
+                \caption{Marker}
+            \end{figure}
+        \end{center}
 
 
         \subsection{Eisenkern}
@@ -308,7 +451,35 @@ an einer Spule zu bestimmen}
         der Amplitude der Spannung $U_2$. Interpretieren Sie Ihre Beobachtung.
 
         \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_25.png}
+                \caption{Eisenkern halb in Spule}
+                \label{fig:eisen1}
+            \end{figure}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_26.png}
+                \caption{Eisenkern vollständig in Spule}
+                \label{fig:eisen2}
+            \end{figure}
+        \end{center}
 
+        Wie in den Bildern~\ref{fig:eisen1} und~\ref{fig:eisen2} zu erkennen,
+        verringert der Eisenkern die Amplitude des Signals.
+
+        Dies lässt sich
+        folgendermaßen Erklären:
+
+        Es gilt:
+        \begin{equation}
+            f_0 = \frac{1}{2 \pi \sqrt{L C}}
+        \end{equation}
+
+        Da der Eisenkern die Induktivität der Spule erhöht, wird der Ausdruck im
+        Zähler größer und die Resonanzfrequenz $f_0$ kleiner. Die zuvor am
+        Funktionsgenerator eingestellte Frequenz von $3751 \si{\hertz}$ stimmt
+        nun nicht mehr mit $f_0$ überein, was eine Verringerung der Amplitude
+        zur Folge hat.
 
         \subsection{Frequenzsweep}
         \paragraph{Aufgabe}
@@ -318,12 +489,34 @@ an einer Spule zu bestimmen}
 
         \paragraph{Protokoll}
 
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{F_Sweep_2_frequencysweep_ylogxlog.jpg}
+                \caption{Frequenzsweep}
+                \label{fig:fsweep2}
+            \end{figure}
+        \end{center}
+        Wie bereits in obiger Gleichung beschrieben, sorgt eine größere Induktivität
+        für eine kleinere Resonanzfrequenz. Durch die größere Induktivität der
+        Spule mit Eisenkern verschiebt sich also der Peak in Grafik~\ref{fig:fsweep2}
+        nach links. Weiterhin ergibt sich aus dem Frequenz-Sweep:
+
+        \begin{eqnarray}
+            f_0 &\approx& 1100\si{\hertz}\\
+            C &=& 100\si{n\farad}\\
+            f_0 &=& \frac{1}{2 \pi \sqrt{L C}}\\
+            \Leftrightarrow L &=& \frac{1}{{(f_0 2 \pi)}^2 C} \approx 0.21\si{\henry}
+        \end{eqnarray}
+
+        Die Induktivität wir also durch das Einführen des Eisenkerns ca.\ um einen Faktor
+        $10$ größer.
+
 
         \section{Analyse einer unbekannten Schaltung}
         In diesem Versuch soll das Verhalten einer unbekannten Schaltung, einer sogenannten
         Blackbox (BB) untersucht werden. Hierzu steht Ihnen im Rahmen dieses Versuchs eine
-        mit BB1 beschriftete Blackbox zur Verfugung. Alle möglichen Schaltungskombinationen,
-        die sich im Inneren der Blackbox befinden können, sind in Abbildung \ref{fig:abb21} dargestellt.
+        mit BB1 beschriftete Blackbox zur Verfügung. Alle möglichen Schaltungskombinationen,
+        die sich im Inneren der Blackbox befinden können, sind in Abbildung~\ref{fig:abb21} dargestellt.
         Messen Sie die Transferfunktion der BB mit Hilfe des Schaltungsaufbaus in Abbildung
         \ref{fig:abb20}. Verwenden Sie hierzu einen Sweep mit einer unteren Frequenz von $1\si{\hertz}$, einer oberen
         Frequenz von $250\si{k\hertz}$ und einer Auflösung von $200$ Punkten.
@@ -341,5 +534,50 @@ an einer Spule zu bestimmen}
             \end{figure}
         \end{center}
 
+        \subsection{Schaltung bestimmen}
+        \paragraph{Aufgabe}
+        Bestimmen Sie welche Schaltung aus Abbildung 21 in der BlackBox enthalten ist.
+        Gibt es mehrere Möglichkeiten? Hinweis: Verwenden Sie Ihre Abschätzungen aus
+        der Versuchsvorbereitung (Abschnitt 2.4).
 
+        \paragraph{Protokoll}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{F_Sweep_BB_frequencysweep_ylogxlog.jpg}
+                \caption{Frequenzsweep der BB}
+            \end{figure}
+        \end{center}
+
+        Für $f \rightarrow 0$ bzw. $f \rightarrow \infty$ beträgt der logarithmische
+        Wert der Übertragungsfunktion 0dB. Das heißt: $U_1 \approx U_2$.
+        Daraus folgt, dass über der BB viel Spannung abfallen muss, was bedeutet,
+        dass sie eine hohe Impedanz besitzt.
+
+        Für den Resonazfall zeigt das Bode-Diagramm einen deutlichen Einbruch,
+        was bedeutet, dass $U_2 < U_1$ sein muss. Diese wiederum bedeutet, das die
+        BB bei der Resonanzfrequenz eine vergleichsweise geringe Impedanz haben muss.
+
+        Schaltung A weist genau dieses Verhalten auf, weswegen die BB aus einer
+        Reihenschaltung von Widerstand, Kondensator und Spule bestehen muss.
+
+        \subsection{Wieso keine andere Schaltung?}
+        \paragraph{Aufgabe}
+        Begründen Sie für jede andere Schaltung, wieso diese nicht in der BB enthalten
+        sein kann. Verwenden Sie für Ihre Begründung das Übertragungsverhalten bei einer
+        sehr kleinen Frequenz, bei der Resonanzfrequenz und bei der oberen Frequenz des
+        Messbereiches.
+
+        \paragraph{Protokoll}
+        \textbf{Schaltung B:} Verhält sich nicht symmetrisch. Für $f \rightarrow 0$
+        und $f \rightarrow \infty$ verhält sich die Schaltung nicht gleich.
+
+        \textbf{Schaltung C:} Bei der Resonanzfrequenz müsste sich das Bode-Diagramm
+        der 0 annähern, was im dargestellten Diagramm nicht der Fall ist.
+
+        \textbf{Schaltung D:} Verhält sich nicht symmetrisch. Für $f \rightarrow 0$
+        und $f \rightarrow \infty$ verhält sich die Schaltung nicht gleich.
+
+        \textbf{Schaltung E:} Bei den Grenzfällen $f \rightarrow 0$ und
+        $f \rightarrow \infty$ müsste sich das Diagramm der $-\infty$ annähern,
+        was im dargestellten Diagramm nicht der Fall ist.
 \end{document}

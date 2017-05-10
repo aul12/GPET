@@ -419,28 +419,28 @@
 
         \vspace{0.5cm}
 
-        %\subsubsection{Matrix}
-        %\begin{equation*}
-        %    \begin{bmatrix}
-        %        -5G & G & 2G & G\\
-        %        G & -3G & 0 & 0\\
-        %        2G & 0 & -3G & G\\
-        %        G & 0 & G & -3G
-        %    \end{bmatrix}
-        %    \begin{bmatrix}
-        %        \varphi_1 \\
-        %        \varphi_2 \\
-        %        \varphi_3 \\
-        %        \varphi_4
-        %    \end{bmatrix}
-        %    =
-        %    \begin{bmatrix}
-        %        I_3\\
-        %        -I_2\\
-        %        -I_3\\
-        %        -I_1
-        %    \end{bmatrix}
-        %\end{equation*}
+        \subsubsection{Matrix}
+        \begin{equation*}
+            \begin{bmatrix}
+                5G & -G & -2G & -G\\
+                -G & 3G & 0 & 0\\
+                -2G & 0 & 3G & -G\\
+                -G & 0 & -G & 3G
+            \end{bmatrix}
+            \begin{bmatrix}
+                \varphi_1 \\
+                \varphi_2 \\
+                \varphi_3 \\
+                \varphi_4
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                -\frac{U_{2in}}{R}\\
+                \frac{U_{1in}}{R}\\
+                \frac{U_{2in}}{R}\\
+                \frac{U_{1in}}{R}
+            \end{bmatrix}
+        \end{equation*}
 
         \begin{center}
             \begin{figure}[H]
@@ -576,7 +576,12 @@
             R_x = \frac{R_1 R_3}{R_{poti}} = \frac{100\si{\ohm} \cdot 1\si{k\ohm}}{1\si{k\ohm}} = 100\si{\ohm}
         \end{equation*}
 
-        Theoretisch sind alle Widerstände größer $100\si{\ohm}$ Messbar.
+        Größter möglicher Widerstand:
+        \begin{equation*}
+            R_x = \frac{R_1 R_3}{R_{poti}} = \frac{100\si{\ohm} \cdot 1\si{k\ohm}}{0.1\si{\ohm}} = 1\si{M\ohm}
+        \end{equation*}
+
+        Theoretisch sind alle Widerstände zwischen $100\si{\ohm}$ und $1\si{M\ohm}$ Messbar.
         Je größer der Widerstand jedoch ist, umso ungenauer wird die Messung,
         da das Potentiometer dann sehr fein eingestellt werden muss.
 
