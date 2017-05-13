@@ -1,0 +1,271 @@
+\documentclass[10pt]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{relsize}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{pgfplotstable}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{float}
+\usepackage{listings}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    %numbers=left,%
+    %numberstyle={\tiny \color{black}},% size of the numbers
+    %numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+\setlength\parindent{0pt}
+
+\setcounter{chapter}{5}
+\setcounter{secnumdepth}{3}
+\setcounter{figure}{12}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{GPET Versuch 5}
+\rhead{Tim Luchterhand, Paul Nykiel}
+\cfoot{\thepage}
+
+\author{Tim Luchterhand, Paul Nykiel \protect\\ tim.luchterhand@uni-ulm.de, paul.nykiel@uni-ulm.de}
+\title{GPET Versuch 5 --- Hochspannung mit Stanley and Tesla}
+\subtitle{Gruppe: Dienstag14}
+
+\begin{document}
+        \maketitle
+        \section{Spannungsübersetzung beim unbelasteten Transformator}
+        \paragraph{Aufgabe}
+        In diesem ersten Versuchsteil sollen verschiedene Übersetzungsverhältnisse des
+        unbelasteten Transformators betrachtet werden. Bauen Sie dazu die Schaltung mit $R_V = 100\si{\ohm}$
+        nach Abbildung~\ref{fig:abb8} auf. Erzeugen Sie ein Sinuseingangssignal $U_{Ein}$ mit Hilfe des Signalgenerators
+        des Oszilloskops, $f = 500\si{\hertz}$, $U = 1\si{\volt}_{pp}$.
+
+        \vspace{0.5cm}
+
+        Messen Sie jeweils für die verschiedenen Windungsverhältnisse gemäß Tabelle \ref{tab:mess1} die
+        Primärspannung $U_1$, die Sekundärspannung $U_2$ mit den beiden Kanälen des Oszilloskops und
+        berechnen Sie das Verhältnis $\frac{U_2}{U_1}$. Übernehmen Sie Tabelle~\ref{tab:mess1} in Ihr Protokoll und ergänzen
+        Sie die zu ermittelnden Größen. Diskutieren Sie Ihre Ergebnisse.
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{aufgabenBilder/abbildung8.png}
+                \caption{Versuchsaufbau des ersten Teilversuchs: unbelasteter Transformator}
+                \label{fig:abb8}
+            \end{figure}
+        \end{center}
+
+        \paragraph{Protokoll}
+        $ $
+        \begin{table}[h!]
+            \begin{center}
+                \pgfplotstabletypeset[
+                multicolumn names, % allows to have multicolumn names
+                col sep=space, % the seperator in our .csv file
+                %string replace*={inf}{$\infty$},
+                %string type,
+                header=false,
+                display columns/0/.style={
+                column name=$N_1$, % name of first column
+                column type={S},string type},  % use siunitx for formatting
+                display columns/1/.style={
+                column name=$N_2$,
+                column type={S},string type},
+                display columns/2/.style={
+                column name=$U_1$,
+                column type={S},string type},
+                display columns/3/.style={
+                column name=$U_2$,
+                column type={S},string type},
+                display columns/4/.style={
+                column name=$\dfrac{U_2}{U_1}$,
+                column type={S},string type},
+                every head row/.style={
+                before row={\toprule}, % have a rule at top
+                after row={
+                 & & $\si{\volt}$ & $\si{\volt}$\\
+                \midrule} % rule under units
+                },
+                every last row/.style={after row=\bottomrule},
+                ]{mess1.csv}
+                \caption{Messtabelle zu Versuch 5.1}
+                \label{tab:mess1}
+            \end{center}
+        \end{table}
+
+        %TODO Diskutieren sie ihr Ergebniss
+        % U_2/U_1 sollte gleich N_2 / N_1 sein
+
+        \section{Der belastete Transformator}
+        \paragraph{Aufgabe}
+        In diesem Versuchteil soll der Einfluss verschiedener Lastwiderstände auf die
+        Spannungstransformation bei zwei unterschiedlichen Windungsverhältnissen untersucht werden.
+        Bauen Sie dazu die Schaltung mit $R_V = 100\si{\ohm}$ nach Abbildung~\ref{fig:abb9} auf. Als Last $R_L$ verwenden Sie ein
+        Potentiometer ($0\ldots1000\si{\ohm}$) dem Sie zusätzlich einen $100\si{\ohm}$ Widerstand in Reihe schalten.
+        Als Eingangssignal $U_{Ein}$ stellen Sie am Signalgenerator des Oszilloskops ein Sinussignal
+        der Spannung $1 \si{\volt}_{pp}$ und der Frequenz $f = 500\si{\hertz}$ ein.
+
+        \vspace{0.5cm}
+
+        Messen Sie für die Windungsverhältnisse $N_1 : N_2 = 500 : 500$ und $N_1 : N_2 = 250 : 500$
+        die Primärspannung $U_1$ sowie die Sekundärspannung $U_2$ für verschiedene Lastwiderstände
+        ($100\ldots1000\si{\ohm}$) gemäß Tabelle~\ref{tab:mess2} und berechnen Sie zudem das Verhältnis $\frac{U_2}{U_1}$.
+        Übernehmen Sie Tabelle~\ref{tab:mess2} in ihr Protokoll und ergänzen Sie die zu ermittelnden Größen.
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{aufgabenBilder/abbildung9.png}
+                \caption{Versuchsaufbau des zweiten Teilversuchs: belasteter Transformator}
+                \label{fig:abb9}
+            \end{figure}
+        \end{center}
+
+        Tragen Sie für die beiden Windungsverhältnisse $N_1 : N_2 = 500 : 500$ und $N_1 : N_2 = 250 : 500$
+        das Spannungsübersetzungsverhältnis $U_2 / U_1$ über den Lastwiderstand $R_L$ auf und
+        diskutieren Sie ihre Ergebnisse.
+
+        \paragraph{Protokoll}
+        $ $
+        \begin{table}[H]
+            \begin{center}
+                \pgfplotstabletypeset[
+                multicolumn names, % allows to have multicolumn names
+                col sep=space, % the seperator in our .csv file
+                %string replace*={inf}{$\infty$},
+                %string type,
+                header=false,
+                display columns/0/.style={
+                column name=$R_L$, % name of first column
+                column type={S},string type},  % use siunitx for formatting
+                display columns/1/.style={
+                column name=$U_1$,
+                column type={S},string type},
+                display columns/2/.style={
+                column name=$U_2$,
+                column type={S},string type},
+                display columns/3/.style={
+                column name=$U_2 / U_1$,
+                column type={S},string type},
+                display columns/4/.style={
+                column name=$U_1$,
+                column type={S},string type},
+                display columns/5/.style={
+                column name=$U_2$,
+                column type={S},string type},
+                display columns/6/.style={
+                column name=$U_2 / U_1$,
+                column type={S},string type},
+                every head row/.style={
+                before row={\toprule \\ & \multicolumn{3}{c}{$500:500$} & \multicolumn{3}{c}{$250:500$}\\}, % have a rule at top
+                after row={
+                \si{\ohm} & \si{\volt} & \si{\volt} & & \si{\volt} & \si{\volt}\\
+                \midrule} % rule under units
+                },
+                every last row/.style={after row=\bottomrule},
+                ]{mess2.csv}
+                \caption{Messtabelle zu Versuch 5.2}
+                \label{tab:mess2}
+            \end{center}
+        \end{table}
+
+        %TODO Ergebnisse Diskutieren
+
+        \section{Kopplungsgrad}
+        \paragraph{Aufgabe}
+        In diesem Versuchsteil soll der Kopplungsgrad k des Transformators ($N_1 : N_2 = 500 : 500$)
+        bei den Frequenzen $f_1 = 500\si{\hertz}$ und $f_2 = 5000\si{\hertz}$ mit Hilfe der in Abschnitt 4.1
+        bestimmten Ausdrücke für $L_1$, $L_2$ und $M$ bestimmt werden. (Falls Sie diese Vorbereitungsaufgabe
+        nicht lösen konnten, sprechen Sie mit Ihrem Tutor). Zur Berechnung von $L_1$ und $M$
+        verwenden Sie den Aufbau nach~\ref{fig:abb10} um die Größen $U_1$ und $I_1$ zu ermitteln. Als
+        Eingangssignal erzeugen Sie wieder einen Sinus mit $U = 1\si{\volt}_{pp}$ mit Hilfe des
+        Signalgenerators des Oszilloskops. ($R_V = 100\si{\ohm}$)
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{aufgabenBilder/abbildung10.png}
+                \caption{Aufbau zur Ermittlung des Kopplungsgrades}
+                \label{fig:abb10}
+            \end{figure}
+        \end{center}
+
+        Für die Berechnung von $L_2$ muss der Primärstrom $I_1$, sowie der Kurzschlussstrom $I_2$
+        ermittelt werden. Bauen Sie hierzu die Schaltung nach~\ref{fig:abb11} auf. Geben Sie hier
+        einen Sinus der Spannung $U = 2\si{\volt}_{pp}$ auf die Schaltung und messen Sie die beiden Ströme
+        $I_1$ und $I_2$ mit Hilfe der schwarzen VOLTCRAFT-Multimeter (Messbereich mA, Wech-
+        selstrom) für die beiden Frequenzen $f_1$ und $f_2$. Beachten Sie, dass das Multimeter beim
+        Messen von Wechselgrößen den Effektivwert liefert!
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{aufgabenBilder/abbildung11.png}
+                \caption{Versuchsaufbau für die Kurzschlussmessungen zur Bestimmung des Kopplungsgrades}
+                \label{fig:abb11}
+            \end{figure}
+        \end{center}
+
+        Nachdem Sie die Größen $L_1$, $L_2$ und $M$ ermittelt haben, berechnen Sie den Kopplungsgrad
+        $k$ für die Frequenzen $f_1$ und $f_2$ und diskutieren Sie Ihre Ergebnisse.
+
+        \paragraph{Protokoll}
+        %TODO todo machen
+
+        \section{Frequenzabhängiges Übertragungsverhalten und Phasenschiebung unter Last}
+        \paragraph{Aufgabe}
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{aufgabenBilder/abbildung12.png}
+                \caption{Versuchsaufbau zur Messung des Übertragungsverhalten bei verschiedenen Frequenzen.}
+                \label{fig:abb12}
+            \end{figure}
+        \end{center}
+
+        In diesem letzten Aufgabenteil soll das frequenz- und lastabhängige Übertragungsverhalten
+        des Transformators untersucht werden.
+
+        \vspace{0.5cm}
+
+        Messen Sie hierzu mit dem in~\ref{fig:abb12} gezeigten Versuchsaufbau (Transformator mit
+        $N_1 = N_2 = 500$ Windungen) die Spannungen $U$ ein und $U_L$ mit Hilfe der beiden Eingangskanäle
+        des Oszilloskops als Funktion der Frequenz für die drei Lastwiderstandswerte
+        $R_L = \{100\si{\ohm}, 680 \si{\ohm}, 1 \si{k\ohm}\}$. Verwenden Sie hierfür die Sweep-Funktion der MATLAB GUI.
+        Setzen Sie die Quellenspannung $U_Q$ mit Hilfe der MATLAB GUI auf $1\si{\volt}$ (Z LOAD = high-Z).
+        Nehmen Sie den Betrag und die Phase des Frequenzgangs der Übertragungsfunktion
+        $U_2 /U_1 (\omega)$ für Frequenzen zwischen $100\si{\hertz}$ und $100\si{k\hertz}$ (logarithmisch verteilt mit 100
+        Frequenzpunkten) für die drei oben genannten Lastwiderstandswerte auf (Hinweis:
+        Ermitteln Sie zunächst den Amplitudengang mit der Funktion \glqq{}Sweep --- Frequency\grqq{} und
+        anschließend den Phasengang mit der Funktion \glqq{}Sweep --- Phase\grqq{}. Verwenden Sie bei der
+        Ermittlung des Phasengangs zur Verbesserung der Qualität der Phasenmessung 4 Mittelungen).
+
+        \vspace{0.5cm}
+
+        Tragen Sie Betrag und Phase von $U_2 /U_1 (\omega)$ für die drei Lastwiderstandswerte in
+        einem Bode-Diagramm auf. Diskutieren Sie Ihre Messwerte mit Hilfe Ihrer Ergebnisse aus
+        Abschnitt 4.2.
+
+        \paragraph{Protokoll}
+\end{document}
