@@ -12,3 +12,9 @@ script:
 - cd ../Versuch3
 - mkdir build
 - pdflatex -interaction=nonstopmode -halt-on-error -output-directory build main.tex
+- cd ../Versuch4
+- mkdir build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory build main.tex
+- cd ../Versuch5
+- mkdir build
+- pdflatex -interaction=nonstopmode -halt-on-error -output-directory build main.tex
