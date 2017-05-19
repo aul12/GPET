@@ -180,6 +180,14 @@ an einer Spule zu bestimmen}
             \end{figure}
         \end{center}
 
+        Es fällt auf, dass das grüne Spulensignal ($U_1$) sich nicht verhält wie
+        ein typischer Einschaltvorgang an einer Spule, sondern eine gedämpfte
+        harmonische Schwingung ausführt.
+
+        \textbf{Erklärung:} Die Spule, die neben ihrer Induktivität auch noch eine
+        parasitäre Kapazität aufweißt, führt bei Resonanzfrequenz eine harmonische
+        Schwingung aus, die durch den ohmschen Widerstand der Spule gedämpft wird.
+
         \subsubsection{Abschätzung der Kapazität}
         \paragraph{Aufgabe}
         Schätzen Sie mit Hilfe Ihrer Messung den Wert der parasitären Kapazität der
@@ -188,7 +196,7 @@ an einer Spule zu bestimmen}
         \paragraph{Protokoll}
         \begin{center}
             \begin{figure}[H]
-                \includegraphics[width=\textwidth]{scope_11.png}
+                \includegraphics[width=\textwidth]{scope_9.png}
                 \caption{Spannung an der Spule}
             \end{figure}
         \end{center}
@@ -200,10 +208,10 @@ an einer Spule zu bestimmen}
         abschätzen.
 
         \begin{eqnarray}
-            \Delta x &=& 1.275\si{m\second}\\
-            f_0 &=& \frac{5}{\Delta x} = 3922\si{\hertz}\\
+            \Delta x &=& 43.6\si{\mu\second}\\
+            f_0 &=& \frac{5}{\Delta x} = 114.678\si{k\hertz}\\
             f_0 &=& \frac{1}{2 \pi \sqrt{L C}}\\
-            \Leftrightarrow C &=& \frac{1}{{(2 \pi f_0)}^2 L} \approx 92\si{n\farad}
+            \Leftrightarrow C &=& \frac{1}{{(2 \pi f_0)}^2 L} \approx 0.11\si{n\farad}
         \end{eqnarray}
         %@TODO rgebnis, kleine Kap usw.
 
@@ -233,15 +241,19 @@ an einer Spule zu bestimmen}
         \begin{center}
             \begin{figure}[H]
                 \includegraphics[width=\textwidth]{scope_12.png}
-                \caption{Bestimmung der Frequenz}
+                \caption{Spannung am Kondensator}
             \end{figure}
         \end{center}
 
-            Aus Genauigkeitsgründen wurden fünf Perioden gemessen. Der Messcursor
-            wurde auf das jeweilige Maximum gesetzt, da die Nulldurchgänge ohne eine
-            klare Nullreferenz schwer zu bestimmen sind.
+        Das Bild zeigt die Spannung am Kondensator des LC-Kreises bei einer
+        steigenden Rechteckflanke des Eingangssignals.
+        Es ist eine gedämpfte harmonische Schwingung zu erkennen.
 
-            Die Frequenz lässt sich dann wie folgt wie berechnen:
+        Aus Genauigkeitsgründen wurden fünf Perioden gemessen. Der Messcursor
+        wurde auf das jeweilige Maximum gesetzt, da die Nulldurchgänge ohne eine
+        klare Nullreferenz schwer zu bestimmen sind.
+
+        Die Frequenz lässt sich dann wie folgt wie berechnen:
         \begin{center}
             \begin{eqnarray}
                 \Delta x &=& 1.275 \si{m \second}\\
@@ -332,6 +344,11 @@ an einer Spule zu bestimmen}
                 \caption{Bestimmung der Frequenz}
             \end{figure}
         \end{center}
+
+        Das Bild zeigt die Spannung die über Kondensator und
+        Potentiometer des LC-Kreises bei einer
+        steigenden Rechteckflanke des Eingangssignals abfällt.
+        Es ist eine gedämpfte harmonische Schwingung zu erkennen.
 
         Aus Genauigkeitsgründen wurden fünf Perioden gemessen. Der Messcursor
         wurde auf das jeweilige Maximum gesetzt, da die Nulldurchgänge ohne eine
@@ -444,6 +461,8 @@ an einer Spule zu bestimmen}
             \end{figure}
         \end{center}
 
+        Das aufgezeichnete Signal hat eine Amplitude von $\hat{U} \approx 5
+        \si{\volt}$ und eine Frequenz von $f \approx 3.7 \si{k\hertz}$.
 
         \subsection{Eisenkern}
         \paragraph{Aufgabe}
