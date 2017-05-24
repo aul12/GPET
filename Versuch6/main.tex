@@ -77,15 +77,36 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \paragraph{Protokoll}
     %TODO Vorbereitung: Innenwiderstand Oszi, Formel
     \begin{enumerate}
-        \item Mit Multimeter gemessenen Werte:
+        \item Mit Multimeter gemessene Werte:
             \begin{eqnarray*}
-                R &=& \si{\ohm}\\
-                C &=& \si{\farad}
+                R &=& 997\si{\ohm}\\
+                C &=& 2.23\si{\mu\farad}
             \end{eqnarray*}
+
+            Die gemessenen Werte weichen um weniger als $2\%$ von den angegebenen
+            Bauteilwerten ab.
         \item
-            \begin{equation*}
-                f_g = \si{\hertz}
-            \end{equation*}
+        Vorgehensweise:
+
+        Auf dem Oszilloskop werden die Ein-~und Ausgangsspannungen dargestellt und
+        mit der Measure-Funktion jeweils die Spitze-Spitze-Spannung bestimmt.
+        Dann wir die Frequenz der Eingangsspannung so lange verändert, bis
+        $\abs{\underline{U_2}} \approx 0.7 \cdot \abs{\underline{U_1}}$ gilt (siehe
+        Screenshot).
+
+        Bestimmte Grenzfrequenz:
+
+        \begin{equation*}
+            f_g \approx 76\si{\hertz} \pm 2\si{\hertz}
+        \end{equation*}
+
+        \begin{center}
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{scope_4.png}
+                \caption{Bestimmung der Grenzfrequenz}
+            \end{figure}
+        \end{center}
+
         \item
             Der RC-Tiefpass ist durch den Innenwiderstand des Oszilloskops
             belastet, das heißt: $R_L = R_{innen}$. Daraus folgt:
@@ -96,14 +117,15 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             \end{eqnarray*}
         \item
             \begin{eqnarray*}
-                R_{i,f_g} &=& \si{\ohm}\\
-                R_{i,f_g+1\%} &=& \si{\ohm}\\
-                R_{i,f_g-1\%} &=& \si{\ohm}\\
+                R_{i,f_g} &=& -1067\si{\ohm}\\
+                R_{i,f_g+1\%} &=& -1081\si{\ohm}\\
+                R_{i,f_g-1\%} &=& -1041\si{\ohm}\\
             \end{eqnarray*}
+            Offensichtlich können negative Widerstandswerte nicht sein.
         \item
             Mit Multimeter gemessener Innenwiderstand:
             \begin{equation*}
-                R_i = \si{\ohm}
+                R_i = 1.00\si{M\ohm}
             \end{equation*}
         \item
             Innenwiderstand laut Beschreibung:
@@ -111,6 +133,14 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                 R_i = 1 \si{M\ohm} \pm 2\%
             \end{equation*}
         \item \textbf{Fazit:}
+            Wie an den Ergebnissen zu erkennen ist, eignet sich dieses Verfahren
+            nicht zur Bestimmung von Innenwiderständen. Theoretisch sollte die
+            Vorgehensweise sinnvolle Ergebnisse liefern, da diese aber stark von
+            der bestimmten Grenzfrequenz abhängen, können schon sehr kleine
+            Ungenauigkeiten von weniger als $1\%$ die komplette Messung unbrauchbar
+            machen. Ein perfektes Beispiel dafür sind unsere Messergebnisse, die
+            trotz korrekter Rechnung und mehrfacher Messung physikalisch schlicht
+            und einfach keinen Sinn machen.
     \end{enumerate}
 
     \section{Zeitverhalten eines Hochpasses}
@@ -141,6 +171,43 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
     \paragraph{Protokoll}
     %TODO Formel
+    \begin{center}
+        \begin{figure}[H]
+            \includegraphics[width=\textwidth]{scope_1.png}
+            \caption{Messung des Maximalwerts mit Cursor}
+        \end{figure}
+    \end{center}
+    \begin{center}
+        \begin{figure}[H]
+            \includegraphics[width=\textwidth]{scope_0.png}
+            \caption{Messung von $\tau$ mit Cursor}
+        \end{figure}
+    \end{center}
+
+    \begin{center}
+        \begin{figure}[H]
+            \includegraphics[width=\textwidth]{scope_2.png}
+            \caption{Messung der Anstiegszeit mit Measure}
+        \end{figure}
+    \end{center}
+
+
+    Bei der Messung mit Cursor wurde aus genauigkeitsgründen $\tau$ bestimmt,
+    da man für die Anstiegszeit $t_a$ sonst $3$ Werte bestimmen muss, was zu
+    höheren Messungenauigkeiten führt. $t_a$ lässt sich dann wie folgt bestimmen:
+    \begin{eqnarray*}
+        \tau_{cursor} &=& 160 \si{\mu\second}\\
+        {t_a}_{cursor} &\approx& 2.2 \tau_{cursor} = 351 \si{\mu\second}\\
+        {t_a}_{measure} &=& 695.76 \si{\mu\second}\\
+        {t_a}_{theoretisch} &\approx& 2.2\tau = 2.2 \cdot RC = 483 \si{\mu\second}
+    \end{eqnarray*}
+
+    Man erkennt, dass der theoretische Wert zwischen beiden Messwerten liegt.
+    Interessant ist, dass der manuell bestimmte Wert näher am theoretischen liegt,
+    als der automatisch bestimmte. Bei der Messung mit measure ist aufgefallen,
+    dass sich die automatisch bestimmten Messpunkte ständig verändert haben, was
+    dann auch Änderungen von über $100\si{\mu\second}$ verursachte. Die Mesungenauigkeiten
+    bei der manuellen Messung lassen sich auf einen systematischen Fehler zurückführen.
 
     \section{Bandpass}
     \paragraph{Aufgabe}
@@ -161,12 +228,16 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \paragraph{Protokoll}
     \begin{center}
         \begin{figure}[H]
-            %\includegraphics[width=\textwidth]{abb19.png}
+            \includegraphics[width=\textwidth]{FS_53_frequencysweep_ylogxlog.jpg}
             \caption{Übertragungsfunktion des Bandpass}
             %\label{fig:abb19}
         \end{figure}
     \end{center}
-    %TODO Ergebniss diskutieren
+    Man erkennt, dass die Übertragungsfunktion zu den Extremwerten hin jeweils
+    gegen $-\infty$ abfällt und nur in der Mitte (in logarithmischer Darstellung)
+    des gemessenen Frequenzbandes  gegen 0 geht. Das bedeutet also, dass nur ein
+    bestimmtes Frequenzband ungedämpft bleibt (zwischen $10^3\si{\hertz}$ und
+    $10^4\si{\hertz}$). Eine solche Charakteristik ist typisch für einen Bandpassfilter
 
     \section{Bandsperre}
     \paragraph{Aufgabe}
@@ -180,18 +251,24 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Weiter soll das Übertragungsverhalten einer Bandsperre 1.Ordnung untersucht werden.
     Bauen Sie dazu die Bandsperre aus~\ref{fig:abb19} mit $R = 100 \si{\ohm}$ und $C = 2.2 \si{\mu\farad}$ auf. Als
     Induktivität verwenden Sie eine Spule mit 250 Windungen.
-    Nehmen Sie die Übertragungsfunktion mit Hilfe der Matlab-GUI (100 Punkte, $R_{i,f_g+1\%}$,
+    Nehmen Sie die Übertragungsfunktion mit Hilfe der Matlab-GUI (100 Punkte, $1\si{\volt}_{pp}$
     $100\si{\hertz}$–$100\si{k\hertz}$, log) auf und fügen Sie das Diagramm in Ihr Protokoll ein. Diskutieren
     Sie Ihre Ergebnisse.
     \paragraph{Protokoll}
     \begin{center}
         \begin{figure}[H]
-            %\includegraphics[width=\textwidth]{abb19.png}
+            \includegraphics[width=\textwidth]{FS_54_frequencysweep_ylogxlog.jpg}
             \caption{Übertragungsfunktion der Bandsperre}
             %\label{fig:abb19}
         \end{figure}
     \end{center}
-    %TODO Ergebniss diskutieren
+    Man erkennt, dass die Übertragungsfunktion zu den Extremwerten hin jeweils
+    gegen 0 und nur in der Mitte (in logarithmischer Darstellung)
+    des gemessenen Frequenzbandes  gegen $-\infty$ geht. Das bedeutet also, dass
+    ein bestimmtes Frequenzband herausgefiltert wird (zwischen $10^3\si{\hertz}$
+    und $10^4\si{\hertz}$). Eine solche Charakteristik ist typisch für eine
+    Bandsperre.
+
 
     \section{Frequenzbereich und Audio-Filterung}
     \paragraph{Aufgabe}
@@ -212,28 +289,59 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
     \paragraph{Protokoll}
     \begin{enumerate}
-        \item Die Störung befindet sich im Frequenzbereich von
+        \item Das Audiosignal wir überdeckt von einem tiefen Summen. Die Frequenz
+        des Störsignals liegt also schätzungsweise zwischen $20\si{\hertz}$ und
+        $500\si{\hertz}$.
         \item
-            Innenwiderstand des Kopfhörers:
+            Innenwiderstand des Kopfhörers bestimmt mit Multimeter:
             \begin{equation*}
-                R_i = \si{\ohm}
+                R_i = 37\si{\ohm} \pm 20\si{\ohm}
             \end{equation*}
+            Bemerkung:
+
+            Aufgrund der mangelhaften Qualität des Kopfhörers und der Kabel, ergaben
+            sich absolute Messungenauigkeiten von bis zu $20\si{\ohm}$.
         \item
-            Erklärung
             \begin{center}
                 \begin{figure}[H]
-                    %\includegraphics[width=\textwidth]{abb19.png}
+                    \includegraphics[width=\textwidth]{FS_55M_frequencysweep_ylogxlog.jpg}
                     \caption{Übertragungsfunktion des Hochpass mit Last}
-                    %\label{fig:abb19}
+                    \label{fig:abbM}
                 \end{figure}
             \end{center}
             \begin{center}
                 \begin{figure}[H]
-                    %\includegraphics[width=\textwidth]{abb19.png}
+                    \includegraphics[width=\textwidth]{FS_55O_frequencysweep_ylogxlog.jpg}
                     \caption{Übertragungsfunktion des Hochpass ohne Last}
-                    %label{fig:abb19}
+                    \label{fig:abbO}
                 \end{figure}
             \end{center}
-        \item Es spricht
+
+            Beide Verläufe zeigen die typischen Eigenschaften der Übertragungsfunktion
+            eines Hochpassfilters: Für kleine Frequenzen geht diese gegen $-\infty$
+            und für große Frequenzen gegen 0. In beiden Abbildungen ist außerdem
+            ein Peak bei der Grenzfrequenz zu erkennen. In Abb.~\ref{fig:abbO}
+            geht dieser Peak sogar weit über 0dB hinaus (bis ca. 18dB). Dies lässt
+            sich folgendermaßen erklären:
+
+            Der Hochpass aus Spule und Kondensator verhält sich zusätzlich wie
+            ein LC-Schwinkreis, der bei der Grenzfrequenz seine Resonanzfrequenz
+            besitzt. Bei dieser Frequenz findet also ein Überschwingen statt, da
+            am Ausgang mehr Spannung anliegt, als am Eingang. In Abb.~\ref{fig:abbM}
+            ist dieser Peak deutlich schwächer und reicht nicht über die 0dB hinaus.
+            Das ist durch die zusätzliche Dämpfung durch die Innenimpedanz des
+            Kopfhörers zu erklären. Diese Impedanz ist außerdem für die Verschiebung
+            der Grenzfrequenz in Abb.~\ref{fig:abbM} verantwortlich.
+
+            Zu guter Letzt ist in Abb.~\ref{fig:abbM} vermehrt Rauschen zu erkennen,
+            was einerseits durch die Indutivität des Kopfhörers, aber hauptsächlich
+            durch die schlechten Kopfhörerkabel verursacht wird.
+
+
+        \item
+            Im Vergleich zum Originalsignal lässt sich die Stimme deutlich besser
+            erkennen. Auch wenn es nicht möglich war, den Sprecher oder das Gesprochene
+            zu identifiziern, so konnte man trotzdem die gesprochene Sprache als
+            Englisch einordnen.
     \end{enumerate}
 \end{document}
