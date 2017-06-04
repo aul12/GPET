@@ -1,0 +1,175 @@
+\documentclass[10pt]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{relsize}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{pgfplotstable}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subcaption}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+%basicstyle=\color{red},
+breaklines=true,%
+morekeywords={matlab2tikz},
+keywordstyle=\color{blue},%
+morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+identifierstyle=\color{black},%
+stringstyle=\color{mylilas},
+commentstyle=\color{mygreen},%
+showstringspaces=false,%without this there will be a symbol in the places where there is a space
+%numbers=left,%
+%numberstyle={\tiny \color{black}},% size of the numbers
+%numbersep=9pt, % this defines how far the numbers are from the text
+emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+%emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+\setlength\parindent{0pt}
+
+\setcounter{chapter}{3}
+\setcounter{secnumdepth}{3}
+\setcounter{figure}{12}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{GPET Versuch 8}
+\rhead{Tim Luchterhand, Paul Nykiel}
+\cfoot{\thepage}
+
+\author{Tim Luchterhand, Paul Nykiel \protect\\ tim.luchterhand@uni-ulm.de, paul.nykiel@uni-ulm.de}
+\title{GPET Versuch 8 --- Karl-Ferdinand-Braun-Versuch}
+\subtitle{Gruppe: Dienstag14}
+
+\begin{document}
+    \maketitle
+    \section{Kennlinien von Ge- und Si-Dioden}
+    \begin{figure}[H]
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{abb13a.png}
+            \subcaption{}
+            \label{fig:abb13a}
+        \end{subfigure}
+        \begin{subfigure}{.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{abb13b.png}
+            \subcaption{}
+            \label{fig:abb13b}
+        \end{subfigure}
+        \caption{Messaufbau für die Kennlinienbestimmung im (a) Durchlassbereich und (b) Sperrbereich.}
+    \end{figure}
+    Nehmen Sie zunächst die Kennlinien einer Ge- und einer Si-Diode im Durchlassbereich
+    auf. Da die im Praktikum verwendeten Multimeter \textit{Agilent U1232A} im Bereich von $600\si{\mu \ampere}$
+    bis $10\si{m\ampere}$ sehr ungenaue Messwerte ausgeben müssen Sie stattdessen die Schaltung aus
+    Vorbereitungsaufgabe 2.2 verwenden, bei der Sie die Messschaltung aus Abbildung~\ref{fig:abb13a}
+    für die Spannungsmessung angepasst haben. Verwenden Sie auf alle Fälle einen Vorwider-
+    stand $R_V = 1\si{k\ohm}$, da die Dioden sonst zerstört werden können. Verwenden Sie Kanal CH1
+    oder CH2 der Spannungsquelle und und achten Sie auf einen maximalen Diodenstrom
+    von $20\si{m\ampere}$. Bei einem Vorwiderstand $R_V = 1\si{k\ohm}$ bedeutet dies, dass Sie maximal eine
+    Spannung von $20\si{\volt}$ anlegen dürfen. Sollten Sie mit dem Aufbau unsicher sein, sprechen
+    Sie Ihren Betreuer an.
+
+    Um die Messungen zu beschleunigen, sollten Sie das automatisierte Messskript, das in Ab-
+    schnitt 1.5 vorgestellt wurde, verwenden. Nehmen Sie pro Diode mindestens 30 Messwerte
+    auf.
+
+    Nehmen Sie anschließend die Kennlinien der beiden Diodentypen im Sperrbereich unter
+    Verwendung des Messaufbaus aus Abbildung~\ref{fig:abb13b} auf. Stellen Sie das Multimeter dabei
+    auf den Messbereich $\si{\mu \ampere}$. Achten Sie darauf, dass maximal $600\si{\mu \ampere}$ fließen und die
+    Diodenspannung $30\si{\volt}$ nicht übersteigt. Wenn Sie die Polarität der Multimeter richtig wählen,
+    erhalten Sie von vornherein das richtige Vorzeichen der Messwerte für Ihre Diodenkennlinie.
+
+    Kombinieren Sie die Messwerte für Sperr- und Durchlassbereich und tragen Sie die Di-
+    odenkennlinien unter Verwendung von MATLAB oder EXCEL in linearer Darstellung in
+    ein gemeinsames Diagramm ein. Zeichnen Sie außerdem ein weiteres Diagramm, das nur
+    den Durchlassbereich zeigt und bestimmen Sie die Schwellenspannung $U_S$ bei der $1\si{m\ampere}$
+    Strom fließt. Welche Unterschiede zwischen Ge- und Si-Dioden fallen Ihnen auf?
+    Tragen Sie nun jeweils die Kennlinien für den Durchlassbereich in halblogarithmischer
+    Darstellung auf. Bestimmen Sie nun den Emissionskoeffizienten n für die beiden Dioden-
+    typen. Betrachten Sie hierfür zunächst die halblogarithmische Kennlinie und begründen
+    Sie, warum Sie nur Messpunkte mit geringen Strömen ($I_D < 100\si{\mu\ampere}$) für die Bestimmung
+    des Serienwiderstandes wählen dürfen. Welchen weiteren Effekt könnten Sie mit einem
+    Messpunkt bei höheren Strömen berechnen?
+
+
+    \section{Kennlinie einer Z-Diode}
+    Nehmen Sie nun die Kennlinie der Zener-Diode auf und tragen Sie Sie in linearer Darstellung
+    in ein Diagramm ein. Für den Durchlassbereich verwenden Sie die modifizierte
+    Schaltung aus Aufgabe 2.2. Überlegen Sie wie die Messschaltung für die Zener-Diode für
+    den Sperrbereich aussehen muss und begründen Sie Ihre Entscheidung. Im Sperrbereich
+    dürfen maximal $20\si{m\ampere}$ fließen. Sollten Sie bezüglich des Messaufbaus unsicher sein, fragen
+    Sie Ihren Betreuer, da die Dioden ansonsten zerstört werden können.
+
+    \section{Begrenzerschaltungen}
+    Bauen Sie die Begrenzerschaltung aus Abbildung~\ref{fig:abb14} mit Silizium-Dioden auf und achten
+    Sie darauf, den korrekten Vorwiderstand zu verwenden. Varriieren Sie nun die Eingangsspannung
+    $U_{in}$ zwischen $-15\si{\volt}$ bis $15\si{\volt}$ in Schritten von $1\si{\volt}$ und nehmen Sie mit Hilfe des
+    Messkriptes sowohl die Eingangsspannung $U_{in}$ als auch die Ausgangsspannung $U_{out}$ mit
+    Hilfe zweier Multimeter auf.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{abb14.png}
+        \caption{Begrenzerschaltung mit zwei Dioden.}
+        \label{fig:abb14}
+    \end{figure}
+    In Aufgabe 2.3 haben Sie eine vereinfachte Form der Schaltung entworfen. Bauen Sie
+    diese auf und verifizieren Sie die Funktionalität indem Sie auch hier die
+    Ausgangscharakteristik messen. Stellen für beide Schaltungen die Ausgangsspannung als
+    Funktion der Eingangsspannung $U_{out} (U_{in})$ in einem gemeinsamen Diagramm dar.
+    Erklären Sie, wozu eine solche Schaltung eingesetzt werden könnte.
+
+    \section{Graetz-Gleichrichter}
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{abb15.png}
+        \caption{Messaufbau des Graetz-Gleichrichters mit Transformator.}
+        \label{fig:abb15}
+    \end{figure}
+    Bauen Sie den Brückengleichrichter nach Abbildung~\ref{fig:abb15} mit Silizium-Dioden auf.
+    Generieren Sie das Eingangssignal $U_{in}$ mit Hilfe des Frequenzgenerators im Oszilloskop, stellen
+    Sie dabei ein Sinussignal mit einer Amplitude von $U_{pp} = 5\si{\volt}$ und einer Frequenz von
+    $f_{in} = 1\si{k\hertz}$ ein.
+
+    Messen Sie für folgende Kombinationen aus $R_L$ und $C_L$ die zeitlichen Ausgangssignale mit
+    dem Oszilloskop und stellen Sie es zusammen mit dem Eingangssignal dar. Sie können
+    hierfür die MATLAB -GUI oder die Save-Funktion des Oszilloskopes nutzen. Bestimmen
+    Sie außerdem für jedes Ausgangssignal die Amplitude $U_{out,pp}$ der Restwelligkeit und den
+    RMS-Wert $U_{out,RMS}$ des Ausgangssignals.
+
+    \begin{enumerate}
+        \item $R_L  = 10\si{k \ohm}$, $C_L$ entfernt
+        \item $R_L  = 10\si{k \ohm}$, $C_L = 100\si{n\farad}$ (Die $100\si{n\farad}$ Kondensatoren sind
+            häufig aus einem früheren Versuch mit schwarzem Klebeband abgeklebt)
+        \item $R_L  = 10\si{k \ohm}, C_L = 2.2\si{m\farad}$
+        \item $R_L  = 1\si{k \ohm}, C_L = 2.2\si{\mu \farad}$
+    \end{enumerate}
+    Erklären Sie die Messergebnisse. Wieso wird der Transformator für diesen Messaufbau
+    benötigt?
+
+    \section{Leuchtdioden}
+    Messen Sie die Kennlinie einer LED im Durchlassbereich unter Verwendung der
+    modifizierten Schaltung aus Aufgabe 2.2 mit einem maximalen Strom von $20\si{m\ampere}$ und plotten
+    Sie die Kennlinie in linearer Darstellung.
+    Nehmen Sie nun an, Sie möchten zwei dieser LEDs mit einem Strom von $10\si{m\ampere}$ an
+    einer $5\si{\volt}$ Spannungsquelle betreiben. Schalten Sie die LEDs hierfür parallel oder seriell?
+    Begründen Sie Ihre Entscheidung, berechnen Sie einen passenden Vorwiderstand für die
+    LEDs und zeichnen Sie die fertige Schaltung auf.
+\end{document}
