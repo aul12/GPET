@@ -309,13 +309,20 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \begin{eqnarray*}
         &u_{out}& = A_1 u_1 + A_2 u_2 = -\frac{5}{3} u_1 -\frac{5}{2} u_2 =
         (-\frac{25}{12}\sin(\omega t) - \frac{25}{4})\si{\volt}\\
-        \Rightarrow &u_{out,Gleichanteil}& = -\frac{25}{4}\si{\volt} = -6.25\si{\volt}
+        \Rightarrow &u_{out,Gleichanteil}& = -\frac{25}{4}\si{\volt} = -6.25\si{\volt}\\
+        &abs{u_{out,Wechselanteil}}& = \frac{25}{12}\si{\volt} = 4,17 \si{\volt}\text{pp}
     \end{eqnarray*}
 
-    Die Messung bestätigt die Theorie:
-    \begin{equation*}
-        u_{out,Gleichanteil} = -6.35\si{\volt}
-    \end{equation*}
+    Aus der Messung ergeben sich folgende Werte:
+    \begin{eqnarray*}
+        u_{out,Gleichanteil} = -6.35\si{\volt}\\
+        u_{out,Wechselanteil} = -3.60\si{\volt}
+    \end{eqnarray*}
+
+    Hierbei ist zu erkennen, dass der Messwert der Gleichanteilsspannung nur um
+    ca.~$2\%$ vom theoretischen Wert abweicht, der Wert für den Wechselanteil jedoch
+    um fast $14\%$. Die höhere Messungenauigkeit beim zweiten Wert lässt sich durch
+    die frequenzabhängige Verstärkung des OPs erklären.
 
     \section{Auswertung einer Integrator-Schaltungen}
     \begin{center}
@@ -374,6 +381,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \begin{center}
         \begin{figure}[H]
             \includegraphics[width=\textwidth]{scope_9.png}
+            \label{fig:Zahn}
             \caption{Integration eines Sägezahnsignals}
         \end{figure}
     \end{center}
@@ -381,7 +389,10 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Durch den Integrator ändert sich ein am Eingang angelegtes Rechtscksignal
     zu einem dreiecksförmigen Signal.
 
-    Ein Sägezahnsignal wird durch Integrieren zu einem sinusartigen Signal.
+    Integriert man über ein Dreieck, so erhält man eine Parabel. Genau dies ist
+    in Grafik~\ref{fig:Zahn} zu sehen: Das integrierte Signal besteht aus abwechselnd
+    nach oben und nach unten geöffneten Parabeln, die aneinandergehängt wie ein
+    Sinus-Signal erscheinen.
 
     \vspace{1cm}
 
