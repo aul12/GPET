@@ -19,6 +19,7 @@
 \usepackage{listings}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage[europeanresistors]{circuitikz}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -80,15 +81,15 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     auf. Da die im Praktikum verwendeten Multimeter \textit{Agilent U1232A} im Bereich von $600\si{\mu \ampere}$
     bis $10\si{m\ampere}$ sehr ungenaue Messwerte ausgeben müssen Sie stattdessen die Schaltung aus
     Vorbereitungsaufgabe 2.2 verwenden, bei der Sie die Messschaltung aus Abbildung~\ref{fig:abb13a}
-    für die Spannungsmessung angepasst haben. Verwenden Sie auf alle Fälle einen Vorwider-
-    stand $R_V = 1\si{k\ohm}$, da die Dioden sonst zerstört werden können. Verwenden Sie Kanal CH1
+    für die Spannungsmessung angepasst haben. Verwenden Sie auf alle Fälle einen Vorwiderstand
+    $R_V = 1\si{k\ohm}$, da die Dioden sonst zerstört werden können. Verwenden Sie Kanal CH1
     oder CH2 der Spannungsquelle und und achten Sie auf einen maximalen Diodenstrom
     von $20\si{m\ampere}$. Bei einem Vorwiderstand $R_V = 1\si{k\ohm}$ bedeutet dies, dass Sie maximal eine
     Spannung von $20\si{\volt}$ anlegen dürfen. Sollten Sie mit dem Aufbau unsicher sein, sprechen
     Sie Ihren Betreuer an.
 
-    Um die Messungen zu beschleunigen, sollten Sie das automatisierte Messskript, das in Ab-
-    schnitt 1.5 vorgestellt wurde, verwenden. Nehmen Sie pro Diode mindestens 30 Messwerte
+    Um die Messungen zu beschleunigen, sollten Sie das automatisierte Messskript, das in
+    Abschnitt 1.5 vorgestellt wurde, verwenden. Nehmen Sie pro Diode mindestens 30 Messwerte
     auf.
 
     Nehmen Sie anschließend die Kennlinien der beiden Diodentypen im Sperrbereich unter
@@ -109,6 +110,49 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     des Serienwiderstandes wählen dürfen. Welchen weiteren Effekt könnten Sie mit einem
     Messpunkt bei höheren Strömen berechnen?
 
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{GeSiGes}
+        \caption{Vollständige Diodenkennlinie (Si-Diode in Schwarz, Ge-Diode in Blau)}
+    \end{figure}
+
+    Auffällig ist, dass der Diodenstrom bei der Germanium-Diode deutlich langsamer
+    ansteigt, als bei der Silizuim-Diode.
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{GeSiDurch}
+        \caption{Diodenkennlinie im Durchlassbereich (Si-Diode in Schwarz, Ge-Diode in Blau)}
+        \end{figure}
+        \begin{figure}[H]
+        \includegraphics[width=\textwidth]{GeSiDurchLog}
+        \caption{Logarithmische Diodenkennlinie in Durchlassrichtung (Si-Diode in Schwarz, Ge-Diode in Blau)}
+        \label{fig:logzeug}
+    \end{figure}
+
+
+    Der Emissionskoeffizient für die Germanium-Diode lässt sich folgendermaßen berechen:
+    \begin{eqnarray*}
+        U_1 &=& 0.15\si{\volt}\\
+        U_2 &=& 0.25\si{\volt}\\
+        I_1 &=& \SI{1.15e-5}{\ampere}\\
+        I_2 &=& \SI{1.8e-5}{\ampere}\\
+        n &=& \frac{U_2 - U_1}{U_T\ln\left(\frac{I_2}{I_1}\right)} = 8.58
+    \end{eqnarray*}
+
+    Für die Silizumdiode ergibt sich folgendes:
+    \begin{eqnarray*}
+        U_1 &=& 0.2\si{\volt}\\
+        U_2 &=& 0.5\si{\volt}\\
+        I_1 &=& \SI{1.7e-8}{\ampere}\\
+        I_2 &=& \SI{1.5e-5}{\ampere}\\
+        n &=& 1.7
+    \end{eqnarray*}
+
+    Bei der Bestimmung von n wurden nur Messpunkte betrachtet, bei denen der Diodendtrom
+    kleiner als $10^{-4}\si{\ampere}$ ist, betrachtet. Dies ist wichtig, da bei
+    höheren Strömen der Bahnwiderstand der Diode ins Gewicht fällt und die Steigung
+    der Kennlinie verändert (wie auch in~\ref{fig:logzeug} zu sehen).
 
     \section{Kennlinie einer Z-Diode}
     Nehmen Sie nun die Kennlinie der Zener-Diode auf und tragen Sie Sie in linearer Darstellung
@@ -117,6 +161,21 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     den Sperrbereich aussehen muss und begründen Sie Ihre Entscheidung. Im Sperrbereich
     dürfen maximal $20\si{m\ampere}$ fließen. Sollten Sie bezüglich des Messaufbaus unsicher sein, fragen
     Sie Ihren Betreuer, da die Dioden ansonsten zerstört werden können.
+
+    \paragraph{Protokoll}
+    Die Messschaltung muss im Sperrbereich identisch der Schaltung im Durchlassbereich
+    sein, da die Diode auch für Spannungen kleiner der Durchbruchspannung leitet.
+    Ohne den Widerstand würde die Diode sonst kurzgeschlossen. Im Durchlassbereich
+    verhält sich die Z-Diode wie eine normale Diode.
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{ZGes}
+        \caption{Diodenkennlinie der Zener-Diode}
+        \label{fig:ZDiode}
+    \end{figure}
+
+    Bemerkung: Wie aus Diagramm~\ref{fig:ZDiode} hervorgeht, besitzt die Z-Diode
+    eine Durchbruchspannung von ca.~$-9\si{\volt}$.
 
     \section{Begrenzerschaltungen}
     Bauen Sie die Begrenzerschaltung aus Abbildung~\ref{fig:abb14} mit Silizium-Dioden auf und achten
@@ -135,6 +194,18 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Ausgangscharakteristik messen. Stellen für beide Schaltungen die Ausgangsspannung als
     Funktion der Eingangsspannung $U_{out} (U_{in})$ in einem gemeinsamen Diagramm dar.
     Erklären Sie, wozu eine solche Schaltung eingesetzt werden könnte.
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{BegrGes}
+        \caption{Begrenzerschaltung (vereinfacht in blau, kompliziert in schwarz)}
+    \end{figure}
+
+    Die Begrenzerschaltung begrenzt Spannungen nach oben auf einen vorher
+    festgelegten Wert. Außerdem werden negative Spannungen unterdrückt. Dies ist
+    z.B.~dann sinnvoll, wenn man empfindliche Geräte, die kein zu hohen oder negative
+    Spannungen vertragen, absichern will.
 
     \section{Graetz-Gleichrichter}
     \begin{figure}[H]
@@ -158,11 +229,77 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item $R_L  = 10\si{k \ohm}$, $C_L$ entfernt
         \item $R_L  = 10\si{k \ohm}$, $C_L = 100\si{n\farad}$ (Die $100\si{n\farad}$ Kondensatoren sind
             häufig aus einem früheren Versuch mit schwarzem Klebeband abgeklebt)
-        \item $R_L  = 10\si{k \ohm}, C_L = 2.2\si{m\farad}$
+        \item $R_L  = 10\si{k \ohm}, C_L = 2.2\si{\mu\farad}$
         \item $R_L  = 1\si{k \ohm}, C_L = 2.2\si{\mu \farad}$
     \end{enumerate}
     Erklären Sie die Messergebnisse. Wieso wird der Transformator für diesen Messaufbau
     benötigt?
+
+    \paragraph{Protokoll}
+    $ $
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_4.png}
+        \caption{$R_L  = 10\si{k \ohm}$, $C_L$ entfernt}
+    \end{figure}
+
+    \begin{eqnarray*}
+        \hat{U} &=& 156\si{m\volt}\\
+        U_{RMS} &=& 68.3\si{m\volt}\\
+        \Rightarrow \omega &=& \frac{\hat{U}}{2.5\si{\volt}} = 0.0624
+    \end{eqnarray*}
+
+    Ein idealer Gleichrichter ohne Glättung würde den Betrag des Eingangssignals
+    ausgeben. Da aber die verwendeten Dioden erst ab einer gewissen Schwellspannung
+    durchschalten, gehen Spannungnen, die betragsmäßig kleiner sind als ca.
+    $0.7\si{\volt}$, verloren. Da hier zusätzlich kein Kondensator verwendet wurde,
+    gibt es auch keine Glättung und das Ausgangssignal ist eine oszillierende
+    positive Spannung.
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_5.png}
+        \caption{$R_L  = 10\si{k \ohm}$, $C_L = 100\si{n\farad}$}
+    \end{figure}
+
+    \begin{eqnarray*}
+        \hat{U} &=& 33\si{m\volt}\\
+        U_{RMS} &=& 72.2\si{m\volt}\\
+        \Rightarrow \omega &=& \frac{\hat{U}}{2.5\si{\volt}} = 0.0132
+    \end{eqnarray*}
+
+    Durch einen relativ kleinen Kondensator wird das Ausgangssignal leicht geglättet.
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_6.png}
+        \caption{$R_L  = 10\si{k \ohm}, C_L = 2.2\si{mu\farad}$}
+        \label{fig:FuckAll}
+    \end{figure}
+
+    \begin{eqnarray*}
+        \hat{U} &=& 27\si{m\volt}\\
+        U_{RMS} &=& 72.1\si{m\volt}\\
+        \Rightarrow \omega &=& \frac{\hat{U}}{2.5\si{\volt}} = 0.0108
+    \end{eqnarray*}
+
+    Bei einem Kondensator mit $C_L = 2.2\si{\mu\farad}$ ist die Glättung so stark,
+    dass nur noch ein fast konstantes Ausgangssignal gemessen wird.
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_7.png}
+        \caption{$R_L  = 1\si{k \ohm}, C_L = 2.2\si{\mu \farad}$}
+    \end{figure}
+
+    \begin{eqnarray*}
+        \hat{U} &=& 31\si{m\volt}\\
+        U_{RMS} &=& 11.92\si{m\volt}\\
+        \Rightarrow \omega &=& \frac{\hat{U}}{2.5\si{\volt}} = 0.0124
+    \end{eqnarray*}
+
+    Im Vergleich zu~\ref{fig:FuckAll} ist hier die Spannung des Ausgangssignals
+    kleiner, da ein kleinerer Widerstand verwendet wurde. Dadurch ist aber auch
+    die Amplitude und Restwelligkeit des Ausganssignals höher.
+
+    %TODO Restwelligkeit, RMS, Amplitude, Wieso Transformator
 
     \section{Leuchtdioden}
     Messen Sie die Kennlinie einer LED im Durchlassbereich unter Verwendung der
@@ -172,4 +309,35 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     einer $5\si{\volt}$ Spannungsquelle betreiben. Schalten Sie die LEDs hierfür parallel oder seriell?
     Begründen Sie Ihre Entscheidung, berechnen Sie einen passenden Vorwiderstand für die
     LEDs und zeichnen Sie die fertige Schaltung auf.
+
+    \subsection{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{LED}
+        \caption{Kennlinie der LED}
+        \label{fig:led}
+    \end{figure}
+
+    Wie aus Grafik~\ref{fig:led} hervorgeht müssten an der Diode $2\si{\volt}$
+    anliegen, damit ein Strom von $10\si{m\ampere}$ fließt. In einer Reihenschaltung
+    von zwei Dioden müsste am Vorwiderstand 1V abfallen. Bei einem Dieodenstrom
+    $I_D = I_{ges} = 10\si{m\ampere}$ ist dieser also $R_{vor} = 100\si{\ohm}$.
+    Eine Reihenschaltung ist deshalb sinnvoll, da sich beide Dioden nicht perfekt
+    gleich verhalten. Wenn z.B. eine der beiden Dioden bei einer niedrigeren
+    Schwellspannung durchschaltet, würde der gesamte Strom nur über diese Diode
+    fließen.
+    \vspace{0.5cm}
+    \begin{figure}[H]
+        \centering
+        \begin{circuitikz}
+            \draw (-3, 0) to[short] (0,0);
+            \draw (0,0) to[R=$R_{vor} \text{=} 100\si{\ohm}$] (0, -2);
+            \draw (0,-2) to[empty led] (0,-3);
+            \draw (0,-3) to[empty led] (0,-4);
+            \draw (-3, -4) to[battery1, l=$5\si{\volt}$] (-3, 0);
+            \draw (-3, -4) to[short] (0, -4);
+        \end{circuitikz}
+        \caption{Schaltung}
+    \end{figure}
+
 \end{document}
