@@ -171,7 +171,119 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \begin{enumerate}
         \item Arbeiten Sie weiterhin mit der Gleichspannung von $+5\si{\volt}$ als Versorgungsspannung
             $U_{DD}$. Begrenzen Sie den Strom auf $100\si{m\ampere}$.
+        \item Zur Generierung des Testsignals $U_{IN}$ soll ab jetzt der interne Frequenzgenerator
+            des Oszilloskops verwendet werden. Erzeugen Sie ein Rechtecksignal mit den
+            Potentialgrenzen $0\si{\volt}$ und $+5\si{\volt}$ bei einer Frequenz von $1\si{M\hertz}$. Messen Sie mit dem
+            Oszilloskop auf Kanal 1 zunächst das Testsignal und prüfen Sie dessen Richtigkeit.
+            Schließen Sie das Eingangssignal an wie in Abbildung~\ref{fig:abb14} dargestellt, verwenden Sie
+            hierfür ein BNC-Kabel.
+        \item Untersuchen Sie die Schaltung aus Abbildung~\ref{fig:abb14}. Verwenden Sie zunächst 100 Ohm
+            als Pull-Up. Entfernen Sie unbedingt das Amperemeter vom vorigen Versuch aus
+            der Schaltung, dieses würde die nachfolgenden Untersuchungen verfälschen.
+            \begin{figure}[H]
+                \includegraphics[width=\textwidth]{abb15.png}
+                \caption{Messung der Schaltzeiten}
+                \label{fig:abb15}
+            \end{figure}
+        \item Messen Sie mit dem Oszilloskop auf Kanal 2 über ein weiteres BNC-Kabel den
+            Schaltungsausgang $U_{OUT}$. Untersuchen Sie die Anstiegs- \& Abfallzeit der Schaltung.
+            Führen Sie die Messungen durch wie in Abbildung~\ref{fig:abb15} gezeigt. Messen Sie die Zeit
+            für das Fallen oder Steigen des Ausgangssignals zwischen 10\% und 90\% der Versorgungsspannung.
+            Verwenden Sie die Cursor-Funktion des Oszilloskops manuell, da
+            die automatische Messung der Anstiegs- \& Abfallzeit durch das hohe Schwingungsverhalten
+            der Schaltung meist überfordert ist.
+            \begin{itemize}
+                \item \textbf{
+                        Wie lange dauert es, ausgehend von 10\% $U_{DD}$, bis ausgangsseitig
+                        erstmals 90\% $U_{DD}$ anliegen (Anstiegszeit, $t_{rise}$)?
+                    }
+                \item \textbf{
+                        Wie lange dauert es, ausgehend von 90\% $U_{DD}$, bis ausgangsseitig
+                        erstmals 10\% $U_{DD}$ anliegt (Abfallzeit, $t_{fall}$)?
+                    }
+                \item \textbf{
+                        Bestimmen Sie die theoretische Maximalfrequenz mit der die Schaltung,
+                        basierend auf den Messungen, gerade noch funktionieren kann.
+                    }
+            \end{itemize}
+        \item Tauschen Sie den Widerstand $R$ aus. Verwenden Sie nun 1 kOhm. \textbf{Messen Sie
+            erneut die Schaltzeiten.}
+            %TODO Tabelle
+        \item \textbf{
+                Nennen Sie Vor- \& Nachteil(e) eines großen Pull-Up-Widerstands.
+                }
     \end{enumerate}
 
+    \section{CMOS Grundschaltungen}
+    \subsection{CMOS-Inverter}
+    Um die CMOS-Logik mit den vorher untersuchten Technologien vergleichen zu können,
+    wird auch in diesem Versuch zunächst ein Inverter aufgebaut. Dabei wird der Pull-Up-
+    Widerstand ganz einfach durch einen p-Kanal MOSFET ersetzt.
+
+    \subsection{Stromverbrauch und Ausgangsspanne des CMOS-Inverters}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{abb16.png}
+        \caption{Aufbau: CMOS-Inverter, konstante Eingangsspannung}
+        \label{fig:abb16}
+    \end{figure}
+    \begin{itemize}
+        \item Verwenden Sie $+5\si{\volt}$ als Versorgung $U_{DD}$ mit Strombegrenzung auf $100\si{m\ampere}$.
+        \item Bauen Sie die Schaltung aus Abbildung~\ref{fig:abb16} mit einem n-Kanal MOSFET und einem
+            p-Kanal MOSFET auf.
+        \item Legen Sie den Schaltungseingang $U_{IN}$ auf festes Potential \textit{GND}. \textbf{Messen Sie die
+            Ausgangsspannung $U_{OUT}$. Messen Sie den Strom, den der Inverter verbraucht.}
+        \item Verbinden Sie $U_{IN}$ mit der Versorgungsspannung. \textbf{Messen Sie erneut
+            Ausgangsspannung $U_{OUT}$ und Stromverbrauch des Inverters.}
+            %TODO Tabelle
+        \item \textbf{Vergleichen Sie die Ergebnisse mit denen des nMOS-Inverters.}
+    \end{itemize}
+
+    \subsection{Dynamik des CMOS-Inverters}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{abb17.png}
+        \caption{Aufbau: CMOS-Inverter, Dynamikuntersuchung}
+        \label{fig:abb17}
+    \end{figure}
+    \begin{enumerate}
+        \item Verwenden Sie weiter $+5\si{\volt}$ für $U_{DD}$. Begrenzen Sie den Strom auf $100\si{m\ampere}$.
+        \item Das Testsignal $U_{IN}$ soll erzeugt werden, wie im Versuch mit dem nMOS-Inverter.
+            Generieren Sie ein Rechtecksignal mit Potentialgrenzen $0\si{\volt}$ und $+5\si{\volt}$ bei einer
+            Frequenz von $1\si{M\hertz}$.
+        \item Untersuchen Sie die Schaltung aus Abbildung~\ref{fig:abb17} (entfernen Sie das Amperemeter).
+        \item Messen Sie mit dem Oszilloskop auf Kanal 2 den Schaltungsausgang $U_{OUT}$. Untersuchen
+            Sie abermals die Dynamik. Führen Sie die Messung durch wie beim nMOS-Inverter.
+            \begin{itemize}
+                \item \textbf{
+                        Messen Sie die Anstiegszeit $t_{rise}$.
+                    }
+                \item \textbf{
+                        Messen Sie die Abfallzeit $t_{fall}$.
+                    }
+                \item \textbf{
+                        Bestimmen Sie die theoretische Maximalfrequenz mit der die
+                        Schaltung, basierend auf den Messungen, gerade noch funktionieren kann.
+                    }
+            \end{itemize}
+        \item \textbf{
+            Welche Bauweise für einen Inverter würden Sie vorziehen? Vergleichen
+            Sie die untersuchten Varianten und begründen Sie Ihre Wahl.
+        }
+    \end{enumerate}
+
+    \subsection{CMOS-NOR}
+    \begin{itemize}
+        \item Verwenden Sie eine Gleichspannung von $+5\si{\volt}$ als Versorgungsspannung $U_{DD}$.
+            Begrenzen Sie den Strom auf $100\si{m\ampere}$.
+        \item Bauen Sie das CMOS-NOR entsprechend Ihrer Vorbereitung auf.
+        \item Verifizieren Sie die Wahrheitstabelle, indem Sie die Eingänge $U_A$ und $U_B$
+            entsprechend mit den Potentialen \textit{GND} und $U_{DD}$ belegen.
+
+            \vspace{0.1cm}
+
+            \textbf{
+                Messen Sie den Schaltungsausgang mit dem Multimeter und vergleichen
+                Sie mit der Tabelle aus ihrer Vorbereitung.
+            }
+    \end{itemize}
 
 \end{document}
