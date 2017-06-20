@@ -86,6 +86,10 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item Wie viel Strom fließt durch die Spule des Relais?
     \end{enumerate}
 
+    \paragraph{Protokoll}
+
+    Gemessener Schaltstrom: $I_{Schalt} = 0.038\si{\ampere}$
+
     \subsection{Dynamik des Relais}
     Um die Tauglichkeit des Relais als Schalter für die Digitaltechnik zu untersuchen, wird
     im Folgenden ein Inverter nach Abbildung~\ref{fig:abb12} aufgebaut. Das dynamische Verhalten des
@@ -131,6 +135,53 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             \end{itemize}
     \end{enumerate}
 
+    \paragraph{Protokoll}
+    Bestimmung der Reaktionszeit:
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{scope_0.png}
+        \caption{Reaktionszeit bei steigender Flanke}
+        \label{fig:RisingEdgeRelais}
+    \end{figure}
+
+
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{scope_1.png}
+        \caption{Reaktionszeit bei fallender Flanke}
+        \label{fig:FallingEdgeRelais}
+    \end{figure}
+
+    Aus Grafik~\ref{fig:RisingEdgeRelais} und Grafik~\ref{fig:FallingEdgeRelais}
+    ergibt sich:
+    \begin{eqnarray*}
+        t_{rise} &\approx& 17\si{m\second}\\
+        t_{fall} &\approx& 8\si{m\second}
+    \end{eqnarray*}
+
+    Die maximale Frequnz lässt sich wie folgt ermitteln:
+
+    \begin{eqnarray*}
+        t_{\max} &:=& \max \{ t_{rise}, t_{fall} \} \approx 17\si{m\second}\\
+        \Rightarrow f_{\max} &=& \frac{1}{2 \cdot t_{\max} } = 29\si{\hertz}
+    \end{eqnarray*}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=\textwidth]{scope_2.png}
+        \caption{Maximale Frequenz}
+        \label{fig:MaxFreqRelais}
+    \end{figure}
+
+    Aus Grafik~\ref{fig:MaxFreqRelais} ergibt sich: $f_{\max,mess} \approx 33\si{\hertz}$.
+
+    Die Messung bestätigt die Theorie: Wie im Bild zu erkenne, arbeitet das Relais nicht
+    mehr ordnungsgemäß und das Ausgangssignal ist kaum noch zu erkennen. Dies ist
+    also die höchste Frequenz, bei der das Relais gerade noch reagiert.
+    Daher eignen sich Relais nicht für hohe Frequenzen, da sie aufgrund der mechanischen
+    Trägheit schon niederfrequente Signale nicht schalten können.
+
     \section{nMOS-Inverter mit Widerstand}
     Es wird nun an Stelle des elektromechanischen Bauelements der rein elektrisch
     arbeitende Transistor verwendet. Dabei soll die theoretisch besprochene Problematik der
@@ -158,8 +209,46 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item Tauschen Sie den Widerstand $R$ aus. Verwenden Sie jetzt den 1 kOhm - Widerstand
             und wiederholen Sie die Messungen aus den vorigen beiden Schritten.
             Beachten Sie, welche Werte sich ändern.
-            %TODO Tabellen
     \end{enumerate}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            \toprule
+            $U_{in}$ & $U_{out}$ & $I_{ges}$\\
+            \midrule
+            GND & $5.016\si{\volt}$ & $0\si{\ampere}$ \\
+            $U_{DD}$ & $0.0823\si{\volt}$ & $0.049\si{\ampere}$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Messung für $R = 100\si{\ohm}$}
+    \end{table}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            \toprule
+            $U_{in}$ & $U_{out}$ & $I_{ges}$\\
+            \midrule
+            GND & $5.014\si{\volt}$ & $0\si{\ampere}$\\
+            $U_{DD}$ & $0.0080\si{\volt}$ & $0.004\si{\ampere}$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Messung für $R=1\si{k\ohm}$}
+    \end{table}
+
+    Bei beiden Aufbauten invertiert die Schaltung das angelegte Eingangssignal.
+    Bei beiden Schaltungen erreicht $U_{out}$ nie genau 0V bei $U_{in} = 5\si{\volt}$
+    und es fließt immer ein Schaltstrom.
+
+    Es fällt aber auf, dass beim Inverter mit $R = 1\si{k\ohm}$ der Low-Pegel um
+    einen Faktor 10 geringer ist, als bei der Schaltung mit $R = 100\si{\ohm}$.
+    Auch der Schaltstrom ist beim zweiten Aufbau um ca.~einen Faktor 10 geringer.
+
+    Ein großer Widerstand verbessert also die erwünschten digitalen Eigenschaften
+    des Inverters.
 
 
     \subsection{Dynamik des nMOS-Inverters}
@@ -208,11 +297,46 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             \end{itemize}
         \item Tauschen Sie den Widerstand $R$ aus. Verwenden Sie nun 1 kOhm. \textbf{Messen Sie
             erneut die Schaltzeiten.}
-            %TODO Tabelle
         \item \textbf{
                 Nennen Sie Vor- \& Nachteil(e) eines großen Pull-Up-Widerstands.
                 }
     \end{enumerate}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_4.png}
+        \caption{Anstiegszeit beim nMOS-Inverter mit $R = 100\si{\ohm}$}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_3.png}
+        \caption{Abfallzeit beim nMOS-Inverter mit $R = 100\si{\ohm}$}
+    \end{figure}
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_6.png}
+        \caption{Anstiegszeit beim nMOS-Inverter mit $R = 1\si{k\ohm}$}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_5.png}
+        \caption{Abfallzeit beim nMOS-Inverter mit $R = 1\si{k\ohm}$}
+    \end{figure}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc}
+            \toprule
+            $R$ & $t_{rise}$ & $t_{fall}$ & $f_{\max}$\\
+            \midrule
+            $100\si{\ohm}$ & $18.9\si{n\second}$ & $11.9\si{n\second}$ & $26.5\si{M\hertz}$\\
+            $1\si{k\ohm}$ & $294.4\si{n\second}$ & $11.4\si{n\second}$ & $1.7\si{M\hertz}$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Anstiegs- und Abfallszeiten}
+    \end{table}
+
+    Im Gegensatz zum Inverter im Gleichspannungsbetrieb fällt hier auf, dass ein
+    großer Widerstand die maximale Betriebsfrequenz verringert.
 
     \section{CMOS Grundschaltungen}
     \subsection{CMOS-Inverter}
@@ -234,9 +358,27 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             Ausgangsspannung $U_{OUT}$. Messen Sie den Strom, den der Inverter verbraucht.}
         \item Verbinden Sie $U_{IN}$ mit der Versorgungsspannung. \textbf{Messen Sie erneut
             Ausgangsspannung $U_{OUT}$ und Stromverbrauch des Inverters.}
-            %TODO Tabelle
         \item \textbf{Vergleichen Sie die Ergebnisse mit denen des nMOS-Inverters.}
     \end{itemize}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+            \toprule
+            $U_{in}$ & $U_{out}$ & $I_{ges}$ \\
+            \midrule
+            GND & $5.013\si{\volt}$ & $0\si{\ampere}$\\
+            $U_{DD}$ & $0.0\si{\volt}$ & $0\si{\ampere}$\\
+            \bottomrule
+        \end{tabular}
+        \caption{Messwerte zum CMOS-Inverter}
+    \end{table}
+
+    Der CMOS-Inverter besitzt im Gegensatz zum einfachen nMOS-Inverter ideale
+    Eigenschaften: Es fließt kein messbarer Schaltstrom und die High- und Low-Pegel
+    liegen genau bei $U_{DD}$ und GND.
 
     \subsection{Dynamik des CMOS-Inverters}
     \begin{figure}[H]
@@ -270,6 +412,31 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         }
     \end{enumerate}
 
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_8.png}
+        \caption{Anstiegszeit des CMOS-Inverters}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_7.png}
+        \caption{Abfallzeit des CMOS-Inverters}
+    \end{figure}
+
+    Aus den Messungen ergeben sich:
+    \begin{eqnarray*}
+        t_{rise} &=& 53.5\si{n\second}\\
+        t_{fall} &=& 18.6\si{n\second}\\
+        \Rightarrow f_{\max} &=& 9.35\si{M\hertz}
+    \end{eqnarray*}
+
+    Im Vergeich zum nMos-Inverter mit kleinem Widerstand ist der CMOS-Inverter nur
+    um ca.~einen Faktor 3 langsamer, dafür sind die Schalteigenschaften deutlich
+    besser. Je nach Anwendung sollte man sich also zwischen nMos mit kleinem Widerstand
+    für maximale Geschwindigkeit oder für den CMOS für besonders gute Schalteigenschaften
+    und Energieeffizienz entscheiden.
+
+
     \subsection{CMOS-NOR}
     \begin{itemize}
         \item Verwenden Sie eine Gleichspannung von $+5\si{\volt}$ als Versorgungsspannung $U_{DD}$.
@@ -285,5 +452,24 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                 Sie mit der Tabelle aus ihrer Vorbereitung.
             }
     \end{itemize}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{ccc}
+        \toprule
+        $U_A$ & $U_B$ & $U_{out}$\\
+        \midrule
+        $0\si{\volt}$ & $0\si{\volt}$ & $5\si{\volt}$\\
+        $5\si{\volt}$ & $0\si{\volt}$ & $4.7\si{m\volt}$\\
+        $0\si{\volt}$ & $5\si{\volt}$ & $0\si{\volt}$\\
+        $5\si{\volt}$ & $5\si{\volt}$ & $2.3\si{m\volt}$\\
+        \bottomrule
+        \end{tabular}
+        \caption{Wahrheitstabelle des CMOS-NOR}
+    \end{table}
+
+    Die Schaltung weißt die erwartete Charakteristik eines NOR-Gatters auf.
 
 \end{document}
