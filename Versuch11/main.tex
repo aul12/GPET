@@ -1,0 +1,210 @@
+\documentclass[10pt]{scrreprt}
+\usepackage[utf8]{inputenc}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{commath}
+\usepackage[ngerman]{babel}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{relsize}
+\usepackage{pgfplots}
+\usepackage{csvsimple}
+\usepackage{pgfplotstable}
+\usepackage{siunitx}
+\usepackage{fancyhdr}
+\usepackage{color}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[europeanresistors]{circuitikz}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+
+\lstset{language=Matlab,%
+%basicstyle=\color{red},
+breaklines=true,%
+morekeywords={matlab2tikz},
+keywordstyle=\color{blue},%
+morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+identifierstyle=\color{black},%
+stringstyle=\color{mylilas},
+commentstyle=\color{mygreen},%
+showstringspaces=false,%without this there will be a symbol in the places where there is a space
+%numbers=left,%
+%numberstyle={\tiny \color{black}},% size of the numbers
+%numbersep=9pt, % this defines how far the numbers are from the text
+emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+%emph=[2]{word1,word2}, emphstyle=[2]{style},
+}
+
+\setlength\parindent{0pt}
+
+\setcounter{chapter}{4}
+\setcounter{secnumdepth}{2}
+\setcounter{section}{0}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{GPET Versuch 11}
+\rhead{Tim Luchterhand, Paul Nykiel}
+\cfoot{\thepage}
+
+\author{Tim Luchterhand, Paul Nykiel \protect\\ tim.luchterhand@uni-ulm.de, paul.nykiel@uni-ulm.de}
+\title{GPET Versuch 11 --- George Boole - voll integriert!}
+\subtitle{Gruppe: Dienstag14}
+
+\begin{document}
+    \maketitle
+
+    \section{Volladdierer}
+    Zunächst sollen Sie mit der Aufteilung des PCB-Boards vertraut werden und den Umgang
+    mit den Laborkabeln anhand eines einfachen Beispiels verinnerlichen.
+    \begin{enumerate}
+        \item Bauen Sie einen Volladdierer gemäß Ihrer Vorbereitung auf. Realisieren Sie die
+            Variante, die nur zwei Logikbausteine erfordert.
+        \item Verifizieren Sie die Wahrheitstabelle und zeigen Sie den Aufbau Ihrem Betreuer.
+    \end{enumerate}
+
+    \section{Ermittlung der Logikfunktion}
+    Beginnen Sie zunächst damit, die Ihnen unbekannte Schaltung A in Bereich (E) zu
+    untersuchen.
+    \begin{enumerate}
+        \item Erstellen Sie die Wahrheitstabelle der unbekannten Funktion.
+        \item Ermitteln Sie mit Hilfe eines KV-Diagramms die minimierte Normalform der
+            Schaltung. Lassen Sie Ihr Ergebnis durch Ihren Tutor überprüfen. Sie können sich nun
+            die Schaltung in der Black-Box ansehen und Ihre Lösung verifizieren.
+    \end{enumerate}
+
+    \section{Aufspüren eines Schaltungsdefektes}
+    Die zweite Schaltung (B) ist identisch zur soeben untersuchten, jedoch weicht ihr Verhal-
+    ten auf Grund eines Defektes ab. Ein Knoten des Schaltnetzes ist stets auf konstantem
+    Potenzial, unabhängig von der Belegung der Eingänge (stuck-at-0/1-Problem). Im Fol-
+    genden sollen Sie Art und Ort des Defektes bestimmen.
+    \begin{enumerate}
+        \item Erstellen Sie auch für dieses Schaltnetz die Wahrheitstabelle (Sch.B).
+        \item Welcher Baustein auf dem \textit{DigiBoard} eignet sich, um auf den ersten Blick
+            Unterschiede im Verhalten der beiden Schaltungen zu erkennen?
+        \item Nutzen Sie einen solchen Baustein um die Unterschiede des Verhaltens der beiden
+            Schaltungen zu ermitteln und stellen Sie diese in einer Tabelle (Differenz) dar.
+        \item Betrachten Sie nur die Knoten $K_1$ - $K_3$. Finden Sie geeignete Testvektoren, um
+            etwaige Defekte aufzuspüren:
+        \item Ermitteln Sie Ort und Art des Defektes.
+    \end{enumerate}
+
+    \section{Doppel-XOR}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{abb14.png}
+        \caption{Versuch mit Doppel-XOR}
+        \label{fig:abb14}
+    \end{figure}
+    Bauen Sie zunächst eine Schaltung aus 2 Quad-XORs gemäß Abbildung~\ref{fig:abb14} auf. Die
+    mit 4 gekennzeichneten Pfeile stehen für einen Bus mit vier Adern, das heißt, die dort
+    gezeigte Schaltung ist vier mal parallel aufzubauen. Verwenden Sie sowohl für die vier
+    \textit{Inputs} als auch für die vier \textit{Code}-Eingänge jeweils vier zusammenhängende Schalter aus
+    Bereich (B), mit denen Sie zwischen \textit{GND} und $V_{DD}$ wechseln können. Wenn Sie die vier
+    \textit{Intermediate}-Signale und die vier \textit{Outputs} auf die LED-Bank in Bereich (G) legen, können
+    Sie die Zustände gut vergleichen. Es bietet sich an, die vier zusammengehörenden Signale
+    jeweils auf eine Reihe der LED-Bank zu geben und die selbe Reihenfolge zu nutzen.
+    Stellen Sie nun eine beliebige aber konstante Eingangskombination für die vier \textit{Inputs}
+    ein.
+    \begin{enumerate}
+        \item Welcher Effekt lässt sich an den Ausgängen (\textit{Intermediate} und \textit{Output}) beobachten,
+            wenn Sie bei konstanten \textit{Input}-Eingängen eine andere Kombinationen auf die \textit{Code}-
+            Eingänge geben?
+        \item Welcher Effekt lässt sich an den Ausgängen (\textit{Intermediate} und \textit{Output}) beobachten,
+            wenn Sie nun nur die \textit{Input}-Eingänge variieren?
+        \item Wie lässt sich dieser Effekt mit Hilfe der Booleschen Gleichungen ausdrücken und
+            belegen? Zeigen Sie, dass $a \oplus b \oplus b = a$ gilt.
+        \item Wofür könnte die Schaltung genutzt werden?
+    \end{enumerate}
+
+    \section{Verwendung der digitalen Oszilloskop-Eingänge}
+    Einführend sollen Sie die Gatterlaufzeiten eines AND, NOR, NOT und eines XOR
+    ermitteln. Hierfür werden Sie die digitalen Eingänge des Oszilloskops verwenden.
+
+    \subsection{Bereitstellung geeigneter Eingangssignale}
+    Sie können mit Hilfe des Taster \textit{CLK} aus Bereich (C) eine entprellte Flanke erzeugen.
+    Verwenden Sie auf jeden Fall nur diesen Taster, da die anderen Schalter nicht entprellt
+    sind und die Messung dadurch verfälscht werden könnte. Die benachbarte LED zeigt den
+    aktuellen Pegel an. Sie benötigen zusätzlich zwei Jumper; mit dem Einen verbinden Sie
+    den \textit{CLK}-Taster mit der \textit{CLK}-Leitung, mit dem Zweiten verbinden Sie in Bereich (F)
+    eine der Buchsen mit der \textit{CLK}-Leitung. Anschließend können Sie an dieser Buchse die
+    Flanke abgreifen. Führen Sie dieses Signal sowohl auf einen Eingang des zu vermessenden
+    Gatters, als auch auf einen \textit{Output} in Bereich (G), sodass Sie am Oszilloskop auf die
+    Flanke triggern können. Abbildung~\ref{fig:abb15} verdeutlicht die benötigten Schritte nochmals.
+    Beschalten Sie den zweiten Eingang des zu vermessenden Gatter so, dass die erzeugte
+    Flanke zu einem Zustandswechsel führt.
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{abb15.png}
+        \caption{Abgreifen einer entprellten Flanke}
+        \label{fig:abb15}
+    \end{figure}
+
+    \subsection{Einstellungen am Oszilloskop}
+    Verbinden Sie auf Seiten des \textit{DigiBoards} die Kabelpeitsche mit der Pin-Leiste in Bereich
+    (G) und achten Sie dabei auf die Beschriftung der einzelnen Kabel. Das Ende mit dem
+    Flachbandkabel kann an der Frontseite des Oszilloskops eingesteckt werden. Setzen Sie
+    das Oszilloskop mittels \framebox{Default Setup} zurück und deaktivieren Sie die analogen Kanäle
+    1 und 2. Per \framebox{Digital} gelangen Sie in das Menü zur Konfiguration der digitalen Eingänge.
+    Mit den kontextabhängigen Knöpfen unterhalb des Displays wählen sie zunächst die richtige
+    Schwellwerteinstellung für CMOS-Gatter (0V-5V, Schwelle ist 2,5V). Sie können nun
+    zur Erhöhung der Übersichtlichkeit die Amplitude der Darstellung im Display anpassen
+    und nur die benötigten Digital-Eingänge anwählen. Im \framebox{Trigger}-Menü können Sie schließ-
+    lich den digitalen Eingang auswählen, der die Flanke liefert. Führen Sie dann die entspre-
+    chenden Messungen als Einzelmessung über \framebox{Single} durch. Ermitteln Sie die Laufzeiten
+    für die Gatter AND, NOR, NOT und XOR.
+
+    \section{Zeitverhalten der Gattersignale}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{abb13.png}
+        \caption{Timing Diagramm einer digitalen Schaltung}
+        \label{fig:abb13}
+    \end{figure}
+    Wir wollen den Glitch aus der Vorbereitungsaufgabe nachvollziehen.
+    \begin{enumerate}
+        \item Bauen Sie die Schaltung gemäß der Vorbereitungsfrage auf und verifizieren Sie die
+            Wahrheitstabelle.
+        \item Wählen Sie für $x$ den Kanal 7 und führen sie alle weiteren Signale gemäß Abbildung
+            \ref{fig:abb13} auf die weiteren Ausgänge ($x \rightarrow 7 \ldots o \rightarrow 1$). Dadurch lässt sich die Ausbreitung
+            der Signale innerhalb der Schaltung gut beobachten.
+            Wir wollen nun das Timing-Diagramm nachmessen. Hierfür setzen Sie $x = z = 1$
+            und erzeugen mit Hilfe des \textit{CLK}-Tasters eine fallende Flanke auf $y$. Am Ozilloskop
+            triggern Sie nun auf den Kanal, der die fallende Flanke von y führt. Stellen Sie am
+            Oszilloskop eine geeignete zeitliche Auflösung ein, um sowohl die fallende Flanke
+            als auch den Glitch sehen zu können. Messen Sie alle Signale der Schaltung und
+            fügen Sie einen screenshot in Ihr Protokoll ein. Lassen Sie die Schaltung für den
+            folgenden Versuch aufgebaut.
+            \subsubsection{Hinweis}
+            Sollten Sie den Glitch nicht sehen obwohl sich die Schaltung ansonsten erwartungsgemäß verhält,
+            versuchen Sie andere UND-Gatter zu verwenden. Durch Toleranzen
+            der Bauteillaufzeiten kann es im \glqq{}ungünstigsten\grqq{} Fall passieren, dass der Glitch
+            zufällig unterdrückt wird.
+    \end{enumerate}
+
+    \section{Gegenmaßnahmen bei Glitches}
+    Der gemessene Glitch ist eine Folge der absoluten Minimierung der Normalform. Glitches
+    können immer auftreten, wenn im KV-Diagramm keine Überdeckungen zwischen den
+    Termen bestehen. Im Rückschluss können Hazards vermieden werden, indem man durch
+    Hinzufügen von Termen zusätzliche Überdeckungen schafft. Die Funktion ist dann nicht
+    mehr minimal, aber frei von Hazards.
+
+    \begin{enumerate}
+        \item Stellen Sie erneut ein KV-Diagramm auf. Das Schaltnetz soll jedoch durch Hin-
+            zufügen eines Terms immun gegen den beobachteten Glitch werden. Heben Sie den
+            Term hervor, der eine Überdeckung der beiden bisherigen Einkreisungen herstellt.
+            Wie muss die Hazard-freie Funktion lauten?
+        \item Zeichnen Sie den Schaltplan der neuen Funktion auf Gatter-Ebene und zeigen Sie
+            diesen Ihrem Tutor.
+        \item Erweitern Sie Ihre Schaltung auf dem \textit{DigiBoard} gemäß dem Schaltplan und legen
+            das neue Ausgangssignal auf den letzten verbleibenden Digital-Eingang.
+        \item Messen Sie das Timing-Diagramm für die fallende Flanke von $y$ wie im vorhergehenden
+            Versuch und diskutieren Sie, ob und wie das Einfügen des zusätzlichen Terms
+            den Glitch verhindert.
+    \end{enumerate}
+
+\end{document}
