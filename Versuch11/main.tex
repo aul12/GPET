@@ -397,7 +397,17 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \paragraph{Protokoll}
     $ $
 
-    %@TODO KV
+    \begin{table}
+        \centering
+        \begin{tabular}{cc|cccc}
+            & &  & \multicolumn{2}{c}{yz}\\
+            & & 10 & 11 & 01 & 00\\
+            \midrule
+            \multirow{ 2}{*}{x} & 1 & 1 & 1 & 1 & 0\\
+             & 0 & 0 & 0 & 1 & 0\\
+        \end{tabular}
+        \caption{KV-Diagramm}
+    \end{table}
 
     Daraus ergibt sich die Normalform:
     \begin{equation*}
@@ -406,7 +416,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
     \begin{figure}[H]
         \includegraphics[width=\textwidth]{scope_13.png}
-        \caption{Schaltung ohne Glitch}
+        \caption{Glitch tritt nicht mehr auf}
     \end{figure}
 
     \begin{figure}[H]
@@ -442,7 +452,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         (y) -| (xyand.in 2);
 
         \end{circuitikz}
-        \caption{}
+        \caption{Schaltung ohne Glitch}
         \label{}
     \end{figure}
 
