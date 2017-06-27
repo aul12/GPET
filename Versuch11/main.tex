@@ -20,6 +20,10 @@
 \usepackage{graphicx}
 \usepackage{subcaption}
 \usepackage[europeanresistors]{circuitikz}
+\usepackage{multirow}
+
+\newcommand\tikzmark[1]{%
+  \tikz[overlay,remember picture] \coordinate (#1);}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -70,6 +74,9 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item Verifizieren Sie die Wahrheitstabelle und zeigen Sie den Aufbau Ihrem Betreuer.
     \end{enumerate}
 
+    \paragraph{Protokoll}
+    Der aufgebaute Volladierer funtioniert, wie erwartet, ordnungsgemäß.
+
     \section{Ermittlung der Logikfunktion}
     Beginnen Sie zunächst damit, die Ihnen unbekannte Schaltung A in Bereich (E) zu
     untersuchen.
@@ -79,6 +86,58 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             Schaltung. Lassen Sie Ihr Ergebnis durch Ihren Tutor überprüfen. Sie können sich nun
             die Schaltung in der Black-Box ansehen und Ihre Lösung verifizieren.
     \end{enumerate}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc|c}
+            \toprule
+            a & b & c & d & out \\
+            \midrule
+            0 & 0 & 0 & 0 & 0\\
+            1 & 0 & 0 & 0 & 1\\
+            0 & 1 & 0 & 0 & 1\\
+            1 & 1 & 0 & 0 & 0\\
+            0 & 0 & 1 & 0 & 0\\
+            1 & 0 & 1 & 0 & 1\\
+            0 & 1 & 1 & 0 & 1\\
+            1 & 1 & 1 & 0 & 0\\
+            0 & 0 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 1\\
+            0 & 1 & 0 & 1 & 1\\
+            1 & 1 & 0 & 1 & 0\\
+            0 & 0 & 1 & 1 & 0\\
+            1 & 0 & 1 & 1 & 1\\
+            0 & 1 & 1 & 1 & 0\\
+            1 & 1 & 1 & 1 & 0\\
+            \bottomrule
+        \end{tabular}
+        \caption{Wahrheitstabelle der Schaltung A}
+    \end{table}
+
+    Minimierte Normalform:
+    \begin{eqnarray*}
+        \text{out} &=& a\cdot \bar{b} + \bar{a} \cdot \bar{d} \cdot b + b \cdot \bar{a} \cdot \bar{c}\\
+            &=& a \cdot \bar{b} + \bar{a} \cdot b \cdot (\bar{c} + \bar{d})
+    \end{eqnarray*}
+
+    Die Schaltung in der Blackbox stimmt mit der Normalform überein.
+
+    \begin{table}
+        \centering
+        \begin{tabular}{cc|cccc}
+            & &  & \multicolumn{2}{c}{BD}\\
+            & & 10 & 11 & 01 & 00\\
+            \midrule
+             & 10 & 0 & 0 & 1 & 1\\
+            \multirow{ 2}{*}{AC} & 11 & 0 & 0 & 1 & 1\\
+             & 01 & 1 & 0 & 0 & 0\\
+             & 00 & 1 & 1 & 0 & 0
+        \end{tabular}
+        \caption{KV-Diagramm}
+    \end{table}
+
 
     \section{Aufspüren eines Schaltungsdefektes}
     Die zweite Schaltung (B) ist identisch zur soeben untersuchten, jedoch weicht ihr Verhal-
@@ -95,6 +154,77 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             etwaige Defekte aufzuspüren:
         \item Ermitteln Sie Ort und Art des Defektes.
     \end{enumerate}
+
+    \paragraph{Protokoll}
+    $ $
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc|c}
+            \toprule
+            a & b & c & d & out \\
+            \midrule
+            0 & 0 & 0 & 0 & 0\\
+            1 & 0 & 0 & 0 & 0\\
+            0 & 1 & 0 & 0 & 1\\
+            1 & 1 & 0 & 0 & 0\\
+            0 & 0 & 1 & 0 & 0\\
+            1 & 0 & 1 & 0 & 0\\
+            0 & 1 & 1 & 0 & 1\\
+            1 & 1 & 1 & 0 & 0\\
+            0 & 0 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 0\\
+            0 & 1 & 0 & 1 & 1\\
+            1 & 1 & 0 & 1 & 0\\
+            0 & 0 & 1 & 1 & 0\\
+            1 & 0 & 1 & 1 & 0\\
+            0 & 1 & 1 & 1 & 0\\
+            1 & 1 & 1 & 1 & 0\\
+            \bottomrule
+        \end{tabular}
+        \caption{Wahrheitstabelle für Schaltung B}
+    \end{table}
+    Man schaltet die Ausgänge der beiden Schaltungen mit einem XOR zusammen. Sobald
+    die Ausgänge nicht identisch sind, ist der Ausgang des XORs auf high und sonst
+    auf low.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cccc|cc}
+            \toprule
+            a & b & c & d & $out_a$ & $out_b$\\
+            \midrule
+            1 & 0 & 0 & 0 & 1 & 0\\
+            1 & 0 & 0 & 1 & 1 & 0\\
+            1 & 0 & 1 & 0 & 1 & 0\\
+            1 & 0 & 1 & 1 & 1 & 0\\
+            \bottomrule
+        \end{tabular}
+        \caption{Differenz der beiden Schatungen}
+    \end{table}
+
+    \subparagraph{Testvektoren}
+    \begin{eqnarray*}
+        &K_1:& \overline{a} \cdot \overline{b} \cdot c \cdot d,\ \overline{a} \cdot b \cdot c \cdot d,\ a \cdot \overline{b} \cdot c \cdot d,\ a \cdot b \cdot c \cdot d\\
+        &K_2:& \overline{a} \cdot \overline{b} \cdot \overline{cd},\ a \cdot \overline{b} \cdot \overline{cd},\ \overline{a} \cdot b \cdot \overline{cd},\ a \cdot b \cdot \overline{cd}\\
+        &K_3:& \overline{a} \cdot b \cdot \overline{c} \cdot \overline{d},\ \overline{a} \cdot b \cdot c \cdot \overline{d},\ \overline{a} \cdot b \cdot \overline{c} \cdot d,\ \overline{a} \cdot b \cdot c \cdot d
+    \end{eqnarray*}
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{cc|c}
+            \toprule
+            a & b & $K_1$\\
+            \midrule
+            0 & 0 & 0\\
+            0 & 1 & 0\\
+            1 & 0 & 0\\
+            1 & 1 & 0\\
+            \bottomrule
+        \end{tabular}
+        \caption{Testvektor bei $K_1$}
+    \end{table}
+
+    Aus dieser Tabelle erkennt man, dass der Knoten $K_1$ immer auf 0V liegt, also
+    ein \glqq Stuck-at-0\grqq~bei $K_1$.
 
     \section{Doppel-XOR}
     \begin{figure}[H]
@@ -123,6 +253,24 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item Wofür könnte die Schaltung genutzt werden?
     \end{enumerate}
 
+    \paragraph{Protokoll}
+    $ $
+    Der eingang Input wir unverändert zum Ausgang Output durchgereicht, der eingang
+    Code verändert Output nicht. Am Ausgang Intermediate wird das \glqq{}verschlüsselte\grqq
+    ~Eingangssignal ausgegeben.
+
+    Das Verhalten der Schaltung lässt sich durch folgenden boolschen Ausdruck
+    beschreiben:
+
+    \begin{equation*}
+        a \oplus b \oplus b = a \oplus (b \oplus b)
+        = a \oplus 0 = a
+    \end{equation*}
+
+    Ohne den Zustand des Codeeingangs zu kennen, lässt sich nur mit Kenntnis des
+    Intermediate-Ausgangs nicht der eigentliche Eingangszustand bestimmen. Es handelt
+    sich also um eine einfache Verschlüsselung.
+
     \section{Verwendung der digitalen Oszilloskop-Eingänge}
     Einführend sollen Sie die Gatterlaufzeiten eines AND, NOR, NOT und eines XOR
     ermitteln. Hierfür werden Sie die digitalen Eingänge des Oszilloskops verwenden.
@@ -130,7 +278,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \subsection{Bereitstellung geeigneter Eingangssignale}
     Sie können mit Hilfe des Taster \textit{CLK} aus Bereich (C) eine entprellte Flanke erzeugen.
     Verwenden Sie auf jeden Fall nur diesen Taster, da die anderen Schalter nicht entprellt
-    sind und die Messung dadurch verfälscht werden könnte. Die benachbarte LED zeigt den
+    sind und die Messung dadurch verfälscht werden könnte. Die benachoverlinete LED zeigt den
     aktuellen Pegel an. Sie benötigen zusätzlich zwei Jumper; mit dem Einen verbinden Sie
     den \textit{CLK}-Taster mit der \textit{CLK}-Leitung, mit dem Zweiten verbinden Sie in Bereich (F)
     eine der Buchsen mit der \textit{CLK}-Leitung. Anschließend können Sie an dieser Buchse die
@@ -159,6 +307,35 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     chenden Messungen als Einzelmessung über \framebox{Single} durch. Ermitteln Sie die Laufzeiten
     für die Gatter AND, NOR, NOT und XOR.
 
+    \paragraph{Protokoll}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_8.png}
+        \caption{Laufzeit für das AND-Gatter}
+    \end{figure}
+
+    Laufzeit: $15\si{n\second}$
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_9.png}
+        \caption{Laufzeit für das NOR-Gatter}
+    \end{figure}
+
+    Laufzeit: $13\si{n\second}$
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_10.png}
+        \caption{Laufzeit für das NOT-Gatter}
+    \end{figure}
+
+    Laufzeit: $14\si{n\second}$
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_11.png}
+        \caption{Laufzeit für das XOR-Gatter}
+    \end{figure}
+
+    Laufzeit: $17\si{n\second}$
+
     \section{Zeitverhalten der Gattersignale}
     \begin{figure}[H]
         \includegraphics[width=\textwidth]{abb13.png}
@@ -186,6 +363,16 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             zufällig unterdrückt wird.
     \end{enumerate}
 
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_12.png}
+        \caption{Auftretender Glitch}
+    \end{figure}
+
+    Der Glitch ist in Form eines kurzen Low-Pegels beim Eingang $D_1$ deutlich
+    zu sehen.
+
     \section{Gegenmaßnahmen bei Glitches}
     Der gemessene Glitch ist eine Folge der absoluten Minimierung der Normalform. Glitches
     können immer auftreten, wenn im KV-Diagramm keine Überdeckungen zwischen den
@@ -206,5 +393,63 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             Versuch und diskutieren Sie, ob und wie das Einfügen des zusätzlichen Terms
             den Glitch verhindert.
     \end{enumerate}
+
+    \paragraph{Protokoll}
+    $ $
+
+    %@TODO KV
+
+    Daraus ergibt sich die Normalform:
+    \begin{equation*}
+        \text{out} = x \cdot y + z \cdot \bar{y} + \mathbf{x \cdot z}
+    \end{equation*}
+
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_13.png}
+        \caption{Schaltung ohne Glitch}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \begin{circuitikz} \draw
+        (0,3) node[european and port] (xyand) {}
+        (7,2) node[european or port] (finalor) {}
+        (5,1) node[european or port] (bottomor) {}
+        (3,2) node[european and port] (xzand) {}
+        (3,0) node[european and port] (yzand) {}
+        (0,0) node[european not port] (ynot) {}
+
+
+        (xyand.in 1) node[above left=1cm](x) {x}
+        (xyand.in 2) node[below left=1cm](y) {y}
+        (y) node[below=.5cm](z){z}
+
+        (xyand.out) -| (finalor.in 1)
+        (bottomor.out) -| (finalor.in 2)
+
+        (yzand.out) -| (bottomor.in 2)
+        (xzand.out) -| (bottomor.in 1)
+
+        (x) -| (xzand.in 1)
+        (z) -| (xzand.in 2)
+
+        (y) -| (ynot.in)
+
+        (ynot.out) -| (yzand.in 2)
+        (z) -| (yzand.in 1)
+
+        (x) -| (xyand.in 1)
+        (y) -| (xyand.in 2);
+
+        \end{circuitikz}
+        \caption{}
+        \label{}
+    \end{figure}
+
+
+
+
+    Wie in der überarbeiteten Schaltung zu erkennen, wird das glitchbehaftete Signal
+    nun zusätzlich mit $x \cdot z$ verodert. Dadurch verschwindet der kurze Low-Pegel.
 
 \end{document}
