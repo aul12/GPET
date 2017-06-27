@@ -397,14 +397,14 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \paragraph{Protokoll}
     $ $
 
-    \begin{table}
+    \begin{table}[H]
         \centering
         \begin{tabular}{cc|cccc}
             & &  & \multicolumn{2}{c}{yz}\\
             & & 10 & 11 & 01 & 00\\
             \midrule
-            \multirow{ 2}{*}{x} & 1 & 1 & 1 & 1 & 0\\
-             & 0 & 0 & 0 & 1 & 0\\
+            \multirow{ 2}{*}{x} & 1 & \textcolor{red}{1} & \underline{\textcolor{red}{1}} & \underline{\textcolor{blue}{1}} & 0\\
+             & 0 & 0 & 0 & \textcolor{blue}{1} & 0\\
         \end{tabular}
         \caption{KV-Diagramm}
     \end{table}
