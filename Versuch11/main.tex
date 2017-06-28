@@ -21,6 +21,7 @@
 \usepackage{subcaption}
 \usepackage[europeanresistors]{circuitikz}
 \usepackage{multirow}
+\usepackage{tikz-timing}
 
 \newcommand\tikzmark[1]{%
   \tikz[overlay,remember picture] \coordinate (#1);}
@@ -111,14 +112,15 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                     (cand.out) -| (cor.in 2)
                     (xyxor.out) -| (cand.in 1)
 
-                    (0,6.5) -| (xyxor.in 1)
-                    (1,6) -| (xyxor.in 2)
-                    (2,5) -| (sxor.in 2)
+                    (0,6.25) to [short, *-] (xyxor.in 1)
+                    (1,5.7) to [short, *-] (xyxor.in 2)
+                    (7.25,5) to [short, -|] (sxor.in 2)
+                    (2,5) to [short, *-] (7.25,5)
 
-                    (0,4) -| (xyand.in 1)
-                    (1,3.5) -| (xyand.in 2)
+                    (0,4.25) to [short, *-] (xyand.in 1)
+                    (1,3.7) to [short, *-] (xyand.in 2)
 
-                    (2, 0) -| (cand.in 2)
+                    (2, -0.3) to [short, *-] (cand.in 2)
 
                     (sxor) node [above right=1cm](s) {$S$}
                     (cor) node [below right=1cm](c) {$C$}
@@ -154,14 +156,15 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                     (cand.out) -| (cor.in 2)
                     (xyxor.out) -| (cand.in 1)
 
-                    (0,6.5) -| (xyxor.in 1)
-                    (1,6) -| (xyxor.in 2)
-                    (2,5) -| (sxor.in 2)
+                    (0,6.25) to [short, *-] (xyxor.in 1)
+                    (1,5.7) to [short, *-] (xyxor.in 2)
+                    (7.25,5) to [short, -|] (sxor.in 2)
+                    (2,5) to [short, *-] (7.25,5)
 
-                    (0,4) -| (xyand.in 1)
-                    (1,3.5) -| (xyand.in 2)
+                    (0,4.25) to [short, *-] (xyand.in 1)
+                    (1,3.7) to [short, *-] (xyand.in 2)
 
-                    (2, 0) -| (cand.in 2)
+                    (2, -0.3) to [short, *-] (cand.in 2)
 
                     (sxor) node [above right=1cm](s) {$S$}
                     (cor) node [below right=1cm](c) {$C$}
@@ -175,8 +178,138 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     \end{enumerate}
 
     \section{Schaltungsdefekte}
-    %TODO zeugs
+    Die folgenden Fragen sollen sicherstellen, dass Sie die theoretischen Vorraussetzungen
+    erfüllen, um den Versuch durchführen zu können, der sich mit Stuck-at-0/1-Problemen
+    befasst.
+    \begin{enumerate}
+        \item Welche zwei Schritte sind nötig um einen Knoten zu testen - und wie ergibt sich
+            daraus der Testvektor?
 
+            Will man einen bestimmten Knoten K des Netzes auf einen Stuck-at-Fehler prüfen,
+            so müssen zwei Schritte durchgeführt werden. Durch eine geeignete Beschaltung der
+            Eingänge muss zum einen sichergestellt werden, dass der Zustand des zu beobachtenden
+            Knotens am Ausgang sichtbar wird; d.h.\ die nachfolgenden Gatter müssen so beschal-
+            tet sein, dass sie transparent werden, also den ankommenden, zu beobachtenden Pegel
+            weitergeben. Anschließend muss der zu testende Knoten noch eingestellt werden.
+            Will man prüfen, ob sich ein Knoten fest auf einer 0 befindet (stuck-at-0), muss er
+            testhalber auf 1 gesetzt werden --- und umgekehrt. Ergibt sich bei diesem Einstellvektor
+            kein Widerspruch zum Beobachtungsvektor, kann die Schnittmenge beider Vektoren als
+            Testvektor verwendet werden.
+        \item Sind auf diese Weise alle Fehler detektierbar?
+
+            Nein:
+            \begin{itemize}
+                \item bei mehreren Fehlern kann der defekte Knoten nicht eindeutig bestimmt werden
+                \item zum Teil können die folgenden Gatter nicht transparent geschalten werden, da sie ebenfalls von den Eingängen abhängen
+            \end{itemize}
+        \item Wie können folgende Gatter für einen ihrer Eingänge mit Belegung \glqq{}D\grqq{} transparent
+            geschaltet werden und wie verhält sich dann der Ausgang?
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{c|c|c|c}
+                    \toprule
+                    Gatter & $IN_1$ & $IN_{2 \ldots N}$ & OUT\\
+                    \midrule
+                    AND & D & 1 & D\\
+                    NAND & D & 1 & $\overline{\text{D}}$\\
+                    OR & D & 0 & D\\
+                    NOR & D & 0 & $\overline{\text{D}}$\\
+                    XOR & D & 0 & D\\
+                    \bottomrule
+                \end{tabular}
+                \caption{Beschaltung einzelner Gattereingänge für Transparenz}
+            \end{table}
+    \end{enumerate}
+
+    \section{Hazards und Glitches}
+    Wesentliche Limitationen von Schaltnetzen sind die endlichen Laufzeiten von Gattern.
+    Nicht nur, dass durch sie die Geschwindigkeit der Berechnung einer Booleschen Funk-
+    tion begrenzt wird; Gatterlaufzeiten können auch zu Instabilitäten von Schaltnetzen
+    führen. Dabei ist ein Hazard die Eigenschaft eines Schaltnetzes, mögliche Instabilitäten
+    zu beinhalten. Das konkrete Auftreten einer Instabilität ist z.B. ein Glitch. Das heißt,
+    das während der Laufzeit der Signale kurzzeitig ein falsches Zwischenergebnis an den
+    Ausgängen anliegt und sich ein Spannungswert ändert, obwohl dies laut der Booleschen
+    Funktion nicht der Fall wäre.
+
+    \begin{enumerate}
+        \item Stellen Sie ein KV-Diagramm in Abbildung~\ref{fig:hazzard} für die Boolesche Funktion aus
+            Tabelle 12a auf und geben Sie die minimierte Funktion an.
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{cc|cccc}
+                    & &  & \multicolumn{2}{c}{yz}\\
+                    & & 10 & 11 & 01 & 00\\
+                    \midrule
+                    \multirow{ 2}{*}{x} & 1 & 1 & 1 & 1 & 0\\
+                     & 0 & 0 & 0 & 1 & 0\\
+                \end{tabular}
+                \caption{KV-Diagramm eines Hazard-behafteten Schaltnetzes}
+                \label{fig:hazzard}
+            \end{table}
+            \begin{equation*}
+                o(x,y,z) = x \cdot y + \overline{y} \cdot z
+            \end{equation*}
+        \item Zeichnen Sie einen Schaltplan dieser Funktion mit AND-, OR- und NOT-Gattern
+            in den dafur vorgesehenen Platz in Abbildung~\ref{fig:schaltungGlitch}.
+
+            \begin{figure}[H]
+                \centering
+                \begin{circuitikz} \draw
+                    (4,0) node[european not port] (ynot) {}
+                    (6,2) node[european and port] (yzand) {}
+                    (6,6) node[european and port] (xyand) {}
+                    (8,4) node[european or port] (finalor) {}
+                    (0,-1) to[short, l=$X$] (0, 7)
+                    (1,-1) to[short, l=$Y$] (1, 7)
+                    (2,-1) to[short, l=$Z$] (2, 7)
+
+                    (finalor.out) node [above right=1cm](o) {$o$}
+
+                    (ynot.out) -| (yzand.in 2)
+                    (yzand.out) -| (finalor.in 2)
+                    (xyand.out) -| (finalor.in 1)
+                    (finalor.out) -| (o)
+
+
+                    (1,0) to [short, *-] (ynot.in)
+                    (2,2.25) to [short, *-] (yzand.in 1)
+                    (1,5.7) to [short, *-] (xyand.in 2)
+                    (0,6.25) to [short, *-] (xyand.in 1)
+                ;\end{circuitikz}
+                \caption{Zeichnen Sie hier Schaltung ein, die der ermittelten Normalform des
+        Glitch-behafteten Schaltnetzes entspricht}
+                \label{fig:schaltungGlitch}
+            \end{figure}
+        \item Vervollständigen Sie das Timing-Diagramm in Abbildung~\ref{fig:timeGlitch}. Dabei soll eine Einheit
+            in der Horizontalen der Laufzeit eines Gatters entsprechen.
+
+            \begin{figure}[H]
+                \centering
+                \begin{tikztimingtable}
+                    [timing/slope=0,timing/coldist=2pt,
+                    xscale=2.5,yscale=2]
+                    x & 19H \\
+                    y & 3H 8L 8H\\
+                    z & 19H \\
+                    xy & 4H 8L 7H\\
+                    $\overline{\text{y}}$ & 4L 8H 7L\\
+                    z$\overline{\text{y}}$ & 5L 8H 6L\\
+                    o & 4H 1L 14H\\
+                    \extracode
+                    \tablegrid[black!25]
+                    \draw[red, thick] (4.5,-11.5) circle(.25cm);
+                \end{tikztimingtable}
+                \caption{Timing Diagramm einer digitalen Schaltung}
+                \label{fig:timeGlitch}
+            \end{figure}
+        \item Identifizieren und markieren Sie den Glitch. Erläutern Sie, durch welchen Umstand
+            es zum Glitch in $o$ kommt.
+
+            Durch die Unterschiedlich \glqq{}langen\grqq{} Pfade in der Schaltung
+            verschieben sich die Signale zeitlich zueinander. Dadurch kommt es
+            zu einem Glitch am Ausgang.
+    \end{enumerate}
 
     \setcounter{chapter}{3}
     \chapter{Versuchsdurchführung}

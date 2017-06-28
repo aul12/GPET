@@ -23,6 +23,9 @@
 \usepackage{multirow}
 \usepackage{tikz-timing}
 
+\def\timingwidth{4}
+\def\timingheight{1}
+
 \newcommand\tikzmark[1]{%
   \tikz[overlay,remember picture] \coordinate (#1);}
 
@@ -79,8 +82,6 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     durch Gatterlaufzeiten müssen nicht berücksichtigt werden. Das Timing ist ebenfalls nicht
     relevant, solange die vorgegebene Abfolge der Signale eingehalten wird.
 
-    \def\timingwidth{4}
-    \def\timingheight{1}
     \begin{figure}[H]
         \begin{tikztimingtable}
             [timing/slope=0,timing/coldist=2pt,
