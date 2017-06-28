@@ -112,13 +112,13 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                     (cand.out) -| (cor.in 2)
                     (xyxor.out) -| (cand.in 1)
 
-                    (0,6.25) to [short, *-] (xyxor.in 1)
-                    (1,5.7) to [short, *-] (xyxor.in 2)
+                    (0,6.27) to [short, *-] (xyxor.in 1)
+                    (1,5.72) to [short, *-] (xyxor.in 2)
                     (7.25,5) to [short, -|] (sxor.in 2)
                     (2,5) to [short, *-] (7.25,5)
 
-                    (0,4.25) to [short, *-] (xyand.in 1)
-                    (1,3.7) to [short, *-] (xyand.in 2)
+                    (0,4.27) to [short, *-] (xyand.in 1)
+                    (1,3.72) to [short, *-] (xyand.in 2)
 
                     (2, -0.3) to [short, *-] (cand.in 2)
 
@@ -156,13 +156,13 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                     (cand.out) -| (cor.in 2)
                     (xyxor.out) -| (cand.in 1)
 
-                    (0,6.25) to [short, *-] (xyxor.in 1)
-                    (1,5.7) to [short, *-] (xyxor.in 2)
+                    (0,6.27) to [short, *-] (xyxor.in 1)
+                    (1,5.72) to [short, *-] (xyxor.in 2)
                     (7.25,5) to [short, -|] (sxor.in 2)
                     (2,5) to [short, *-] (7.25,5)
 
-                    (0,4.25) to [short, *-] (xyand.in 1)
-                    (1,3.7) to [short, *-] (xyand.in 2)
+                    (0,4.27) to [short, *-] (xyand.in 1)
+                    (1,3.72) to [short, *-] (xyand.in 2)
 
                     (2, -0.3) to [short, *-] (cand.in 2)
 
@@ -185,16 +185,13 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \item Welche zwei Schritte sind nötig um einen Knoten zu testen - und wie ergibt sich
             daraus der Testvektor?
 
-            Will man einen bestimmten Knoten K des Netzes auf einen Stuck-at-Fehler prüfen,
-            so müssen zwei Schritte durchgeführt werden. Durch eine geeignete Beschaltung der
-            Eingänge muss zum einen sichergestellt werden, dass der Zustand des zu beobachtenden
-            Knotens am Ausgang sichtbar wird; d.h.\ die nachfolgenden Gatter müssen so beschal-
-            tet sein, dass sie transparent werden, also den ankommenden, zu beobachtenden Pegel
-            weitergeben. Anschließend muss der zu testende Knoten noch eingestellt werden.
-            Will man prüfen, ob sich ein Knoten fest auf einer 0 befindet (stuck-at-0), muss er
-            testhalber auf 1 gesetzt werden --- und umgekehrt. Ergibt sich bei diesem Einstellvektor
-            kein Widerspruch zum Beobachtungsvektor, kann die Schnittmenge beider Vektoren als
-            Testvektor verwendet werden.
+            \textbf{Schritt 1:} Nachfolgende Gatter des zu testenden Knotens wie in Tabelle \ref{tab:transp}
+            transparent schalten. Hieraus ergibt sich ein Einstellvektor.
+
+            \textbf{Schritt 2:} Je nach erwartetem Fehler versuchen, den Knoten auf high bzw.~low zu
+            ziehen. Die Schnittmenge des in Schritt 2 ermittelten Beobachtungsvektors und des
+            zuvor bestimmten Einstellvektors ergibt den Testvektor.
+
         \item Sind auf diese Weise alle Fehler detektierbar?
 
             Nein:
@@ -218,6 +215,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
                     \bottomrule
                 \end{tabular}
                 \caption{Beschaltung einzelner Gattereingänge für Transparenz}
+                \label{tab:transp}
             \end{table}
     \end{enumerate}
 
@@ -273,9 +271,9 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
 
                     (1,0) to [short, *-] (ynot.in)
-                    (2,2.25) to [short, *-] (yzand.in 1)
-                    (1,5.7) to [short, *-] (xyand.in 2)
-                    (0,6.25) to [short, *-] (xyand.in 1)
+                    (2,2.27) to [short, *-] (yzand.in 1)
+                    (1,5.73) to [short, *-] (xyand.in 2)
+                    (0,6.27) to [short, *-] (xyand.in 1)
                 ;\end{circuitikz}
                 \caption{Zeichnen Sie hier Schaltung ein, die der ermittelten Normalform des
         Glitch-behafteten Schaltnetzes entspricht}
@@ -469,9 +467,10 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             \bottomrule
         \end{tabular}
         \caption{Testvektor bei $K_1$}
+        \label{tab:TestVK1}
     \end{table}
 
-    Aus dieser Tabelle erkennt man, dass der Knoten $K_1$ immer auf 0V liegt, also
+    Aus der Tabelle~\ref{tab:TestVK1} erkennt man, dass der Knoten $K_1$ immer auf 0V liegt, also
     ein \glqq Stuck-at-0\grqq~bei $K_1$.
 
     \section{Doppel-XOR}
@@ -651,11 +650,13 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             & &  & \multicolumn{2}{c}{yz}\\
             & & 10 & 11 & 01 & 00\\
             \midrule
-            \multirow{ 2}{*}{x} & 1 & \textcolor{red}{1} & \underline{\textcolor{red}{1}} & \underline{\textcolor{blue}{1}} & 0\\
+            \multirow{ 2}{*}{x} & 1 & \textcolor{red}{1} & \textbf{\underline{\textcolor{red}{1}}} & \textbf{\underline{\textcolor{blue}{1}}} & 0\\
              & 0 & 0 & 0 & \textcolor{blue}{1} & 0\\
         \end{tabular}
         \caption{KV-Diagramm}
     \end{table}
+
+    Die einzelnen Gruppen werden durch Farben bzw Unterstriche gekennzeichnet.
 
     Daraus ergibt sich die Normalform:
     \begin{equation*}
