@@ -617,6 +617,19 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
         \caption{Auftretender Glitch}
     \end{figure}
 
+    Die Eingängr $D_7$ und $D_5$ werden direkt an die Eingänge x und y der Schaltung
+    angeschlossen. Diese werden für diesen Versuch, wie zu erkenne, dauerhaft auf
+    high gehalten. Mit dem Clock-Schalter wird am Eingang y eine fallende Flanke
+    erzeugt. Diese ist bei $D_6$ zu erkennen. An Eingang $D_4$ ist $x \cdot y$
+    angeschlossen. Die Laufzeit des AND-Gatters ist gut zu erkennen, da die fallende
+    Flanke, die bei $D_6$ zu sehen ist, erst ca.~$20\si{n\second}$ später ankommt.
+    Eine ähnliche Verzögerung ist bei Eingang $D_3$ zu sehen, der $\bar{y}$ abbildet.
+    Wie auch bei der Bestimmung der Laufzeiten der einzigen Gatter zu erkennen war,
+    ist das NOT-Gatter etwas schneller, als das AND-Gatter.
+    $D_2$ zeigt $z \cdot \bar{y}$, diesmal durch die Laufzeit des AND-Gatters
+    zeitlich verschoben zu $D_3$. Hier fällt auf, dass dieses AND-Gatter eine
+    deutlich kürzere Laufzeit besitzt, als das AND-Gatter bei $D_4$. Die ist durch
+    die Toleranz der Bautellaufzeiten zu erklären.
     Der Glitch ist in Form eines kurzen Low-Pegels beim Eingang $D_1$ deutlich
     zu sehen.
 
