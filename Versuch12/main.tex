@@ -54,7 +54,7 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
 \setcounter{chapter}{3}
 \setcounter{secnumdepth}{2}
-\setcounter{section}{0}
+\setcounter{section}{1}
 
 \pagestyle{fancy}
 \fancyhf{}
@@ -68,74 +68,6 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
 
 \begin{document}
     \maketitle
-
-    \section{Latches und Flip-Flops}
-    Zu Beginn des Versuches sollen einfache Speicherzellen aus den grundlegenden Logikgattern
-    aufgebaut werden, die Sie bereits im vorherigen Versuch kennengelernt haben.
-
-    \subsection{Ungetaktete Latches}
-    Bauen Sie ein ungetaktetes RS-Latch und ein ungetaktetes D-Latch nach Abbildung 1
-    aus NOR und NOT Gattern auf. Verwenden Sie zwei Schalter im Bereich (B) des \textit{Digital-
-    Boards} zur Erzeugung der Signale D/S und R und verbinden Sie die positiven Ausgänge Q
-    mit den LEDs im Bereich (G). Versuchen Sie, die in Abbildung~\ref{fig:TimeUngetaktetesLatch} dargestellte Signalfolge
-    nachzuvollziehen und ergänzen Sie die Ausgangssignale Q der Latches. Die Verzögerungen
-    durch Gatterlaufzeiten müssen nicht berücksichtigt werden. Das Timing ist ebenfalls nicht
-    relevant, solange die vorgegebene Abfolge der Signale eingehalten wird.
-
-    \begin{figure}[H]
-        \begin{tikztimingtable}
-            [timing/slope=0,timing/coldist=2pt,
-            xscale=1,yscale=2]
-            $D/S$ & 1L 2H 3L 1H 1L 1H 2L \\
-            $R$   & 4L 1H 5L 1H\\
-            ung. RS-Latch & 1l\\
-            ung. D-Latch & 1l\\
-            \extracode
-            \tablegrid[black!25]
-        \end{tikztimingtable}
-        \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
-        \label{fig:TimeUngetaktetesLatch}
-    \end{figure}
-
-    \subsection{Getaktete Latches}
-    Erweitern Sie die beiden Latches nun mit Hilfe von AND-Gattern um einen Takteingang
-    (vgl. Abbildung 2), den Sie mit einem weiteren Schalter verbinden. Vervollständigen Sie
-    das Timing-Diagramm in Abbildung~\ref{fig:TimeGetaktetesLatch}.
-    \begin{figure}[H]
-        \begin{tikztimingtable}
-            [timing/slope=0,timing/coldist=2pt,
-            xscale=1,yscale=2]
-            $C$ & 1L 1H 1L 1H 1L 1H 1L 1H 1L 1H 1L\\
-            $D/S$ & 2L 1l 1H 4L 1H 2L 1l \\
-            $R$   & 1l 1H 2L 2H 4L 1h 1H\\
-            ung. RS-Latch & 1l\\
-            ung. D-Latch & 1l\\
-            \extracode
-            \tablegrid[black!25]
-        \end{tikztimingtable}
-        \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
-        \label{fig:TimeGetaktetesLatch}
-    \end{figure}
-
-    \subsection{D-Flip-Flop}
-    Realisieren Sie ein positiv flankengesteuertes D-Flip-Flop, wie in Abbildung 3b dargestellt
-    aus den Einfachgattern NOR, AND und NOT. Die Eingangssignale sollen auch hier durch
-    Schalter realisiert werden, der Ausgang soll auf eine LED im Bereich (G) gelegt werden.
-    Tragen Sie die ermittelten Ausganssignale des Flip-Flops in Abbildung~\ref{fig:TimeDFlipFlop} ein.
-
-    \begin{figure}[H]
-        \begin{tikztimingtable}
-            [timing/slope=0,timing/coldist=2pt,
-            xscale=1,yscale=2]
-            $C$ & 1L 1H 1L 1H 1L 1H 1L 1H 1L 1H 1L\\
-            $D$ & 1l 1H 3L 3H 2L 1h 1H \\
-            D-Flip-Flop & 1l\\
-            \extracode
-            \tablegrid[black!25]
-        \end{tikztimingtable}
-        \caption{Vervollständigen Sie das Timing-Diagramm des D-Flip-Flops.}
-        \label{fig:TimeDFlipFlop}
-    \end{figure}
 
     \section{8 Bit-Asynchronzähler}
     Wie Sie feststellen konnten, erfordert der Aufbau eines einzelnen Flip-Flops aus Logikgattern
@@ -168,29 +100,56 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Screenshot vom Oszilloskop in Ihr Protokoll mit auf. Was ist der Grund für diese
     Zwischenzustände?
 
+    %\begin{figure}[H]
+    %    \begin{tikztimingtable}
+    %        [timing/coldist=2pt,
+    %        xscale=1,yscale=2]
+    %        $D_7$ & L\\
+    %        $D_6$ & H\\
+    %        $D_5$ & H\\
+    %        $D_4$ & H\\
+    %        $D_3$ & H\\
+    %        $D_2$ & H\\
+    %        $D_1$ & H\\
+    %        $D_0$ & H\\
+    %        HEX   & [d] D{7F} 8{D{}}\\
+    %        \extracode
+    %        \tablegrid[black!25]
+    %    \end{tikztimingtable}
+    %    \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
+    %    \label{fig:TimeGetaktetesLatch}
+    %\end{figure}
+
+    \paragraph{Protokoll}
+    $ $
     \begin{figure}[H]
-        \begin{tikztimingtable}
-            [timing/coldist=2pt,
-            xscale=1,yscale=2]
-            $D_7$ & L\\
-            $D_6$ & H\\
-            $D_5$ & H\\
-            $D_4$ & H\\
-            $D_3$ & H\\
-            $D_2$ & H\\
-            $D_1$ & H\\
-            $D_0$ & H\\
-            HEX   & [d] D{7F} 8{D{}}\\
-            \extracode
-            \tablegrid[black!25]
-        \end{tikztimingtable}
-        \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
-        \label{fig:TimeGetaktetesLatch}
+        \includegraphics[width=\textwidth]{scope_3.png}
+        \caption{Timing Diagramm}
     \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_4.png}
+        \caption{Verzögerung}
+        \label{fig:gesLaufzeit}
+    \end{figure}
+
+    Jedes Flip-Flop hat eine gewisse Laufzeit. Diese Laufzeiten sind in den Scrennshots
+    als Verschiebung zwischen den einzelnen Flanken zu erkennen.
+    Da beim Asynchronzähler alle Flip-Flops in Reihe geschalten sind, addieren
+    sich die Laufzeiten auf. Die Zwischenzustände treten auf, wenn teilweise
+    Flip-Flops noch nicht geschalten wurden, die vorrangegangenen Flip-Flops aber
+    bereits in einem neuen Zustand sind.
 
     \subsection{Gatterlaufzeit}
     Bestimmen Sie Zeit bis ein neuer (korrekter) Zählerstand an den Ausgängen anliegt und
     errechnen Sie daraus die Laufzeitverzögerung eines D-Flip-Flops.
+
+    Wie in Grafik~\ref{fig:gesLaufzeit} zu erkennen, besitzt der Asynchronzähler
+    eine Gessamtlaufzeit von $t_{ges} = 84\si{n\second}$. Daraus lässt sich die Laufzeit eines
+    einzelnen Flip-Flops berechen:
+
+    \begin{equation*}
+        t_{Flip-Flop} = \frac{t_{ges}}{8} = 10.5\si{n\second}
+    \end{equation*}
 
     \section{4 Bit-Synchronzähler}
     Setzten Sie für diesen Versuch alle vertikalen Jumper auf das \textit{Digital-Board}. Damit werden
@@ -223,6 +182,19 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Zeitkonstante wird dabei primär von den parasitären Kapazitäten des folgenden Gatters sowie
     der Eingangskapazität des Oszilloskopeingangs bestimmt.
 
+    \paragraph{Protokol}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_15.png}
+        \caption{4Bit-Synchronzähler}
+    \end{figure}
+    Aus der Messung ergibt sich:
+    \begin{equation*}
+        t_{\min} = 900\si{p\second}
+    \end{equation*}
+
+    Das Oszilloskop hat also eine maximale zeitliche Auflösung von ca.~$1\si{n\second}$.
+
     \section{Schieberegister}
     \subsection{Ringzähler}
     Bauen Sie ein 8 Bit-Schieberegister auf, indem Sie die horizontalen Jumper verwenden
@@ -245,17 +217,41 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     die Frequenz des Ausgangssignals und leiten Sie daraus die Frequenzteilung sowie den
     Arbeitszyklus ab.
 
+    \paragraph{Protokoll}
+    $ $
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_11.png}
+        \caption{Ausgangssignal bei Anfangszustand 11110000}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_12.png}
+        \caption{Ausgangssignal bei Anfangszustand 11001100}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_13.png}
+        \caption{Ausgangssignal bei Anfangszustand 10101010}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_10.png}
+        \caption{Ausgangssignal bei Anfangszustand 10000000}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{scope_14.png}
+        \caption{Ausgangssignal bei Anfangszustand 10001000}
+    \end{figure}
+    %TODO Werte auslesen
     \begin{table}[H]
         \centering
         \begin{tabular}{cccc}
             \toprule
             Anfangszustand & Ausgangsfrequenz & Frequenzteilung & Arbeitszyklus\\
             \midrule
-            11110000\\
-            11001100\\
-            10101010\\
-            10000000\\
-            10001000
+            11110000 & $1.25\si{\hertz}$ & 8 & $50\%$\\
+            11001100 & $2.5\si{\hertz}$ & 4\ & $50\%$\\
+            10101010 & $5\si{\hertz}$ & 2 & $50\%$\\
+            10000000 & $1.25\si{\hertz}$ & 8 & $12.5\%$\\
+            10001000 & $2.5\si{\hertz}$ & 4 & $25\%$\\
+            \bottomrule
         \end{tabular}
         \caption{Messergebnisse des Frequenzteilers.}
         \label{tab:freqteiler}
@@ -272,6 +268,23 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
     Ermitteln Sie die ersten 20 Werte der PN-Sequenz. Achten Sie auf eine korrekte
     Vorinitialisierung des Registers, die in Abbildung 5 oberhalb jeder Zelle angegeben ist.
 
+    \paragraph{Protokoll}
+    Die ersten 20 Zeichen der PN-Sequenz lauten:
+    \begin{equation*}
+        00000011111101100000
+    \end{equation*}
+    Um das ursprüngliche Signal wiederherzustellen, muss man das gescrambelte
+    Signal mit der bekannten Initialsequenz ver-XODERn. Das resultierende Signal
+    wird erneut mit der Initialsequenz ver-XODERt, um das ursprüngliche Signal
+    zu erhalten.
+
+    \vspace{.5cm}
+
+    Das Boolsche-Gesetz für diesen Vorgang lautet:
+    \begin{equation*}
+        a \oplus b \oplus b = a \oplus (b \oplus b) = a \oplus 0 = a
+    \end{equation*}
+
     \section{GPS C/A-Code Generator}
     Bauen Sie den C/A-Code-Generator des GPS-Systems auf, das im grau hinterlegten Teil
     in Abbildung 6 dargestellt ist. Beginnen Sie mit dem G1-Shift-Register nach Abbildung 7
@@ -286,9 +299,9 @@ emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
             \toprule
             Satellit & Phase-Select-Logic & PN-Sequenz\\
             \midrule
-            $5$ & $1 \oplus 9$ & \\
-            $13$ & $6 \oplus 7$ & \\
-            $17$ & $1 \oplus 4$ & \\
+            $5$ & $1 \oplus 9$ & $1001011011$\\
+            $13$ & $6 \oplus 7$ & $1111110100$\\
+            $17$ & $1 \oplus 4$ & $1001101110$\\
             \bottomrule
         \end{tabular}
         \caption{GPS C/A Code}

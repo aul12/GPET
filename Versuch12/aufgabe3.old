@@ -1,0 +1,67 @@
+\section{Latches und Flip-Flops}
+Zu Beginn des Versuches sollen einfache Speicherzellen aus den grundlegenden Logikgattern
+aufgebaut werden, die Sie bereits im vorherigen Versuch kennengelernt haben.
+
+\subsection{Ungetaktete Latches}
+Bauen Sie ein ungetaktetes RS-Latch und ein ungetaktetes D-Latch nach Abbildung 1
+aus NOR und NOT Gattern auf. Verwenden Sie zwei Schalter im Bereich (B) des \textit{Digital-
+Boards} zur Erzeugung der Signale D/S und R und verbinden Sie die positiven Ausgänge Q
+mit den LEDs im Bereich (G). Versuchen Sie, die in Abbildung~\ref{fig:TimeUngetaktetesLatch} dargestellte Signalfolge
+nachzuvollziehen und ergänzen Sie die Ausgangssignale Q der Latches. Die Verzögerungen
+durch Gatterlaufzeiten müssen nicht berücksichtigt werden. Das Timing ist ebenfalls nicht
+relevant, solange die vorgegebene Abfolge der Signale eingehalten wird.
+
+\begin{figure}[H]
+    \begin{tikztimingtable}
+        [timing/slope=0,timing/coldist=2pt,
+        xscale=1,yscale=2]
+        $D/S$ & 1L 2H 3L 1H 1L 1H 2L \\
+        $R$   & 4L 1H 5L 1H\\
+        ung. RS-Latch & 1l\\
+        ung. D-Latch & 1l\\
+        \extracode
+        \tablegrid[black!25]
+    \end{tikztimingtable}
+    \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
+    \label{fig:TimeUngetaktetesLatch}
+\end{figure}
+
+\subsection{Getaktete Latches}
+Erweitern Sie die beiden Latches nun mit Hilfe von AND-Gattern um einen Takteingang
+(vgl. Abbildung 2), den Sie mit einem weiteren Schalter verbinden. Vervollständigen Sie
+das Timing-Diagramm in Abbildung~\ref{fig:TimeGetaktetesLatch}.
+\begin{figure}[H]
+    \begin{tikztimingtable}
+        [timing/slope=0,timing/coldist=2pt,
+        xscale=1,yscale=2]
+        $C$ & 1L 1H 1L 1H 1L 1H 1L 1H 1L 1H 1L\\
+        $D/S$ & 2L 1l 1H 4L 1H 2L 1l \\
+        $R$   & 1l 1H 2L 2H 4L 1h 1H\\
+        ung. RS-Latch & 1l\\
+        ung. D-Latch & 1l\\
+        \extracode
+        \tablegrid[black!25]
+    \end{tikztimingtable}
+    \caption{Vervollständigen Sie das Timing-Diagramm der ungetakteten Latches.}
+    \label{fig:TimeGetaktetesLatch}
+\end{figure}
+
+\subsection{D-Flip-Flop}
+Realisieren Sie ein positiv flankengesteuertes D-Flip-Flop, wie in Abbildung 3b dargestellt
+aus den Einfachgattern NOR, AND und NOT. Die Eingangssignale sollen auch hier durch
+Schalter realisiert werden, der Ausgang soll auf eine LED im Bereich (G) gelegt werden.
+Tragen Sie die ermittelten Ausganssignale des Flip-Flops in Abbildung~\ref{fig:TimeDFlipFlop} ein.
+
+\begin{figure}[H]
+    \begin{tikztimingtable}
+        [timing/slope=0,timing/coldist=2pt,
+        xscale=1,yscale=2]
+        $C$ & 1L 1H 1L 1H 1L 1H 1L 1H 1L 1H 1L\\
+        $D$ & 1l 1H 3L 3H 2L 1h 1H \\
+        D-Flip-Flop & 1l\\
+        \extracode
+        \tablegrid[black!25]
+    \end{tikztimingtable}
+    \caption{Vervollständigen Sie das Timing-Diagramm des D-Flip-Flops.}
+    \label{fig:TimeDFlipFlop}
+\end{figure}
